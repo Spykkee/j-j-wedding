@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Suit Outfit Cards — 10·10·2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#FAF8F5;font-family:'Jost',sans-serif;padding:2rem 1rem}
+  .wrap{max-width:700px;margin:0 auto}
+  h1{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#2C2C2A;letter-spacing:.04em;margin-bottom:4px}
+  .sub{font-size:12px;color:#888;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.8rem}
+  .tabs{display:flex;gap:6px;margin-bottom:1.4rem}
+  .tab{padding:7px 18px;border-radius:20px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;border:0.5px solid #ccc;color:#888;background:transparent;transition:all .15s;font-family:'Jost',sans-serif}
+  .tab.active{background:#fff;color:#2C2C2A;border-color:#aaa}
+  .outfit-wrap{display:none}.outfit-wrap.visible{display:block}
+  .outfit-grid{display:grid;grid-template-columns:180px 1fr;gap:1.2rem;align-items:start}
+  .figure{background:#F1EFE8;border-radius:14px;padding:1rem;display:flex;flex-direction:column;align-items:center;gap:8px;border:0.5px solid #D3D1C7}
+  .fig-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#888;text-align:center}
+  .details-col{display:flex;flex-direction:column;gap:10px}
+  .piece-card{background:#fff;border:0.5px solid #D3D1C7;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:12px}
+  .piece-swatch{width:36px;height:36px;border-radius:6px;flex-shrink:0;border:0.5px solid #D3D1C7}
+  .piece-name{font-size:13px;color:#2C2C2A;font-weight:400}
+  .piece-desc{font-size:11px;color:#888;margin-top:2px;line-height:1.5}
+  .verdict{background:#F1EFE8;border-radius:10px;padding:12px 14px;margin-top:1rem;border:0.5px solid #D3D1C7}
+  .verdict-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:#2C2C2A;margin-bottom:4px}
+  .verdict-text{font-size:12px;color:#888;line-height:1.65}
+  .badge{display:inline-block;font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:8px}
+  .badge-classic{background:#EAE6E0;color:#5A4E44}
+  .badge-bold{background:#F0E0E2;color:#722F37}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Wedding Suit Outfit Cards</h1>
+  <div class="sub">10 · 10 · 2026 &nbsp;·&nbsp; Burgundy theme</div>
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-suit="0">Charcoal — Classic & Timeless</button>
+    <button class="tab" data-suit="1">Burgundy — Bold Statement</button>
+  </div>
+  <div id="suits"></div>
+</div>
+
+<script>
+const suits=[
+  {
+    id:"charcoal",
+    badge:"Classic & Timeless",
+    badgeClass:"badge-classic",
+    tagline:"The understated groom — letting love take centre stage.",
+    suitColor:"#3A3A3A",
+    shirtColor:"#FAF4EF",
+    tieColor:"#722F37",
+    squareColor:"#C4898B",
+    boutColor:"#722F37",
+    shoeColor:"#8B5E3C",
+    pieces:[
+      {color:"#3A3A3A",name:"Charcoal suit",desc:"Slim cut wool. Works with both palettes and photographs beautifully in autumn light."},
+      {color:"#FAF4EF",name:"Ivory shirt",desc:"Softer than white — echoes the cream and linen tones of your table décor."},
+      {color:"#722F37",name:"Burgundy silk tie",desc:"Brings your anchor colour to the lapel. Keeps the look cohesive and intentional."},
+      {color:"#C4898B",name:"Dusty rose pocket square",desc:"A nod to both palettes. Fold into a simple classic fold, not overly puffed."},
+      {color:"#722F37",name:"Burgundy boutonnière",desc:"A small rose bud with a sprig of sage or eucalyptus bridges both palettes."},
+      {color:"#8B5E3C",name:"Cognac Oxford shoes",desc:"Warm tan leather — avoids the coldness of black, keeps an autumnal feel."},
+    ],
+    verdict:"Charcoal is the most versatile and timeless choice. It lets the burgundy and blush details in your décor and your partner's look shine, without competing. You'll feel polished, confident, and completely at ease in photos."
+  },
+  {
+    id:"burgundy",
+    badge:"Bold & Romantic",
+    badgeClass:"badge-bold",
+    tagline:"The statement groom — fully owning the colour story.",
+    suitColor:"#722F37",
+    shirtColor:"#FAF4EF",
+    tieColor:"#C6A882",
+    squareColor:"#FAF4EF",
+    boutColor:"#F2D7D5",
+    shoeColor:"#2C1A1A",
+    pieces:[
+      {color:"#722F37",name:"Burgundy suit",desc:"A rich, deep tone that photographs gloriously in autumn. Opt for velvet or fine wool."},
+      {color:"#FAF4EF",name:"Ivory shirt",desc:"Essential — never white. Ivory softens the contrast and keeps the palette warm."},
+      {color:"#C6A882",name:"Antique gold tie",desc:"Avoids a matchy look. Gold against burgundy is luxurious and timeless."},
+      {color:"#FAF4EF",name:"Ivory pocket square",desc:"Keep it simple — a flat fold. Colour is already doing the heavy lifting."},
+      {color:"#F2D7D5",name:"Blush boutonnière",desc:"A blush or pale pink rose softens the boldness and ties in Romantic Classic tones."},
+      {color:"#2C1A1A",name:"Dark brown Oxford shoes",desc:"Deep espresso leather — black would feel too stark, dark brown harmonises beautifully."},
+    ],
+    verdict:"A burgundy suit is a genuinely stunning choice for a 10/10 autumn wedding. The key is restraint in the accessories — ivory and gold keep it refined, not costumey. You'll stand out beautifully and the colour will look incredible in autumn foliage photos."
+  }
+];
+
+function buildFigure(s){
+  return `<svg viewBox="0 0 120 200" width="110" height="183" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="60" cy="28" rx="18" ry="20" fill="#D4A98A"/>
+    <rect x="30" y="48" width="60" height="90" rx="8" fill="${s.suitColor}"/>
+    <rect x="50" y="48" width="20" height="75" fill="${s.shirtColor}" opacity=".9"/>
+    <polygon points="50,48 60,70 50,90" fill="${s.suitColor}"/>
+    <polygon points="70,48 60,70 70,90" fill="${s.suitColor}"/>
+    <rect x="56" y="54" width="8" height="48" rx="2" fill="${s.tieColor}"/>
+    <rect x="56" y="54" width="8" height="6" rx="1" fill="${s.tieColor}" opacity=".7"/>
+    <circle cx="42" cy="64" r="5" fill="${s.squareColor}" opacity=".85"/>
+    <circle cx="78" cy="64" r="4" fill="${s.boutColor}" opacity=".8"/>
+    <rect x="18" y="48" width="14" height="72" rx="5" fill="${s.suitColor}"/>
+    <rect x="88" y="48" width="14" height="72" rx="5" fill="${s.suitColor}"/>
+    <rect x="38" y="136" width="20" height="50" rx="4" fill="#555"/>
+    <rect x="62" y="136" width="20" height="50" rx="4" fill="#555"/>
+    <rect x="37" y="175" width="22" height="12" rx="3" fill="${s.shoeColor}"/>
+    <rect x="61" y="175" width="22" height="12" rx="3" fill="${s.shoeColor}"/>
+  </svg>`;
+}
+
+const container=document.getElementById('suits');
+suits.forEach((s,idx)=>{
+  const wrap=document.createElement('div');
+  wrap.className='outfit-wrap'+(idx===0?' visible':'');
+  wrap.id='suit-'+idx;
+  let piecesHtml='';
+  s.pieces.forEach(p=>{
+    piecesHtml+=`<div class="piece-card"><div class="piece-swatch" style="background:${p.color}"></div><div><div class="piece-name">${p.name}</div><div class="piece-desc">${p.desc}</div></div></div>`;
+  });
+  wrap.innerHTML=`<span class="badge ${s.badgeClass}">${s.badge}</span>
+    <div class="outfit-grid">
+      <div class="figure">${buildFigure(s)}<div class="fig-label">${s.tagline}</div></div>
+      <div class="details-col">${piecesHtml}</div>
+    </div>
+    <div class="verdict"><div class="verdict-title">Our take</div><div class="verdict-text">${s.verdict}</div></div>`;
+  container.appendChild(wrap);
+});
+
+document.getElementById('tabs').addEventListener('click',e=>{
+  const btn=e.target.closest('.tab');
+  if(!btn)return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.outfit-wrap').forEach(t=>t.classList.remove('visible'));
+  btn.classList.add('active');
+  document.getElementById('suit-'+btn.dataset.suit).classList.add('visible');
+});
+</script>
+</body>
+</html>
