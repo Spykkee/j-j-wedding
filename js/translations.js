@@ -2,17 +2,17 @@ export const T = {
   en: {
     title: 'J&J Wedding Outfit Cards',
     sub: '10 · 10 · 2026 \u00a0·\u00a0 Provence Autumn Wedding Theme',
-    him: 'Him', her: 'Her',
+    him: 'Gentleman', her: 'Lady',
     pieceByPiece: 'Piece by piece',
     ourTake: 'Our take',
-    mixedTagline: 'A custom mix — his palette meets hers.',
+    mixedTagline: 'A custom mix — the gentleman\'s palette meets the lady\'s.',
     dotLabels: ['Suit', 'Shirt', 'Tie', 'Pocket sq.', 'Shoes'],
     wDotLabels: ['Dress', 'Accent', 'Bag', 'Heels'],
     suits: [
       {
         badge: 'Dusty Elegance',
         name: 'The Charcoal Look',
-        tagline: 'The understated groom — letting love take centre stage.',
+        tagline: 'The understated gentleman — letting love take centre stage.',
         pieces: [
           { name: 'Charcoal suit', desc: 'Slim cut wool. Works with both palettes and photographs beautifully in autumn light.' },
           { name: 'Ivory shirt', desc: 'Softer than white — echoes the cream and linen tones of your table décor.' },
@@ -22,7 +22,7 @@ export const T = {
           { name: 'Cognac Oxford shoes', desc: 'Warm tan leather — avoids the coldness of black, keeps an autumnal feel.' },
         ],
         wPieces: [
-          { name: 'Dusty rose midi dress', desc: 'A muted, elegant silhouette — echoes the groom\'s pocket square and ties the Dusty Elegance palette together.' },
+          { name: 'Dusty rose midi dress', desc: 'A muted, elegant silhouette — echoes the gentleman\'s pocket square and ties the Dusty Elegance palette together.' },
           { name: 'Sage green clutch', desc: 'A small botanical accessory that bridges the sage and rose tones of the palette beautifully.' },
           { name: 'Warm taupe drop earrings', desc: 'Subtle taupe earrings sit naturally within the Dusty Elegance palette — understated and refined.' },
           { name: 'Warm taupe block heels', desc: 'A clean neutral heel that grounds the dusty rose and sage tones without competing.' },
@@ -52,7 +52,7 @@ export const T = {
       {
         badge: 'Dark Luxe',
         name: 'The Navy Look',
-        tagline: 'The refined groom — navy\'s natural confidence.',
+        tagline: 'The refined gentleman — navy\'s natural confidence.',
         pieces: [
           { name: 'Navy suit', desc: 'Deep structured navy — one of the most photographically reliable colours for weddings. Slim or tailored cut.' },
           { name: 'Ivory shirt', desc: 'Keeps the palette warm and autumnal, consistent across all looks.' },
@@ -62,7 +62,7 @@ export const T = {
           { name: 'Cognac Oxford shoes', desc: 'Warm against the cool navy — autumnal without trying.' },
         ],
         wPieces: [
-          { name: 'Deep navy dress', desc: 'A sleek navy dress paired with the groom\'s navy suit creates a striking unified Dark Luxe statement — deliberate and deeply elegant.' },
+          { name: 'Deep navy dress', desc: 'A sleek navy dress paired with the gentleman\'s navy suit creates a striking unified Dark Luxe statement — deliberate and deeply elegant.' },
           { name: 'Champagne gold earrings & belt', desc: 'Gold accessories against deep navy are the Dark Luxe palette\'s signature — luminous, opulent, unmistakably formal.' },
           { name: 'Burgundy clutch', desc: 'A rich burgundy bag introduces the wedding anchor colour — a small but deliberate nod to the theme.' },
           { name: 'Champagne gold heeled sandals', desc: 'Gold heels complete the metallic statement and tie back to the earrings and belt for a cohesive finish.' },
@@ -84,7 +84,7 @@ export const T = {
         wPieces: [
           { name: 'Burgundy midi dress', desc: 'The anchor colour itself — a guest in burgundy is a stunning complement to the sage suit. Bold, elegant, unmistakably autumnal.' },
           { name: 'Champagne gold earrings & belt', desc: 'Gold accessories against deep burgundy are a classic combination — warm, luminous, and effortlessly refined.' },
-          { name: 'Sage green clutch', desc: 'A soft botanical clutch that mirrors the groom\'s suit — a subtle nod to the couple\'s palette.' },
+          { name: 'Sage green clutch', desc: 'A soft botanical clutch that mirrors the gentleman\'s suit — a subtle nod to the couple\'s palette.' },
           { name: 'Dark espresso heeled sandals', desc: 'A deep, dark heel grounds the rich burgundy and ties back to the men\'s shoe palette.' },
         ],
         verdict: 'The sage green suit is the most quietly elegant option on this page — soft and botanical, it lets the burgundy accessories and surroundings shine. A distinctive, considered choice that photographs beautifully against autumn foliage.',
@@ -95,17 +95,17 @@ export const T = {
   fr: {
     title: 'Tenues de Mariage J&J',
     sub: '10 · 10 · 2026 \u00a0·\u00a0 Thème Mariage Automne en Provence',
-    him: 'Lui', her: 'Elle',
+    him: 'Gentleman', her: 'Dame',
     pieceByPiece: 'Pièce par pièce',
     ourTake: 'Notre avis',
-    mixedTagline: 'Un mélange personnalisé — sa palette rencontre la sienne.',
+    mixedTagline: 'Un mélange personnalisé — la palette du gentleman rencontre celle de la dame.',
     dotLabels: ['Costume', 'Chemise', 'Cravate', 'Pochette', 'Chaussures'],
     wDotLabels: ['Robe', 'Accent', 'Sac', 'Talons'],
     suits: [
       {
         badge: 'Élégance Poudrée',
         name: 'Le Look Charbon',
-        tagline: 'Le marié discret — laissant l\'amour occuper le devant de la scène.',
+        tagline: 'Le gentleman discret — laissant l\'amour occuper le devant de la scène.',
         pieces: [
           { name: 'Costume charbon', desc: 'Coupe slim en laine. S\'accorde avec les deux palettes et se photographie magnifiquement sous la lumière automnale.' },
           { name: 'Chemise ivoire', desc: 'Plus douce que le blanc — rappelle les tons crème et lin de votre décoration de table.' },
@@ -115,7 +115,7 @@ export const T = {
           { name: 'Chaussures Oxford cognac', desc: 'Cuir fauve chaud — évite la froideur du noir, conserve un esprit automnal.' },
         ],
         wPieces: [
-          { name: 'Robe midi rose poudré', desc: 'Une silhouette sobre et élégante — rappelle la pochette du marié et unit la palette Élégance Poudrée.' },
+          { name: 'Robe midi rose poudré', desc: 'Une silhouette sobre et élégante — rappelle la pochette du gentleman et unit la palette Élégance Poudrée.' },
           { name: 'Pochette vert sauge', desc: 'Un petit accessoire botanique qui unit harmonieusement les tons sauge et rose de la palette.' },
           { name: 'Pendantes taupe chaud', desc: 'Des pendantes taupe subtiles s\'inscrivent naturellement dans la palette Élégance Poudrée — sobres et raffinées.' },
           { name: 'Talons blocs taupe chaud', desc: 'Un talon neutre qui ancre les tons rose poudré et sauge sans les concurrencer.' },
@@ -145,7 +145,7 @@ export const T = {
       {
         badge: 'Luxe Sombre',
         name: 'Le Look Marine',
-        tagline: 'Le marié raffiné — la confiance naturelle du navy.',
+        tagline: 'Le gentleman raffiné — la confiance naturelle du navy.',
         pieces: [
           { name: 'Costume navy', desc: 'Marine profond et structuré — l\'une des couleurs les plus fiables en photographie de mariage. Coupe slim ou ajustée.' },
           { name: 'Chemise ivoire', desc: 'Maintient la palette chaude et automnale, cohérente sur tous les looks.' },
@@ -155,7 +155,7 @@ export const T = {
           { name: 'Chaussures Oxford cognac', desc: 'Chaleur face au marine froid — automnal sans effort.' },
         ],
         wPieces: [
-          { name: 'Robe navy profond', desc: 'Une robe navy élégante assortie au costume marine du marié crée une déclaration Dark Luxe unifiée — délibérée et profondément élégante.' },
+          { name: 'Robe navy profond', desc: 'Une robe navy élégante assortie au costume marine du gentleman crée une déclaration Dark Luxe unifiée — délibérée et profondément élégante.' },
           { name: 'Boucles d\'oreilles & ceinture or champagne', desc: 'Les accessoires dorés sur du navy profond sont la signature de la palette Dark Luxe — lumineux, opulents, indéniablement formels.' },
           { name: 'Pochette bordeaux', desc: 'Un sac bordeaux profond introduit la couleur d\'ancrage du mariage — un clin d\'œil petit mais délibéré.' },
           { name: 'Sandales à talons or champagne', desc: 'Les talons dorés complètent la déclaration métallique et font écho aux boucles d\'oreilles et à la ceinture pour une finition cohérente.' },
@@ -177,7 +177,7 @@ export const T = {
         wPieces: [
           { name: 'Robe midi bordeaux', desc: 'La couleur d\'ancrage elle-même — une invitée en bordeaux est un complément magnifique au costume sauge. Audacieuse, élégante, indéniablement automnale.' },
           { name: 'Boucles d\'oreilles & ceinture or champagne', desc: 'Les accessoires dorés sur du bordeaux profond sont une combinaison classique — chaleureux, lumineux et raffiné sans effort.' },
-          { name: 'Pochette vert sauge', desc: 'Une pochette botanique douce qui fait écho au costume du marié — un clin d\'œil subtil à la palette du couple.' },
+          { name: 'Pochette vert sauge', desc: 'Une pochette botanique douce qui fait écho au costume du gentleman — un clin d\'œil subtil à la palette du couple.' },
           { name: 'Sandales à talons espresso foncé', desc: 'Un talon profond et sombre ancre le bordeaux profond et fait écho à la palette de chaussures masculine.' },
         ],
         verdict: 'Le costume vert sauge est l\'option la plus discrètement élégante de cette page — doux et botanique, il laisse briller les accessoires bordeaux et l\'environnement. Un choix distinctif et réfléchi qui se photographie magnifiquement contre le feuillage automnal.',
@@ -188,17 +188,17 @@ export const T = {
   ko: {
     title: 'J&J 웨딩 아웃핏 카드',
     sub: '2026 · 10 · 10 \u00a0·\u00a0 프로방스 가을 웨딩 테마',
-    him: '신랑', her: '신부',
+    him: '신사', her: '숙녀',
     pieceByPiece: '아이템별 구성',
     ourTake: '우리의 생각',
-    mixedTagline: '맞춤 조합 — 그의 팔레트와 그녀의 팔레트가 만나다.',
+    mixedTagline: '맞춤 조합 — 신사의 팔레트와 숙녀의 팔레트가 만나다.',
     dotLabels: ['수트', '셔츠', '넥타이', '포켓 스퀘어', '구두'],
     wDotLabels: ['드레스', '액세서리', '백', '힐'],
     suits: [
       {
         badge: '더스티 엘레강스',
         name: '차콜 룩',
-        tagline: '절제된 신랑 — 사랑이 주인공이 되도록.',
+        tagline: '절제된 신사 — 사랑이 주인공이 되도록.',
         pieces: [
           { name: '차콜 수트', desc: '슬림컷 울 소재. 두 가지 팔레트 모두와 잘 어울리며 가을빛에서 아름답게 촬영됩니다.' },
           { name: '아이보리 셔츠', desc: '화이트보다 부드러운 톤 — 테이블 데코의 크림과 린넨 컬러를 자연스럽게 반영합니다.' },
@@ -208,7 +208,7 @@ export const T = {
           { name: '코냑 옥스퍼드 구두', desc: '따뜻한 탄 가죽 — 블랙의 차가움을 피하며 가을 분위기를 유지합니다.' },
         ],
         wPieces: [
-          { name: '더스티 로즈 미디 드레스', desc: '차분하고 우아한 실루엣 — 신랑의 포켓 스퀘어와 호응하며 더스티 엘레강스 팔레트를 완성합니다.' },
+          { name: '더스티 로즈 미디 드레스', desc: '차분하고 우아한 실루엣 — 신사의 포켓 스퀘어와 호응하며 더스티 엘레강스 팔레트를 완성합니다.' },
           { name: '세이지 그린 클러치', desc: '세이지와 로즈 톤을 아름답게 연결하는 작은 보태니컬 액세서리입니다.' },
           { name: '웜 토프 드롭 이어링', desc: '더스티 엘레강스 팔레트에 자연스럽게 스며드는 섬세한 토프 이어링 — 절제되고 세련됩니다.' },
           { name: '웜 토프 블록 힐', desc: '더스티 로즈와 세이지 톤을 경쟁하지 않고 안정감 있게 완성하는 뉴트럴 힐입니다.' },
@@ -238,7 +238,7 @@ export const T = {
       {
         badge: '다크 럭스',
         name: '네이비 룩',
-        tagline: '세련된 신랑 — 네이비의 자연스러운 자신감.',
+        tagline: '세련된 신사 — 네이비의 자연스러운 자신감.',
         pieces: [
           { name: '네이비 수트', desc: '깊고 구조적인 네이비 — 웨딩에서 사진 친화적인 색상 중 하나입니다. 슬림 또는 테일러드 컷.' },
           { name: '아이보리 셔츠', desc: '모든 룩에서 일관되게 팔레트를 따뜻하고 가을스럽게 유지합니다.' },
@@ -248,7 +248,7 @@ export const T = {
           { name: '코냑 옥스퍼드 구두', desc: '시원한 네이비에 따뜻함을 더하며 — 자연스럽게 가을스럽습니다.' },
         ],
         wPieces: [
-          { name: '딥 네이비 드레스', desc: '신랑의 네이비 수트와 함께 매치한 세련된 네이비 드레스는 다크 럭스의 통일된 선언 — 의도적이고 깊이 있는 우아함입니다.' },
+          { name: '딥 네이비 드레스', desc: '신사의 네이비 수트와 함께 매치한 세련된 네이비 드레스는 다크 럭스의 통일된 선언 — 의도적이고 깊이 있는 우아함입니다.' },
           { name: '샴페인 골드 이어링 & 벨트', desc: '딥 네이비에 골드 액세서리는 다크 럭스 팔레트의 시그니처 — 발광하고, 화려하며, 틀림없이 포멀합니다.' },
           { name: '버건디 클러치', desc: '깊은 버건디 백이 웨딩 앵커 컬러를 도입합니다 — 작지만 의도적인 테마의 표현입니다.' },
           { name: '샴페인 골드 힐 샌들', desc: '골드 힐이 메탈릭 선언을 완성하고 이어링과 벨트와 호응하여 일관된 마무리를 냅니다.' },
@@ -270,7 +270,7 @@ export const T = {
         wPieces: [
           { name: '버건디 미디 드레스', desc: '앵커 컬러 그 자체 — 버건디를 입은 손님은 세이지 수트와 아름다운 대비를 이룹니다. 대담하고, 우아하며, 틀림없이 가을스럽습니다.' },
           { name: '샴페인 골드 이어링 & 벨트', desc: '딥 버건디에 골드 액세서리는 클래식 조합 — 따뜻하고, 발광하며, 자연스럽게 세련됩니다.' },
-          { name: '세이지 그린 클러치', desc: '신랑 수트를 반영하는 부드러운 보태니컬 클러치 — 커플의 팔레트에 대한 섬세한 오마주입니다.' },
+          { name: '세이지 그린 클러치', desc: '신사 수트를 반영하는 부드러운 보태니컬 클러치 — 커플의 팔레트에 대한 섬세한 오마주입니다.' },
           { name: '다크 에스프레소 힐 샌들', desc: '깊고 어두운 힐이 풍부한 버건디를 안정시키고 남성 구두 팔레트와 호응합니다.' },
         ],
         verdict: '세이지 그린 수트는 이 페이지에서 가장 조용히 우아한 옵션입니다 — 부드럽고 보태니컬하며, 버건디 액세서리와 주변 환경이 빛을 발하도록 합니다. 가을 단풍을 배경으로 아름답게 촬영되는 독특하고 세심한 선택입니다.',
