@@ -1,405 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wedding Suit Outfit Cards — 10·10·2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&display=swap" rel="stylesheet">
-<style>
-:root{
-  --burg:#722F37;
-  --burg-pale:#F0E0E2;
-  --gold:#C6A882;
-  --ivory:#FAF4EF;
-  --stone:#D3D1C7;
-  --bg:#FAF8F5;
-  --surface:#F1EFE8;
-  --text:#2C2C2A;
-  --muted:#888780;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;overflow-x:hidden}
-body{background:var(--bg);font-family:'Jost',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden}
-
-.wrap{max-width:680px;width:100%;margin:0 auto;padding:2rem 1rem 3rem}
-
-/* HEADER */
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,6vw,30px);font-weight:300;color:var(--text);letter-spacing:.04em;line-height:1.2;margin-bottom:5px}
-.sub{font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.8rem}
-
-/* TABS — full width, no scroll */
-.tabs-wrap{margin-bottom:1.4rem}
-.tabs-row{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
-.tabs-row:last-child{margin-bottom:0}
-.tabs-row-label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.tabs{display:flex;gap:8px}
-.tab{
-  flex:1;padding:9px 8px;border-radius:20px;
-  font-size:11px;letter-spacing:.06em;text-transform:uppercase;
-  cursor:pointer;border:0.5px solid #ccc;color:var(--muted);
-  background:transparent;transition:border-color .15s,color .15s;
-  font-family:'Jost',sans-serif;text-align:center;
-  -webkit-tap-highlight-color:transparent;
-}
-.tab.active{background:transparent}
-.tab-swatch{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle;flex-shrink:0}
-
-/* BADGE */
-.badge{display:inline-block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:20px;margin-bottom:12px}
-.badge-classic{background:#EAE6E0;color:#5A4E44}
-.badge-bold{background:var(--burg-pale);color:var(--burg)}
-
-.outfit-wrap{display:block}
-
-/* HERO CARD */
-.outfit-hero{
-  background:var(--surface);border-radius:16px;
-  border:0.5px solid var(--stone);
-  padding:1.4rem 1rem 1rem;
-  margin-bottom:1.2rem;
-  display:flex;flex-direction:column;gap:1rem;
-}
-@media(min-width:500px){
-  .outfit-hero{flex-direction:row;align-items:flex-start;padding:1.4rem;gap:1.4rem}
-}
-
-/* Avatar pair — side by side */
-.fig-wrap{display:flex;flex-direction:row;align-items:flex-end;gap:10px;flex-shrink:0}
-.avatar-col{display:flex;flex-direction:column;align-items:center;gap:6px}
-.avatar-label{font-size:9px;letter-spacing:.10em;text-transform:uppercase;color:var(--muted);text-align:center}
-
-/* Colour dots */
-.dots-group{margin-top:.6rem}
-.dots-group+.dots-group{margin-top:.4rem}
-.dots-who{font-size:9px;letter-spacing:.10em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-.colour-dots{display:flex;flex-wrap:wrap;gap:8px}
-.cdot-wrap{display:flex;align-items:center;gap:5px}
-.cdot{width:24px;height:24px;border-radius:50%;border:0.5px solid rgba(0,0,0,.08);flex-shrink:0}
-.cdot-label{font-size:11px;color:var(--muted)}
-
-.hero-text{flex:1}
-.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,22px);font-weight:300;color:var(--text);margin-bottom:4px}
-.hero-tagline{font-size:12px;color:var(--muted);line-height:1.65}
-
-/* PIECES */
-.pieces-header{display:flex;align-items:center;justify-content:space-between;margin:1.4rem 0 .7rem}
-.pieces-title{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-.ptabs{display:flex;gap:4px}
-.ptab{
-  padding:4px 12px;border-radius:20px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;
-  cursor:pointer;border:0.5px solid #ccc;color:var(--muted);
-  background:transparent;transition:all .15s;font-family:'Jost',sans-serif;
-  -webkit-tap-highlight-color:transparent;
-}
-.ptab.active{background:var(--text);color:#fff;border-color:var(--text)}
-
-.piece-list{display:flex;flex-direction:column;gap:8px}
-.piece-list.hidden{display:none}
-.piece-card{
-  background:#fff;border:0.5px solid var(--stone);border-radius:12px;
-  padding:11px 13px;display:flex;align-items:center;gap:12px;
-}
-.piece-swatch{width:38px;height:38px;border-radius:8px;flex-shrink:0;border:0.5px solid rgba(0,0,0,.07)}
-.piece-text{flex:1;min-width:0}
-.piece-name{font-size:13px;color:var(--text);font-weight:400;margin-bottom:2px}
-.piece-desc{font-size:11px;color:var(--muted);line-height:1.55}
-
-/* MOBILE OVERRIDES */
-@media(max-width:499px){
-  .avatar-col svg{width:72px;height:120px}
-  .tab{padding:6px 4px;font-size:9px;letter-spacing:.04em;white-space:normal;line-height:1.3}
-  .tab-swatch{display:none}
-  .tabs{gap:4px}
-}
-
-/* VERDICT */
-.verdict{background:#fff;border-radius:12px;padding:14px 16px;margin-top:1.2rem;border-left:3px solid var(--burg);border-top:0.5px solid var(--stone);border-right:0.5px solid var(--stone);border-bottom:0.5px solid var(--stone)}
-.verdict-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:var(--burg);margin-bottom:5px}
-.verdict-text{font-size:12px;color:var(--muted);line-height:1.7}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Suit Outfit Cards — 10·10·2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="wrap">
-  <h1>Wedding Suit Outfit Cards</h1>
-  <div class="sub">10 · 10 · 2026 &nbsp;·&nbsp; Burgundy theme</div>
-  <div class="tabs-wrap">
-    <div class="tabs-row">
-      <div class="tabs-row-label">Him</div>
-      <div class="tabs" id="him-tabs">
-        <button class="tab active" data-him="0"><span class="tab-swatch" style="background:#3A3A3A"></span>Dusty Elegance</button>
-        <button class="tab" data-him="1"><span class="tab-swatch" style="background:#6B4C3B"></span>Romantic Classic</button>
-        <button class="tab" data-him="2"><span class="tab-swatch" style="background:#1C2D4F"></span>Dark Luxe</button>
-        <button class="tab" data-him="3"><span class="tab-swatch" style="background:#8FAF8A"></span>Sage Romance</button>
+  <div class="wrap">
+    <h1 id="page-title">Wedding Suit Outfit Cards</h1>
+    <div class="sub" id="page-sub">10 · 10 · 2026 &nbsp;·&nbsp; Burgundy theme</div>
+
+    <div class="lang-switch" id="lang-switch">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="ko">한국어</button>
+    </div>
+
+    <div class="tabs-wrap">
+      <div class="tabs-row">
+        <div class="tabs-row-label" id="him-row-label">Him</div>
+        <div class="tabs" id="him-tabs">
+          <button class="tab active" data-him="0"><span class="tab-swatch" style="background:#3A3A3A"></span><span class="tab-text">Dusty Elegance</span></button>
+          <button class="tab" data-him="1"><span class="tab-swatch" style="background:#6B4C3B"></span><span class="tab-text">Romantic Classic</span></button>
+          <button class="tab" data-him="2"><span class="tab-swatch" style="background:#1C2D4F"></span><span class="tab-text">Dark Luxe</span></button>
+          <button class="tab" data-him="3"><span class="tab-swatch" style="background:#8FAF8A"></span><span class="tab-text">Sage Romance</span></button>
+        </div>
+      </div>
+      <div class="tabs-row">
+        <div class="tabs-row-label" id="her-row-label">Her</div>
+        <div class="tabs" id="her-tabs">
+          <button class="tab active" data-her="0"><span class="tab-swatch" style="background:#C4898B"></span><span class="tab-text">Dusty Elegance</span></button>
+          <button class="tab" data-her="1"><span class="tab-swatch" style="background:#C6A882"></span><span class="tab-text">Romantic Classic</span></button>
+          <button class="tab" data-her="2"><span class="tab-swatch" style="background:#1C2B4A"></span><span class="tab-text">Dark Luxe</span></button>
+          <button class="tab" data-her="3"><span class="tab-swatch" style="background:#722F37"></span><span class="tab-text">Sage Romance</span></button>
+        </div>
       </div>
     </div>
-    <div class="tabs-row">
-      <div class="tabs-row-label">Her</div>
-      <div class="tabs" id="her-tabs">
-        <button class="tab active" data-her="0"><span class="tab-swatch" style="background:#C4898B"></span>Dusty Elegance</button>
-        <button class="tab" data-her="1"><span class="tab-swatch" style="background:#C6A882"></span>Romantic Classic</button>
-        <button class="tab" data-her="2"><span class="tab-swatch" style="background:#1C2B4A"></span>Dark Luxe</button>
-        <button class="tab" data-her="3"><span class="tab-swatch" style="background:#722F37"></span>Sage Romance</button>
-      </div>
+
+    <div id="suits">
+      <div class="outfit-wrap" id="suit-card"></div>
     </div>
   </div>
-  <div id="suits"><div class="outfit-wrap visible" id="suit-card"></div></div>
-</div>
 
-<script>
-const suits=[
-  {
-    badge:"Dusty Elegance",badgeClass:"badge-classic",
-    name:"The Charcoal Look",
-    tagline:"The understated groom — letting love take centre stage.",
-    suitColor:"#3A3A3A",shirtColor:"#FAF4EF",tieColor:"#722F37",
-    squareColor:"#C4898B",boutColor:"#722F37",shoeColor:"#8B5E3C",
-    wDressColor:"#C4898B",wAccentColor:"#B8A99A",wShoeColor:"#B8A99A",wBagColor:"#8FAF8A",
-    pieces:[
-      {color:"#3A3A3A",name:"Charcoal suit",desc:"Slim cut wool. Works with both palettes and photographs beautifully in autumn light."},
-      {color:"#FAF4EF",name:"Ivory shirt",desc:"Softer than white — echoes the cream and linen tones of your table décor."},
-      {color:"#722F37",name:"Burgundy silk tie",desc:"Brings your anchor colour to the lapel. Keeps the look cohesive and intentional."},
-      {color:"#C4898B",name:"Dusty rose pocket square",desc:"A nod to both palettes. Fold into a simple classic fold, not overly puffed."},
-      {color:"#722F37",name:"Burgundy boutonnière",desc:"A small rose bud with a sprig of sage or eucalyptus bridges both palettes."},
-      {color:"#8B5E3C",name:"Cognac Oxford shoes",desc:"Warm tan leather — avoids the coldness of black, keeps an autumnal feel."},
-    ],
-    wPieces:[
-      {color:"#C4898B",name:"Dusty rose midi dress",desc:"A muted, elegant silhouette — echoes the groom's pocket square and ties the Dusty Elegance palette together."},
-      {color:"#8FAF8A",name:"Sage green clutch",desc:"A small botanical accessory that bridges the sage and rose tones of the palette beautifully."},
-      {color:"#B8A99A",name:"Warm taupe drop earrings",desc:"Subtle taupe earrings sit naturally within the Dusty Elegance palette — understated and refined."},
-      {color:"#B8A99A",name:"Warm taupe block heels",desc:"A clean neutral heel that grounds the dusty rose and sage tones without competing."},
-    ],
-    verdict:"Charcoal is the most versatile and timeless choice. It lets the burgundy and blush details in your décor and your partner's look shine, without competing. You'll feel polished, confident, and completely at ease in photos."
-  },
-  {
-    badge:"Romantic Classic",badgeClass:"badge-bold",
-    name:"The Romantic Look",
-    tagline:"The romantic classic — warm mocha with blush and gold.",
-    suitColor:"#6B4C3B",shirtColor:"#FAF4EF",tieColor:"#C6A882",
-    squareColor:"#FAF4EF",boutColor:"#F2D7D5",shoeColor:"#2C1A1A",
-    wDressColor:"#C6A882",wAccentColor:"#F2D7D5",wShoeColor:"#6B4C3B",wBagColor:"#722F37",
-    pieces:[
-      {color:"#6B4C3B",name:"Mocha suit",desc:"A rich chocolate-brown that sits beautifully within the Romantic Classic palette — warm, refined, and effortlessly autumnal."},
-      {color:"#FAF4EF",name:"Ivory shirt",desc:"Essential — never white. Ivory softens the contrast and keeps the palette warm."},
-      {color:"#C6A882",name:"Antique gold tie",desc:"Gold against warm mocha is luxurious and timeless — a pairing that feels considered and complete."},
-      {color:"#FAF4EF",name:"Ivory pocket square",desc:"Keep it simple — a flat fold. Colour is already doing the heavy lifting."},
-      {color:"#F2D7D5",name:"Blush boutonnière",desc:"A blush or pale pink rose softens the richness of mocha and ties in the Romantic Classic tones beautifully."},
-      {color:"#2C1A1A",name:"Dark brown Oxford shoes",desc:"Deep espresso leather — complements the mocha suit and grounds the look with a clean formal finish."},
-    ],
-    wPieces:[
-      {color:"#C6A882",name:"Champagne gold dress",desc:"Gold against the warm mocha and blush palette is a classic Romantic pairing — luminous, timeless, and utterly elegant."},
-      {color:"#722F37",name:"Burgundy clutch or sash",desc:"A small clutch or thin belt in burgundy anchors the look to the wedding colour story."},
-      {color:"#F2D7D5",name:"Blush hair accessory",desc:"A soft floral pin or delicate headband in blush bridges the romantic and classic tones."},
-      {color:"#6B4C3B",name:"Mocha heeled sandals",desc:"A warm mocha heel echoes the suit and grounds the champagne gold with earthy depth."},
-    ],
-    verdict:"A mocha suit is a warm, deeply autumnal choice — it draws from the season and pairs naturally with gold and blush details. The Romantic Classic palette looks stunning in October light, and mocha photographs beautifully against autumn foliage."
-  },
-  {
-    badge:"Dark Luxe",badgeClass:"badge-classic",
-    name:"The Navy Look",
-    tagline:"The refined groom — navy's natural confidence.",
-    suitColor:"#1C2D4F",shirtColor:"#FAF4EF",tieColor:"#722F37",
-    squareColor:"#C4898B",boutColor:"#722F37",shoeColor:"#8B5E3C",
-    wDressColor:"#1C2B4A",wAccentColor:"#D4AF7A",wShoeColor:"#D4AF7A",wBagColor:"#722F37",
-    pieces:[
-      {color:"#1C2D4F",name:"Navy suit",desc:"Deep structured navy — one of the most photographically reliable colours for weddings. Slim or tailored cut."},
-      {color:"#FAF4EF",name:"Ivory shirt",desc:"Keeps the palette warm and autumnal, consistent across all looks."},
-      {color:"#722F37",name:"Burgundy silk tie",desc:"Anchors the wedding colour directly at the lapel. Silk has just the right sheen for photos."},
-      {color:"#C4898B",name:"Dusty rose pocket square",desc:"Bridges your suit to the Romantic Classic palette — a considered, non-matching touch."},
-      {color:"#722F37",name:"Burgundy boutonnière",desc:"A small rosebud with eucalyptus. Ties the ceremony colour story together."},
-      {color:"#8B5E3C",name:"Cognac Oxford shoes",desc:"Warm against the cool navy — autumnal without trying."},
-    ],
-    wPieces:[
-      {color:"#1C2B4A",name:"Deep navy dress",desc:"A sleek navy dress paired with the groom's navy suit creates a striking unified Dark Luxe statement — deliberate and deeply elegant."},
-      {color:"#D4AF7A",name:"Champagne gold earrings & belt",desc:"Gold accessories against deep navy are the Dark Luxe palette's signature — luminous, opulent, unmistakably formal."},
-      {color:"#722F37",name:"Burgundy clutch",desc:"A rich burgundy bag introduces the wedding anchor colour — a small but deliberate nod to the theme."},
-      {color:"#D4AF7A",name:"Champagne gold heeled sandals",desc:"Gold heels complete the metallic statement and tie back to the earrings and belt for a cohesive finish."},
-    ],
-    verdict:"Navy is the quietly confident choice — it reads as formal without being heavy. The burgundy tie and dusty rose square keep every element of your colour story present. It photographs gloriously against autumn foliage."
-  },
-  {
-    badge:"Sage Romance",badgeClass:"badge-classic",
-    name:"The Sage Look",
-    tagline:"The nature-inspired guest — soft, botanical, and perfectly autumnal.",
-    suitColor:"#8FAF8A",shirtColor:"#F5F0EA",tieColor:"#722F37",
-    squareColor:"#D4AF7A",boutColor:"#722F37",shoeColor:"#3D2314",
-    wDressColor:"#722F37",wAccentColor:"#D4AF7A",wShoeColor:"#3D2314",wBagColor:"#8FAF8A",
-    pieces:[
-      {color:"#8FAF8A",name:"Sage green suit",desc:"A soft, botanical green that feels completely at home in an October garden setting. Fine wool or a linen blend suits the muted tone beautifully."},
-      {color:"#F5F0EA",name:"Soft ivory shirt",desc:"Lifts the sage without introducing white — ivory has just enough warmth to keep the palette cohesive."},
-      {color:"#722F37",name:"Burgundy tie",desc:"The couple's signature colour as a tie — a beautiful way to honour the wedding palette without wearing it as a suit."},
-      {color:"#D4AF7A",name:"Champagne gold pocket square",desc:"A single flash of gold. A simple flat fold or relaxed puff — let the colour do the work."},
-      {color:"#722F37",name:"Burgundy boutonnière",desc:"A small wine rose or dark dahlia bloom — the deep burgundy pops beautifully against soft sage."},
-      {color:"#3D2314",name:"Dark espresso Oxford shoes",desc:"The darkest anchor — grounds the softness of sage green and provides a clean formal finish."},
-    ],
-    wPieces:[
-      {color:"#722F37",name:"Burgundy midi dress",desc:"The anchor colour itself — a guest in burgundy is a stunning complement to the sage suit. Bold, elegant, unmistakably autumnal."},
-      {color:"#D4AF7A",name:"Champagne gold earrings & belt",desc:"Gold accessories against deep burgundy are a classic combination — warm, luminous, and effortlessly refined."},
-      {color:"#8FAF8A",name:"Sage green clutch",desc:"A soft botanical clutch that mirrors the groom's suit — a subtle nod to the couple's palette."},
-      {color:"#3D2314",name:"Dark espresso heeled sandals",desc:"A deep, dark heel grounds the rich burgundy and ties back to the men's shoe palette."},
-    ],
-    verdict:"The sage green suit is the most quietly elegant option on this page — soft and botanical, it lets the burgundy accessories and surroundings shine. A distinctive, considered choice that photographs beautifully against autumn foliage."
-  }
-];
-
-function buildSVG(s){
-  return `<svg viewBox="0 0 120 200" width="120" height="200" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="28" rx="18" ry="20" fill="#D4A98A"/>
-    <rect x="30" y="48" width="60" height="90" rx="8" fill="${s.suitColor}"/>
-    <rect x="50" y="48" width="20" height="75" fill="${s.shirtColor}" opacity=".9"/>
-    <polygon points="50,48 60,70 50,90" fill="${s.suitColor}"/>
-    <polygon points="70,48 60,70 70,90" fill="${s.suitColor}"/>
-    <rect x="56" y="54" width="8" height="48" rx="2" fill="${s.tieColor}"/>
-    <rect x="56" y="54" width="8" height="6" rx="1" fill="${s.tieColor}" opacity=".7"/>
-    <circle cx="42" cy="64" r="5" fill="${s.squareColor}" opacity=".85"/>
-    <circle cx="78" cy="64" r="4" fill="${s.boutColor}" opacity=".8"/>
-    <rect x="18" y="48" width="14" height="72" rx="5" fill="${s.suitColor}"/>
-    <rect x="88" y="48" width="14" height="72" rx="5" fill="${s.suitColor}"/>
-    <rect x="38" y="136" width="20" height="50" rx="4" fill="#555"/>
-    <rect x="62" y="136" width="20" height="50" rx="4" fill="#555"/>
-    <rect x="37" y="175" width="22" height="12" rx="3" fill="${s.shoeColor}"/>
-    <rect x="61" y="175" width="22" height="12" rx="3" fill="${s.shoeColor}"/>
-  </svg>`;
-}
-
-function buildSVGWoman(s){
-  return `<svg viewBox="0 0 120 200" width="120" height="200" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="28" rx="18" ry="20" fill="#D4A98A"/>
-    <rect x="55" y="47" width="10" height="12" rx="3" fill="#D4A98A"/>
-    <rect x="22" y="57" width="16" height="52" rx="6" fill="${s.wDressColor}"/>
-    <rect x="82" y="57" width="16" height="52" rx="6" fill="${s.wDressColor}"/>
-    <rect x="38" y="57" width="44" height="46" rx="4" fill="${s.wDressColor}"/>
-    <polygon points="51,57 69,57 60,80" fill="${s.wAccentColor}" opacity=".30"/>
-    <rect x="36" y="100" width="48" height="7" rx="2" fill="${s.wAccentColor}" opacity=".65"/>
-    <polygon points="36,107 84,107 98,183 22,183" fill="${s.wDressColor}"/>
-    <circle cx="40" cy="39" r="3.5" fill="${s.wAccentColor}" opacity=".9"/>
-    <circle cx="80" cy="39" r="3.5" fill="${s.wAccentColor}" opacity=".9"/>
-    <circle cx="73" cy="63" r="5" fill="${s.wAccentColor}" opacity=".80"/>
-    <rect x="8" y="107" width="8" height="7" rx="3" fill="${s.wBagColor}" opacity=".85"/>
-    <rect x="3" y="113" width="18" height="20" rx="4" fill="${s.wBagColor}" opacity=".9"/>
-    <ellipse cx="46" cy="189" rx="14" ry="7" fill="${s.wShoeColor}"/>
-    <ellipse cx="74" cy="189" rx="14" ry="7" fill="${s.wShoeColor}"/>
-  </svg>`;
-}
-
-const dotLabels=["Suit","Shirt","Tie","Pocket sq.","Shoes"];
-function buildDots(s){
-  const cols=[s.suitColor,s.shirtColor,s.tieColor,s.squareColor,s.shoeColor];
-  return '<div class="dots-group"><div class="dots-who">Him</div><div class="colour-dots">'+cols.map((c,i)=>
-    `<div class="cdot-wrap"><div class="cdot" style="background:${c}"></div><span class="cdot-label">${dotLabels[i]}</span></div>`
-  ).join('')+'</div></div>';
-}
-const wDotLabels=["Dress","Accent","Bag","Heels"];
-function buildDotsWoman(s){
-  const cols=[s.wDressColor,s.wAccentColor,s.wBagColor,s.wShoeColor];
-  return '<div class="dots-group"><div class="dots-who">Her</div><div class="colour-dots">'+cols.map((c,i)=>
-    `<div class="cdot-wrap"><div class="cdot" style="background:${c}"></div><span class="cdot-label">${wDotLabels[i]}</span></div>`
-  ).join('')+'</div></div>';
-}
-
-let selectedHim=0,selectedHer=0,selectedPieceTab='him';
-
-function activateTabBtn(btn){
-  const swatch=btn.querySelector('.tab-swatch');
-  const color=swatch?swatch.style.background:'#722F37';
-  btn.style.borderColor=color;
-  btn.style.borderWidth='1.5px';
-  btn.style.color=color;
-}
-function deactivateTabBtn(btn){
-  btn.style.borderColor='';
-  btn.style.borderWidth='';
-  btn.style.color='';
-}
-
-function buildCardHtml(himIdx,herIdx){
-  const him=suits[himIdx],her=suits[herIdx];
-  const mixed=himIdx!==herIdx;
-  let pieces='';
-  him.pieces.forEach(p=>{
-    pieces+=`<div class="piece-card"><div class="piece-swatch" style="background:${p.color}"></div><div class="piece-text"><div class="piece-name">${p.name}</div><div class="piece-desc">${p.desc}</div></div></div>`;
-  });
-  let wPieces='';
-  her.wPieces.forEach(p=>{
-    wPieces+=`<div class="piece-card"><div class="piece-swatch" style="background:${p.color}"></div><div class="piece-text"><div class="piece-name">${p.name}</div><div class="piece-desc">${p.desc}</div></div></div>`;
-  });
-  const badge=mixed
-    ?`<span class="badge ${him.badgeClass}">${him.badge}</span><span class="badge ${her.badgeClass}" style="margin-left:4px">${her.badge}</span>`
-    :`<span class="badge ${him.badgeClass}">${him.badge}</span>`;
-  const heroName=mixed?`${him.badge} × ${her.badge}`:him.name;
-  const heroTagline=mixed?'A custom mix — his palette meets hers.':him.tagline;
-  const verdict=mixed?'':`<div class="verdict"><div class="verdict-title">Our take</div><div class="verdict-text">${him.verdict}</div></div>`;
-  return `${badge}
-    <div class="outfit-hero">
-      <div class="fig-wrap">
-        <div class="avatar-col">${buildSVG(him)}<div class="avatar-label">Him</div></div>
-        <div class="avatar-col">${buildSVGWoman(her)}<div class="avatar-label">Her</div></div>
-      </div>
-      <div class="hero-text">
-        <div class="hero-name">${heroName}</div>
-        <div class="hero-tagline">${heroTagline}</div>
-        ${buildDots(him)}${buildDotsWoman(her)}
-      </div>
-    </div>
-    <div class="pieces-header">
-      <div class="pieces-title">Piece by piece</div>
-      <div class="ptabs">
-        <button class="ptab active" data-target="him">Him</button>
-        <button class="ptab" data-target="her">Her</button>
-      </div>
-    </div>
-    <div class="piece-list him-pieces">${pieces}</div>
-    <div class="piece-list her-pieces hidden">${wPieces}</div>
-    ${verdict}`;
-}
-
-function renderCard(){
-  document.getElementById('suit-card').innerHTML=buildCardHtml(selectedHim,selectedHer);
-  if(selectedPieceTab==='her'){
-    const card=document.getElementById('suit-card');
-    card.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
-    card.querySelector('[data-target="her"]').classList.add('active');
-    card.querySelector('.him-pieces').classList.add('hidden');
-    card.querySelector('.her-pieces').classList.remove('hidden');
-  }
-}
-
-// apply swatch colour to initially-active tabs
-document.querySelectorAll('.tab.active').forEach(activateTabBtn);
-renderCard();
-
-document.getElementById('him-tabs').addEventListener('click',e=>{
-  const btn=e.target.closest('.tab');
-  if(!btn)return;
-  document.querySelectorAll('#him-tabs .tab').forEach(t=>{t.classList.remove('active');deactivateTabBtn(t);});
-  btn.classList.add('active');
-  activateTabBtn(btn);
-  selectedHim=parseInt(btn.dataset.him);
-  renderCard();
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-
-document.getElementById('her-tabs').addEventListener('click',e=>{
-  const btn=e.target.closest('.tab');
-  if(!btn)return;
-  document.querySelectorAll('#her-tabs .tab').forEach(t=>{t.classList.remove('active');deactivateTabBtn(t);});
-  btn.classList.add('active');
-  activateTabBtn(btn);
-  selectedHer=parseInt(btn.dataset.her);
-  renderCard();
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-
-document.getElementById('suits').addEventListener('click',e=>{
-  const btn=e.target.closest('.ptab');
-  if(!btn)return;
-  const card=btn.closest('.outfit-wrap');
-  card.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  const target=btn.dataset.target;
-  selectedPieceTab=target;
-  card.querySelector('.him-pieces').classList.toggle('hidden',target!=='him');
-  card.querySelector('.her-pieces').classList.toggle('hidden',target!=='her');
-});
-</script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
