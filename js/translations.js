@@ -1,7 +1,7 @@
 export const T = {
   en: {
-    title: 'Wedding Suit Outfit Cards',
-    sub: '10 · 10 · 2026 \u00a0·\u00a0 Burgundy theme',
+    title: 'J&J Wedding Outfit Cards',
+    sub: '10 · 10 · 2026 \u00a0·\u00a0 Provence Autumn Wedding Theme',
     him: 'Him', her: 'Her',
     pieceByPiece: 'Piece by piece',
     ourTake: 'Our take',
@@ -93,8 +93,8 @@ export const T = {
   },
 
   fr: {
-    title: 'Tenues de Mariage',
-    sub: '10 · 10 · 2026 \u00a0·\u00a0 Thème bordeaux',
+    title: 'Tenues de Mariage J&J',
+    sub: '10 · 10 · 2026 \u00a0·\u00a0 Thème Mariage Automne en Provence',
     him: 'Lui', her: 'Elle',
     pieceByPiece: 'Pièce par pièce',
     ourTake: 'Notre avis',
@@ -186,8 +186,8 @@ export const T = {
   },
 
   ko: {
-    title: '웨딩 수트 아웃핏 카드',
-    sub: '2026 · 10 · 10 \u00a0·\u00a0 버건디 테마',
+    title: 'J&J 웨딩 아웃핏 카드',
+    sub: '2026 · 10 · 10 \u00a0·\u00a0 프로방스 가을 웨딩 테마',
     him: '신랑', her: '신부',
     pieceByPiece: '아이템별 구성',
     ourTake: '우리의 생각',
