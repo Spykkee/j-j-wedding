@@ -95,7 +95,7 @@ export const T = {
   fr: {
     title: 'Tenues de Mariage J&J',
     sub: '10 · 10 · 2026 \u00a0·\u00a0 Thème Mariage Automne en Provence',
-    him: 'Gentleman', her: 'Dame',
+    him: 'Monsieur', her: 'Madame',
     pieceByPiece: 'Pièce par pièce',
     ourTake: 'Notre avis',
     mixedTagline: 'Un mélange personnalisé — la palette du gentleman rencontre celle de la dame.',
