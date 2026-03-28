@@ -1,6 +1,8 @@
 :root {
-  --burg: #722F37;
-  --burg-pale: #F0E0E2;
+  --burg: #924361;
+  --burg-pale: #F5E0EA;
+  --blue: #8CB3C5;
+  --blue-pale: #E4EFF4;
   --gold: #C6A882;
   --ivory: #FAF4EF;
   --stone: #D3D1C7;
@@ -103,6 +105,7 @@ h1 {
 }
 .badge-classic { background: #EAE6E0; color: #5A4E44; }
 .badge-bold { background: var(--burg-pale); color: var(--burg); }
+.badge-azure { background: var(--blue-pale); color: #4E7B8E; }
 
 .outfit-wrap { display: block; }
 

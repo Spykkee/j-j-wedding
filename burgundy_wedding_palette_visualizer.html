@@ -40,13 +40,13 @@
 
 <div class="wrap">
   <h1>Wedding Colour Palette</h1>
-  <div class="sub">10 · 10 · 2026 &nbsp;·&nbsp; Pairing ideas with Burgundy</div>
+  <div class="sub">10 · 10 · 2026 &nbsp;·&nbsp; Blue #8CB3C5 &amp; Burgundy #924361</div>
 
   <div class="tabs" id="tabs">
-    <button class="tab active" data-combo="0">Romantic Classic</button>
-    <button class="tab" data-combo="1">Dusty Elegance</button>
+    <button class="tab active" data-combo="0">Azure Grace</button>
+    <button class="tab" data-combo="1">Burgundy Bloom</button>
     <button class="tab" data-combo="2">Dark Luxe</button>
-    <button class="tab" data-combo="3">Sage Romance</button>
+    <button class="tab" data-combo="3">Sage Harmony</button>
   </div>
 
   <div id="combos"></div>
@@ -55,68 +55,68 @@
 <script>
 const combos = [
   {
-    name:"Romantic Classic",
-    desc:"Burgundy meets soft blush and ivory — the timeless pairing for an October celebration.",
+    name:"Azure Grace",
+    desc:"The wedding blue takes centre stage — dusty slate dress, burgundy accents, dove grey suit. A soft, Provençal pairing.",
     swatches:[
-      {hex:"#722F37",name:"Burgundy",role:"Anchor"},
-      {hex:"#F2D7D5",name:"Blush Rose",role:"Main accent"},
-      {hex:"#FAF4EF",name:"Ivory Cream",role:"Base / linen"},
-      {hex:"#C6A882",name:"Antique Gold",role:"Metallic detail"},
-      {hex:"#6B4C3B",name:"Mocha",role:"Grounding neutral"},
+      {hex:"#8CB3C5",name:"Dusty Blue",role:"Wedding colour — dress"},
+      {hex:"#924361",name:"Burgundy",role:"Wedding colour — accents"},
+      {hex:"#8A8A88",name:"Dove Grey",role:"Suit / neutral base"},
+      {hex:"#C6A882",name:"Champagne Gold",role:"Metallic detail"},
+      {hex:"#C4B49A",name:"Warm Nude",role:"Grounding neutral"},
     ],
-    florals:["🌹","🌸","💐","🪴"],
-    dressPalette:["#722F37","#F2D7D5","#FAF4EF","#C6A882"],
-    dressLabels:["Tie / Sash","Attendant","Lady","Trim"],
-    ratio:[40,25,20,10,5],
-    tip:"Pair ivory table linens with burgundy candles and blush floral centrepieces. Gold cutlery ties it all together beautifully."
+    florals:["🩵","🌹","🌿","🪻"],
+    dressPalette:["#8CB3C5","#8A8A88","#924361","#C6A882"],
+    dressLabels:["Blue dress","Grey suit","Burg. clutch","Gold earring"],
+    ratio:[35,25,22,12,6],
+    tip:"Pair dusty blue hydrangeas and burgundy roses on ivory linen. Champagne gold candleholders add warmth — the blue and burgundy together feel effortlessly Provençal."
   },
   {
-    name:"Dusty Elegance",
-    desc:"A softer, more muted interpretation — dusty rose and sage bring a dreamy, timeless feel.",
+    name:"Burgundy Bloom",
+    desc:"Roles reversed — she wears the rich wedding burgundy, he carries the blue in his tie. Warm camel grounds the palette beautifully.",
     swatches:[
-      {hex:"#722F37",name:"Burgundy",role:"Anchor"},
-      {hex:"#C4898B",name:"Dusty Rose",role:"Main accent"},
-      {hex:"#8FAF8A",name:"Sage Green",role:"Fresh complement"},
-      {hex:"#D6CBBF",name:"Warm Greige",role:"Base / linen"},
-      {hex:"#B8A99A",name:"Taupe",role:"Grounding neutral"},
+      {hex:"#924361",name:"Burgundy",role:"Wedding colour — dress"},
+      {hex:"#8CB3C5",name:"Dusty Blue",role:"Wedding colour — tie / bag"},
+      {hex:"#C2A87A",name:"Warm Camel",role:"Suit / neutral base"},
+      {hex:"#C6A882",name:"Champagne Gold",role:"Metallic detail"},
+      {hex:"#6B4C3B",name:"Dark Mocha",role:"Grounding neutral"},
     ],
-    florals:["🌷","🌿","🌾","🍃"],
-    dressPalette:["#722F37","#C4898B","#8FAF8A","#D6CBBF"],
-    dressLabels:["Tie / Sash","Attendant","Greenery","Base"],
-    ratio:[35,25,20,15,5],
-    tip:"Use dried pampas grass, eucalyptus, and dusty rose peonies for a botanical, ethereal look. Greige linen napkins add texture."
+    florals:["🌹","🩵","🌿","🍂"],
+    dressPalette:["#924361","#C2A87A","#8CB3C5","#C6A882"],
+    dressLabels:["Burg. dress","Camel suit","Blue clutch","Gold earring"],
+    ratio:[35,25,20,12,8],
+    tip:"Rich burgundy dahlias and anemones with dusty blue dried florals on warm linen. Mocha candles and gold accents complete the autumnal warmth."
   },
   {
     name:"Dark Luxe",
-    desc:"For a dramatic, opulent atmosphere — deep navy and charcoal amplify the richness of burgundy.",
+    desc:"Midnight navy as a dramatic base — both wedding colours appear as accents. Champagne gold dress creates a luminous contrast.",
     swatches:[
-      {hex:"#722F37",name:"Burgundy",role:"Anchor"},
-      {hex:"#1C2B4A",name:"Deep Navy",role:"Bold contrast"},
-      {hex:"#4A4A4A",name:"Charcoal",role:"Modern depth"},
-      {hex:"#D4AF7A",name:"Champagne Gold",role:"Metallic glow"},
-      {hex:"#F5F0EA",name:"Soft White",role:"Light relief"},
+      {hex:"#1C2D4F",name:"Midnight Navy",role:"Suit / base"},
+      {hex:"#924361",name:"Burgundy",role:"Wedding colour — tie / belt"},
+      {hex:"#8CB3C5",name:"Dusty Blue",role:"Wedding colour — pocket sq / bag"},
+      {hex:"#C6A882",name:"Champagne Gold",role:"Dress / metallic"},
+      {hex:"#8B5E3C",name:"Cognac",role:"Shoes / warm detail"},
     ],
-    florals:["🌹","🫐","🌑","✨"],
-    dressPalette:["#722F37","#1C2B4A","#D4AF7A","#F5F0EA"],
-    dressLabels:["Statement","Navy suit","Gold detail","White accent"],
-    ratio:[35,30,20,10,5],
-    tip:"Dark velvet tablecloths, candlelit gold centrepieces and deep floral arrangements of wine roses and dark dahlias create a sumptuous feel."
+    florals:["🌹","🩵","✨","🌑"],
+    dressPalette:["#C6A882","#1C2D4F","#924361","#8CB3C5"],
+    dressLabels:["Gold dress","Navy suit","Burg. belt","Blue clutch"],
+    ratio:[30,28,20,15,7],
+    tip:"Deep navy velvet with champagne gold candlelight and burgundy rose centrepieces. Dusty blue napkins folded on dark linen create a luxe, editorial tablescape."
   },
   {
-    name:"Sage Romance",
-    desc:"Soft sage green and rich burgundy create a botanical, romantic autumn palette — muted yet deeply elegant.",
+    name:"Sage Harmony",
+    desc:"Botanical sage green as the natural base — dusty blush dress, both wedding colours present as accessories on both outfits.",
     swatches:[
-      {hex:"#722F37",name:"Burgundy",role:"Anchor"},
-      {hex:"#8FAF8A",name:"Sage Green",role:"Soft complement"},
-      {hex:"#D4AF7A",name:"Champagne Gold",role:"Metallic warmth"},
-      {hex:"#F5F0EA",name:"Soft Ivory",role:"Soft base"},
+      {hex:"#8FAF8A",name:"Sage Green",role:"Suit / botanical base"},
+      {hex:"#924361",name:"Burgundy",role:"Wedding colour — tie / clutch"},
+      {hex:"#8CB3C5",name:"Dusty Blue",role:"Wedding colour — pocket sq / earring"},
+      {hex:"#C4A0A0",name:"Dusty Blush",role:"Dress"},
       {hex:"#3D2314",name:"Deep Espresso",role:"Dark grounding"},
     ],
-    florals:["🌹","🌿","🍃","✨"],
-    dressPalette:["#722F37","#8FAF8A","#D4AF7A","#F5F0EA"],
-    dressLabels:["Burgundy dress","Sage suit","Gold detail","Ivory base"],
-    ratio:[35,30,20,10,5],
-    tip:"Pair sage eucalyptus foliage with rich burgundy roses and gold candlelight. Sage green velvet ribbons on ivory place settings create a soft, romantic atmosphere."
+    florals:["🌿","🌹","🩵","🍃"],
+    dressPalette:["#C4A0A0","#8FAF8A","#8CB3C5","#924361"],
+    dressLabels:["Blush dress","Sage suit","Blue earring","Burg. clutch"],
+    ratio:[28,28,20,15,9],
+    tip:"Sage eucalyptus and dusty blush peonies with burgundy rose accents. Dusty blue dried lavender adds the final wedding colour — a soft, completely botanical setting."
   }
 ];
 
