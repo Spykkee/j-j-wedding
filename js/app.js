@@ -215,6 +215,7 @@ function deactivateTabBtn(btn) {
 // ---------------------------------------------------------------------------
 
 document.querySelectorAll('.tab.active').forEach(activateTabBtn);
+updateStaticText();
 renderCard();
 
 document.getElementById('lang-switch').addEventListener('click', e => {
