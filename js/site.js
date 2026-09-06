@@ -30,6 +30,7 @@
       'nav.train': 'Group train',
       'nav.honeymoon': 'Honeymoon',
       'nav.whatsapp': 'WhatsApp',
+      'nav.lang': 'Language',
       /* document titles */
       'doc.home': 'J&J Wedding — 10·10·2026',
       'doc.colors': 'J&J Wedding Outfit Cards — 10·10·2026',
@@ -88,6 +89,7 @@
       'nav.train': 'Train de groupe',
       'nav.honeymoon': 'Lune de miel',
       'nav.whatsapp': 'WhatsApp',
+      'nav.lang': 'Langue',
       'doc.home': 'Mariage J&J — 10·10·2026',
       'doc.colors': 'Tenues de mariage J&J — 10·10·2026',
       'doc.checklist': 'Mariage J&J — Check-list invités',
@@ -139,6 +141,7 @@
       'nav.train': '단체 기차',
       'nav.honeymoon': '신혼여행',
       'nav.whatsapp': 'WhatsApp',
+      'nav.lang': '언어',
       'doc.home': 'J&J 결혼식 — 2026·10·10',
       'doc.colors': 'J&J 결혼식 의상 카드 — 2026·10·10',
       'doc.checklist': 'J&J 결혼식 — 게스트 체크리스트',
@@ -233,6 +236,9 @@
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
     });
+    document.querySelectorAll('[data-lang-code]').forEach(function (el) {
+      el.textContent = currentLang.toUpperCase();
+    });
 
     document.dispatchEvent(new CustomEvent('jj:langchange', { detail: { lang: currentLang } }));
   }
@@ -251,11 +257,24 @@
   };
   window.t = t;
 
+  function closeLangMenus() {
+    document.querySelectorAll('.lang-menu[open]').forEach(function (d) { d.open = false; });
+  }
+
   document.addEventListener('click', function (e) {
-    var btn = e.target.closest && e.target.closest('.lang-btn');
-    if (!btn) return;
-    var lang = btn.getAttribute('data-lang');
-    if (lang) setLang(lang);
+    if (!e.target.closest) return;
+    var btn = e.target.closest('.lang-btn');
+    if (btn) {
+      var lang = btn.getAttribute('data-lang');
+      if (lang) setLang(lang);
+      closeLangMenus();
+      return;
+    }
+    if (!e.target.closest('.lang-menu')) closeLangMenus();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLangMenus();
   });
 
   if (document.readyState === 'loading') {
