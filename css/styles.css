@@ -363,14 +363,48 @@ h1 {
   color: var(--burg);
 }
 
-/* LOCATION + MAP */
+/* LOCATION + MAP — shares the framed-panel shell with .home-before */
 .home-location {
-  background: var(--surface);
+  position: relative;
+  margin-top: 3.4rem;
+  background: #fff;
   border: 0.5px solid var(--stone);
   border-radius: 18px;
-  padding: 1.4rem 1.4rem 1.5rem;
-  margin-bottom: 3.4rem;
+  padding: 1.6rem 1.5rem;
 }
+/* Everything outside the map follows the Google Maps link (stretched via the
+   link's ::after). The map embed stays interactive by sitting above the overlay. */
+.home-location .home-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.home-location .home-map { z-index: 1; }
+/* Blue rule brackets the heading block on hover/focus — matches .before-item */
+.home-location-head { position: relative; }
+.home-location-head::before,
+.home-location-head::after {
+  content: "";
+  position: absolute;
+  top: .1rem;
+  bottom: .1rem;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--blue);
+  opacity: 0;
+  transform: scaleY(.4);
+  pointer-events: none;
+  transition: opacity .18s ease-out, transform .18s ease-out;
+}
+.home-location-head::before { left: -.75rem; }
+.home-location-head::after { right: -.75rem; }
+.home-location:hover .home-location-head::before,
+.home-location:hover .home-location-head::after,
+.home-location:focus-within .home-location-head::before,
+.home-location:focus-within .home-location-head::after { opacity: 1; transform: scaleY(1); }
+.home-location:hover .home-link { border-color: var(--burg); }
+.home-location:hover .home-link .arr { transform: translateX(3px); }
 .home-venue {
   font-family: 'Cormorant Garamond', serif;
   font-size: 22px;
@@ -414,44 +448,6 @@ h1 {
 .home-link:hover { border-color: var(--burg); }
 .home-link:hover .arr { transform: translateX(3px); }
 
-/* FEATURE CARDS (checklist / color coding) */
-.home-card {
-  display: block;
-  background: var(--surface);
-  border: 0.5px solid var(--stone);
-  border-radius: 18px;
-  padding: 1.5rem 1.5rem 1.4rem;
-  margin-bottom: 1.1rem;
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color .18s, transform .18s ease-out, box-shadow .18s;
-}
-.home-card:hover {
-  border-color: var(--burg);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px -14px rgba(146, 67, 97, .35);
-}
-.home-card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 27px;
-  color: var(--burg);
-  margin-bottom: 6px;
-}
-.home-card-desc { font-size: 16px; color: var(--muted); line-height: 1.65; }
-.home-card-cta {
-  display: inline-flex;
-  align-items: baseline;
-  gap: .5ch;
-  margin-top: .9rem;
-  font-size: 12px;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-  color: var(--burg);
-}
-.home-card .arr { transition: transform .18s ease-out; }
-.home-card:hover .arr { transform: translateX(3px); }
-
 /* BEFORE THE WEDDING */
 .home-before {
   margin-top: 3.4rem;
@@ -462,20 +458,50 @@ h1 {
 }
 .home-before .home-section-title { margin-bottom: .3rem; }
 .before-item {
+  position: relative;
+  display: block;
   padding: 1.2rem 0;
   border-top: 1px solid var(--stone);
+  text-decoration: none;
+  color: var(--text);
 }
 .home-before .home-section-title + .before-item { border-top: 0; }
 .before-item:first-of-type { border-top: 0; }
+/* Whole subsection is one link — a blue rule brackets each side on hover/focus */
+.before-item::before,
+.before-item::after {
+  content: "";
+  position: absolute;
+  top: .95rem;
+  bottom: .95rem;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--blue);
+  opacity: 0;
+  transform: scaleY(.4);
+  transition: opacity .18s ease-out, transform .18s ease-out;
+}
+.before-item::before { left: -.75rem; }
+.before-item::after { right: -.75rem; }
+.before-item:hover::before,
+.before-item:hover::after,
+.before-item:focus-visible::before,
+.before-item:focus-visible::after { opacity: 1; transform: scaleY(1); }
 .before-title {
   font-size: 16px;
   font-weight: 500;
   color: var(--text);
   margin-bottom: 4px;
+  transition: color .15s;
 }
 .before-desc { font-size: 15px; line-height: 1.65; color: var(--muted); }
 .before-desc strong { color: var(--text); font-weight: 500; }
 .before-item .home-link { margin-top: .7rem; }
+.before-item:hover .before-title,
+.before-item:focus-visible .before-title { color: var(--burg); }
+.before-item:hover .home-link,
+.before-item:focus-visible .home-link { border-color: var(--burg); }
+.before-item:hover .home-link .arr { transform: translateX(3px); }
 
 /* HOME FOOTER */
 .home-foot {

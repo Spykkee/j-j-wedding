@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "css/styles.css"
+        ],
+        "createdAt": "2026-09-06T17:52:45.205Z",
+        "reason": "user confirmed: intentional accent on the .verdict 'our take' panel in color-coding.html; stop alerting"
+      }
+    ]
+  }
+}
