@@ -11,24 +11,45 @@
 <div class="wrap">
 
   <nav class="site-nav">
-    <a href="index.html" class="site-nav__home" aria-label="Home" data-i18n-aria="nav.home">
-      <svg class="site-nav__home-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M3.2 11.8 12 4l8.8 7.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M5.6 10.2V20h12.8v-9.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="site-nav__home-text" data-i18n="nav.home">Home</span>
-    </a>
     <div class="site-nav__links">
-      <a href="color-coding.html" class="site-nav__link" data-i18n="nav.colors">Color coding</a>
-      <a href="checklist.html" class="site-nav__link" data-i18n="nav.checklist">Guest checklist</a>
-      <a href="train.html" class="site-nav__link is-active" aria-current="page" data-i18n="nav.train">Group train</a>
-      <a href="honeymoon.html" class="site-nav__link" data-i18n="nav.honeymoon">Honeymoon</a>
-      <a href="whatsapp.html" class="site-nav__link" data-i18n="nav.whatsapp">WhatsApp</a>
+      <a class="site-nav__item site-nav__item--home" href="index.html" aria-label="Home" data-i18n-aria="nav.home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 11.8 12 4l8.8 7.8"/><path d="M5.6 10.2V20h12.8v-9.8"/></svg>
+        <span class="site-nav__label" data-i18n="nav.home">Home</span>
+      </a>
+      <a class="site-nav__item" href="color-coding.html" aria-label="Color coding" data-i18n-aria="nav.colors">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.7-.77 1.7-1.7 0-.44-.17-.84-.45-1.15-.28-.3-.45-.7-.45-1.15 0-.93.77-1.7 1.7-1.7H16c3.3 0 6-2.7 6-6 0-4.97-4.5-8.6-10-8.6Z"/><circle cx="8.5" cy="8" r="1.2" fill="currentColor" stroke="none"/><circle cx="13" cy="6.4" r="1.2" fill="currentColor" stroke="none"/><circle cx="6.6" cy="12.6" r="1.2" fill="currentColor" stroke="none"/><circle cx="17.3" cy="10" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <span class="site-nav__label" data-i18n="nav.colors">Color coding</span>
+      </a>
+      <a class="site-nav__item" href="checklist.html" aria-label="Guest checklist" data-i18n-aria="nav.checklist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h9"/><path d="M10 12h9"/><path d="M10 18h9"/><path d="m4 6 1.4 1.4L8.2 4.6"/><path d="m4 12 1.4 1.4L8.2 10.6"/><path d="m4 18 1.4 1.4L8.2 16.6"/></svg>
+        <span class="site-nav__label" data-i18n="nav.checklist">Guest checklist</span>
+      </a>
+      <a class="site-nav__item is-active" href="train.html" aria-label="Group train" data-i18n-aria="nav.train" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3.5" width="12" height="13.5" rx="3.5"/><path d="M6.5 11h11"/><path d="M9.5 7h5"/><path d="M8.5 21l2-3M15.5 21l-2-3"/></svg>
+        <span class="site-nav__label" data-i18n="nav.train">Group train</span>
+      </a>
+      <a class="site-nav__item" href="honeymoon.html" aria-label="Honeymoon" data-i18n-aria="nav.honeymoon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><defs><mask id="hm-mask" maskUnits="userSpaceOnUse" x="-4" y="-4" width="32" height="32"><rect x="-4" y="-4" width="32" height="32" fill="#fff"/><g transform="rotate(-39 12 12)"><g transform="translate(12 12) scale(.63) translate(-12 -11.6)"><path d="M12 3c.7 0 1.2.9 1.2 2.1V10l7 4.1v2l-7-2.1v3.6l2 1.6v1.7l-3.2-1-3.2 1v-1.7l2-1.6V13.9l-7 2.1v-2l7-4.1V5.1C10.8 3.9 11.3 3 12 3Z" fill="#000" stroke="#000" stroke-width="2.8"/></g></g></mask></defs><path d="M12 20.8C12 20.8 3 14.6 3 8.5 3 5.6 5.2 3.6 7.7 3.6 9.7 3.6 11.2 4.8 12 6.3 12.8 4.8 14.3 3.6 16.3 3.6 18.8 3.6 21 5.6 21 8.5 21 14.6 12 20.8 12 20.8Z" mask="url(#hm-mask)"/><g transform="rotate(-39 12 12)"><g transform="translate(12 12) scale(.63) translate(-12 -11.6)"><path d="M12 3c.7 0 1.2.9 1.2 2.1V10l7 4.1v2l-7-2.1v3.6l2 1.6v1.7l-3.2-1-3.2 1v-1.7l2-1.6V13.9l-7 2.1v-2l7-4.1V5.1C10.8 3.9 11.3 3 12 3Z" fill="currentColor" stroke="none"/></g></g></svg>
+        <span class="site-nav__label" data-i18n="nav.honeymoon">Honeymoon</span>
+      </a>
+      <a class="site-nav__item" href="whatsapp.html" aria-label="WhatsApp" data-i18n-aria="nav.whatsapp">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4.5 19.5l1.3-4.3A7.5 7.5 0 1 1 20 11.5Z"/></svg>
+        <span class="site-nav__label" data-i18n="nav.whatsapp">WhatsApp</span>
+      </a>
     </div>
-    <div class="site-nav__lang" id="lang-switch" role="group" aria-label="Language">
-      <button type="button" class="lang-btn" data-lang="en">EN</button>
-      <button type="button" class="lang-btn" data-lang="fr">FR</button>
-      <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+    <div class="site-nav__lang">
+      <details class="lang-menu" id="lang-switch">
+        <summary class="lang-menu__toggle" aria-label="Language" data-i18n-aria="nav.lang">
+          <svg class="lang-menu__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 3.9 5.9 3.9 9S14.6 18.3 12 21c-2.6-2.7-3.9-5.9-3.9-9S9.4 5.7 12 3Z"/></svg>
+          <span class="lang-menu__code" data-lang-code>EN</span>
+          <svg class="lang-menu__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="lang-menu__list" role="menu">
+          <button type="button" class="lang-btn" data-lang="en">English</button>
+          <button type="button" class="lang-btn" data-lang="fr">Français</button>
+          <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+        </div>
+      </details>
     </div>
   </nav>
 
@@ -105,64 +126,82 @@
    =================================================================== */
 const PEOPLE = {
   // ---- Outbound · Friday 9 October · Voiture 7 ----
-  "7-720": "",
-  "7-721": "",
-  "7-722": "",
-  "7-723": "",
-  "7-724": "",
-  "7-725": "",
-  "7-726": "",
-  "7-727": "",
-  "7-728": "",
-  "7-729": "",
-  "7-730": "",
-  "7-731": "",
-  "7-734": "",
-  "7-735": "",
-  "7-738": "",
-  "7-739": "",
+  // Carré 720–723 · Shin / Chae / Lee + Ashmita
+  "7-720": "Youjeong Shin (신유정)",
+  "7-721": "Eunyoung Chae (채은영)",
+  "7-722": "Soojin Lee (이수진)",
+  "7-723": "Ashmita",
+  // Carré 724–727 · Kim family + Tarek
+  "7-724": "Byung Soo Kim (김병수)",
+  "7-725": "Sohee Kim (김소희)",
+  "7-726": "Dong Hyun Kim (김동현)",
+  "7-727": "Tarek",
+  // Carré 728–731 · Lim & Kim  /  Juju & Jimmy
+  "7-728": "Juri Lim (임주리)",
+  "7-729": "HyeongSeok Kim (김형석)",
+  "7-730": "Juju (김주현)",
+  "7-731": "Jimmy",
+  // Carré 732–735 · Bokyung (Soojin's sister) + Abhinandan & Ali · 733 other traveller
+  "7-732": "Bokyung Lee",
+  "7-734": "Abhinandan Aggarwal",
+  "7-735": "Ali Asad",
+  // Carré 736–739 · half ours · Daniela & Jill
+  "7-738": "Daniela Carfora",
+  "7-739": "Jill Mouboungoulou",
 
   // ---- Return · Sunday 11 October · Voiture 18 ----
-  "18-818": "",
-  "18-819": "",
-  "18-822": "",
-  "18-823": "",
-  "18-824": "",
-  "18-825": "",
-  "18-826": "",
-  "18-827": "",
-  "18-828": "",
-  "18-829": "",
-  "18-830": "",
-  "18-831": "",
-  "18-832": "",
-  "18-833": "",
-  "18-834": "",
-  "18-835": "",
-  "18-836": "",
-  "18-837": "",
+  // Carré 818–821 · half ours · Daniela & Thomas
+  "18-818": "Daniela Carfora",
+  "18-819": "Thomas",
+  // Carré 822–825 · Minjung / Hyunmi / Suyeon / Sunghyeon
+  "18-822": "Minjung",
+  "18-823": "Hyunmi",
+  "18-824": "Suyeon",
+  "18-825": "Sunghyeon",
+  // Carré 826–829 · Kim family + Ali
+  "18-826": "Byung Soo Kim (김병수)",
+  "18-827": "Sohee Kim (김소희)",
+  "18-828": "Dong Hyun Kim (김동현)",
+  "18-829": "Ali Asad",
+  // Carré 830–833 · Jeon & Park  /  Shin & Chae
+  "18-830": "Bokwang Jeon (전보광)",
+  "18-831": "Kwanyoung Park (박관영)",
+  "18-832": "Youjeong Shin (신유정)",
+  "18-833": "Eunyoung Chae (채은영)",
+  // Carré 834–837 · Juju & Jimmy  +  Jill & Tarek
+  "18-834": "Juju (김주현)",
+  "18-835": "Jimmy",
+  "18-836": "Jill Mouboungoulou",
+  "18-837": "Tarek",
 };
 
 /* ===================================================================
-   2. Coach layout — seat groups, in order along the coach.
-   A group of 4 is drawn as a facing "carré" with a table;
-   a group of 2 is drawn as a pair. Adjust if your booking differs.
+   2. Coach layout.
+   The route Paris Gare de Lyon <-> Avignon TGV runs on a TGV Duplex
+   (double-deck) set. In 2nd class the deck is 2+2 seating, and seats
+   are sold in "carrés" — 4 places facing each other around a table,
+   numbered in fours (e.g. 720-721 facing 722-723).
+
+   Each carré below is [window, aisle, window, aisle]: the first two
+   seats face the last two across the table. A few seats inside our
+   block belong to other travellers — they show greyed out with no
+   name, which is why some numbers are missing from the list above.
    =================================================================== */
 const JOURNEYS = {
   outbound: {
     coach: 7,
-    groups: [
+    carres: [
       [720, 721, 722, 723],
       [724, 725, 726, 727],
       [728, 729, 730, 731],
-      [734, 735],
-      [738, 739],
+      [732, 733, 734, 735],   // 733 — other traveller
+      [736, 737, 738, 739],   // 736, 737 — other travellers
     ],
   },
   return: {
     coach: 18,
-    groups: [
-      [818, 819],
+    carres: [
+      [818, 819, 820, 821],   // 820, 821 — other travellers
       [822, 823, 824, 825],
       [826, 827, 828, 829],
       [830, 831, 832, 833],
@@ -179,19 +218,26 @@ const I18N = {
     pageTitle: "Group Train",
     eyebrow: "Travelling with us",
     title: "Find your seat",
-    intro: "We booked a group block on the TGV in both directions. If you're on the group train, type your name below to see your coach and seat for each journey.",
+    intro: "We booked a group block on the TGV Duplex in both directions. If you're on the group train, type your name below to see your coach and seat for each journey.",
     searchPlaceholder: "Type your name…",
     notFoundHint: "No match yet — try your first name only, or check the full list below. Names are still being added.",
     outboundDay: "Fri 9 Oct",
     returnDay: "Sun 11 Oct",
-    outboundMeta: "Friday 9 October · direct · about 2h40",
-    returnMeta: "Sunday 11 October · direct · about 2h41",
+    outboundMeta: "TGV INOUI 6111 · Friday 9 October · direct · about 2h40",
+    returnMeta: "TGV INOUI 6124 · Sunday 11 October · direct · about 2h41",
     rosterTitle: "Everyone on the group train",
     rosterOutbound: "Outbound — Voiture 7",
     rosterReturn: "Return — Voiture 18",
-    mapNote: "The layout is a guide to help you find your seat group — the coach and seat number printed on your ticket are what count. Seats booked but not yet named show a dash.",
+    mapNote: "TGV INOUI Duplex, 2nd class. This diagram shows how our group's seats are booked together — in carrés of 4 around a table. The exact orientation (which seats are window vs aisle, and which way each faces) isn't confirmed, so go by the coach and seat number printed on your ticket. Greyed seats inside our carrés belong to other travellers.",
     coachLabel: "Voiture",
+    coachClass: "2nd class · Duplex",
     seatLabel: "Seat",
+    carre: "Carré",
+    window: "Window",
+    aisle: "Aisle",
+    lgYou: "Our group",
+    lgOther: "Other traveller",
+    otherShort: "Occupied",
     dirOfTravel: "Direction of travel",
     resultLead: name => `${name} —`,
     resultLine: (dayShort, coach, seat) => `${dayShort}: Voiture ${coach} · Seat ${seat}`,
@@ -203,19 +249,26 @@ const I18N = {
     pageTitle: "Train de groupe",
     eyebrow: "Vous voyagez avec nous",
     title: "Trouvez votre place",
-    intro: "Nous avons réservé un bloc de groupe dans le TGV pour l'aller et le retour. Si vous êtes dans le train de groupe, saisissez votre nom ci-dessous pour voir votre voiture et votre place pour chaque trajet.",
+    intro: "Nous avons réservé un bloc de groupe dans le TGV Duplex pour l'aller et le retour. Si vous êtes dans le train de groupe, saisissez votre nom ci-dessous pour voir votre voiture et votre place pour chaque trajet.",
     searchPlaceholder: "Saisissez votre nom…",
     notFoundHint: "Pas encore de résultat — essayez seulement votre prénom, ou consultez la liste complète ci-dessous. Les noms sont encore en cours d'ajout.",
     outboundDay: "Ven. 9 oct.",
     returnDay: "Dim. 11 oct.",
-    outboundMeta: "Vendredi 9 octobre · direct · environ 2h40",
-    returnMeta: "Dimanche 11 octobre · direct · environ 2h41",
+    outboundMeta: "TGV INOUI 6111 · Vendredi 9 octobre · direct · environ 2h40",
+    returnMeta: "TGV INOUI 6124 · Dimanche 11 octobre · direct · environ 2h41",
     rosterTitle: "Tout le monde dans le train de groupe",
     rosterOutbound: "Aller — Voiture 7",
     rosterReturn: "Retour — Voiture 18",
-    mapNote: "Le plan est indicatif, il vous aide à repérer votre groupe de places — seuls la voiture et le numéro de place inscrits sur votre billet font foi. Les places réservées mais pas encore attribuées affichent un tiret.",
+    mapNote: "TGV INOUI Duplex, 2ⁿᵈᵉ classe. Ce plan montre comment les places de notre groupe sont réservées ensemble — en carrés de 4 autour d'une table. L'orientation exacte (fenêtre ou couloir, sens de chaque place) n'est pas confirmée : fiez-vous à la voiture et au numéro de place inscrits sur votre billet. Les places grisées dans nos carrés sont occupées par d'autres voyageurs.",
     coachLabel: "Voiture",
+    coachClass: "2ⁿᵈᵉ classe · Duplex",
     seatLabel: "Place",
+    carre: "Carré",
+    window: "Fenêtre",
+    aisle: "Couloir",
+    lgYou: "Notre groupe",
+    lgOther: "Autre voyageur",
+    otherShort: "Occupée",
     dirOfTravel: "Sens de la marche",
     resultLead: name => `${name} —`,
     resultLine: (dayShort, coach, seat) => `${dayShort} : Voiture ${coach} · Place ${seat}`,
@@ -227,19 +280,26 @@ const I18N = {
     pageTitle: "단체 기차",
     eyebrow: "저희와 함께 이동",
     title: "좌석 찾기",
-    intro: "왕복 모두 TGV 단체 좌석을 예약했습니다. 단체 기차를 이용하시는 분은 아래에 이름을 입력하면 각 여정의 객차와 좌석을 확인할 수 있어요.",
+    intro: "왕복 모두 TGV Duplex(2층 열차) 단체 좌석을 예약했습니다. 단체 기차를 이용하시는 분은 아래에 이름을 입력하면 각 여정의 객차와 좌석을 확인할 수 있어요.",
     searchPlaceholder: "이름을 입력하세요…",
     notFoundHint: "아직 일치하는 결과가 없습니다 — 이름(퍼스트네임)만 입력하거나 아래 전체 목록을 확인해 주세요. 이름은 계속 추가되고 있습니다.",
     outboundDay: "10/9 (금)",
     returnDay: "10/11 (일)",
-    outboundMeta: "10월 9일 금요일 · 직통 · 약 2시간 40분",
-    returnMeta: "10월 11일 일요일 · 직통 · 약 2시간 41분",
+    outboundMeta: "TGV INOUI 6111 · 10월 9일 금요일 · 직통 · 약 2시간 40분",
+    returnMeta: "TGV INOUI 6124 · 10월 11일 일요일 · 직통 · 약 2시간 41분",
     rosterTitle: "단체 기차 탑승자 전체",
     rosterOutbound: "출발 — 7호차",
     rosterReturn: "귀환 — 18호차",
-    mapNote: "좌석 배치도는 좌석 그룹을 찾는 데 도움을 주는 참고용입니다 — 실제로는 티켓에 표시된 객차와 좌석 번호가 기준입니다. 예약되었지만 아직 이름이 정해지지 않은 좌석은 대시(—)로 표시됩니다.",
+    mapNote: "TGV INOUI Duplex, 2등석. 이 배치도는 저희 단체 좌석이 어떻게 함께 예약되었는지 — 테이블을 둔 4인 카레 단위로 — 보여줍니다. 정확한 방향(창측·통로측, 각 좌석이 향하는 방향)은 확인되지 않았으니, 실제로는 티켓에 적힌 객차·좌석 번호를 따라 주세요. 카레 안의 회색 좌석은 다른 승객이 이용합니다.",
     coachLabel: "객차",
+    coachClass: "2등석 · Duplex",
     seatLabel: "좌석",
+    carre: "카레",
+    window: "창측",
+    aisle: "통로측",
+    lgYou: "우리 단체",
+    lgOther: "다른 승객",
+    otherShort: "사용 중",
     dirOfTravel: "진행 방향",
     resultLead: name => `${name} —`,
     resultLine: (dayShort, coach, seat) => `${dayShort}: ${coach}호차 · ${seat}번`,
@@ -269,6 +329,9 @@ const I18N = {
   const resultBox = document.getElementById("search-result");
   const notFound = document.getElementById("not-found");
 
+  const seatId = (coach, num) => coach + "-" + num;
+  const isOurs = id => Object.prototype.hasOwnProperty.call(PEOPLE, id);
+
   // ---- Build the coach maps ----
   function buildCoach(key) {
     const journey = JOURNEYS[key];
@@ -278,53 +341,62 @@ const I18N = {
     const head = document.createElement("div");
     head.className = "coach__head";
     head.innerHTML =
-      `<span class="coach__badge" data-coach-label>${t().coachLabel} ${journey.coach}</span>` +
-      `<span class="coach__dir"><span data-dir-label>${t().dirOfTravel}</span> &rarr;</span>`;
+      `<span class="coach__badge">${t().coachLabel} ${journey.coach}</span>` +
+      `<span class="coach__class">${t().coachClass}</span>`;
     wrap.appendChild(head);
+
+    const legend = document.createElement("div");
+    legend.className = "coach__legend";
+    legend.innerHTML =
+      `<span><i class="lg-you"></i>${t().lgYou}</span>` +
+      `<span><i class="lg-other"></i>${t().lgOther}</span>` +
+      `<span><i class="lg-carre"></i>${t().carre}</span>`;
+    wrap.appendChild(legend);
+
+    const deck = document.createElement("div");
+    deck.className = "coach__deck";
+    const nose = document.createElement("div");
+    nose.className = "coach__nose";
+    nose.textContent = t().dirOfTravel;
+    deck.appendChild(nose);
 
     const track = document.createElement("div");
     track.className = "coach__track";
 
-    journey.groups.forEach(group => {
-      const bay = document.createElement("div");
-      bay.className = "bay bay--" + (group.length === 4 ? "quad" : "pair");
+    const makeSeat = num => {
+      const id = seatId(journey.coach, num);
+      const ours = isOurs(id);
+      const name = PEOPLE[id] || "";
+      const seat = document.createElement("div");
+      seat.className = "seat" +
+        (!ours ? " is-other" : name ? " is-assigned" : " is-empty");
+      if (ours) seat.dataset.seatId = id;
+      seat.innerHTML =
+        `<span class="seat__num">${num}</span>` +
+        `<span class="seat__name">${ours ? (name || t().empty) : t().otherShort}</span>`;
+      return seat;
+    };
 
-      const makeSeat = num => {
-        const id = journey.coach + "-" + num;
-        const name = PEOPLE[id] || "";
-        const seat = document.createElement("div");
-        seat.className = "seat" + (name ? " is-assigned" : " is-empty");
-        seat.dataset.seatId = id;
-        seat.innerHTML =
-          `<span class="seat__num">${num}</span>` +
-          `<span class="seat__name">${name || t().empty}</span>`;
-        return seat;
-      };
-
-      if (group.length === 4) {
-        const rowA = document.createElement("div");
-        rowA.className = "bay__row";
-        rowA.appendChild(makeSeat(group[0]));
-        rowA.appendChild(makeSeat(group[1]));
-        const table = document.createElement("div");
-        table.className = "bay__table";
-        const rowB = document.createElement("div");
-        rowB.className = "bay__row";
-        rowB.appendChild(makeSeat(group[2]));
-        rowB.appendChild(makeSeat(group[3]));
-        bay.appendChild(rowA);
-        bay.appendChild(table);
-        bay.appendChild(rowB);
-      } else {
-        const row = document.createElement("div");
-        row.className = "bay__row";
-        group.forEach(n => row.appendChild(makeSeat(n)));
-        bay.appendChild(row);
-      }
-      track.appendChild(bay);
+    journey.carres.forEach(seats => {
+      const carre = document.createElement("div");
+      carre.className = "carre";
+      carre.innerHTML =
+        `<div class="carre__cap"><b>${t().carre}</b> ${seats[0]}–${seats[3]}</div>`;
+      const grid = document.createElement("div");
+      grid.className = "carre__grid";
+      grid.appendChild(makeSeat(seats[0]));
+      grid.appendChild(makeSeat(seats[1]));
+      const table = document.createElement("div");
+      table.className = "carre__table";
+      grid.appendChild(table);
+      grid.appendChild(makeSeat(seats[2]));
+      grid.appendChild(makeSeat(seats[3]));
+      carre.appendChild(grid);
+      track.appendChild(carre);
     });
 
-    wrap.appendChild(track);
+    deck.appendChild(track);
+    wrap.appendChild(deck);
   }
 
   // ---- Build the rosters ----
@@ -333,8 +405,9 @@ const I18N = {
     const ul = document.getElementById("roster-" + key);
     ul.innerHTML = "";
     const rows = [];
-    journey.groups.flat().forEach(num => {
-      const id = journey.coach + "-" + num;
+    journey.carres.flat().forEach(num => {
+      const id = seatId(journey.coach, num);
+      if (!isOurs(id)) return;
       rows.push({ num, name: PEOPLE[id] || "" });
     });
     rows.sort((a, b) => {
@@ -386,7 +459,7 @@ const I18N = {
     const byName = new Map();
     ["outbound", "return"].forEach(key => {
       const journey = JOURNEYS[key];
-      journey.groups.flat().forEach(num => {
+      journey.carres.flat().forEach(num => {
         const id = journey.coach + "-" + num;
         const name = PEOPLE[id];
         if (name && norm(name).includes(q)) {
