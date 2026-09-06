@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J&J Wedding — WhatsApp Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&family=Noto+Sans+KR:wght@300;400&family=Poor+Story&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="page-nav">
+    <a href="index.html">Home</a>
+    <a href="color-coding.html">Color coding</a>
+    <a href="checklist.html">Guest checklist</a>
+    <a href="honeymoon.html">Honeymoon</a>
+    <a href="whatsapp.html" class="active">WhatsApp</a>
+  </nav>
+
+  <h1 id="page-title">WhatsApp Community</h1>
+  <div class="sub">10 · 10 · 2026 &nbsp;·&nbsp; Provence Autumn Wedding</div>
+
+  <div class="lang-switch" id="lang-switch">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="ko">한국어</button>
+  </div>
+
+  <div id="content">
+
+  <!-- ENGLISH -->
+  <div class="lang-section-content visible" data-lang="en">
+  <section class="action-section">
+    <div class="action-eyebrow">Stay in the loop</div>
+    <h2>Join our WhatsApp Community</h2>
+    <p>Not in our WhatsApp Community yet? <strong>Now is the time to join.</strong> From here on, every wedding update — schedule changes, travel details, last-minute notes — will be shared there and nowhere else.</p>
+    <p>It's also the best place to sort out carpools and shared Ubers with other guests across the weekend.</p>
+    <a class="action-cta" href="https://chat.whatsapp.com/GgbQjaDND9yK7xScs3xpnb" target="_blank" rel="noopener">Join the community <span class="arr">&rarr;</span></a>
+    <div class="qr-card">
+      <img src="images/qr-whatsapp.svg" alt="QR code linking to the J&amp;J WhatsApp Community invite">
+      <div class="qr-card-text"><strong>Prefer your phone?</strong>Point your camera at this code to open the invite straight in WhatsApp.</div>
+    </div>
+    <p class="action-note">The link opens WhatsApp (app or web). If you don't have WhatsApp yet, you'll be prompted to install it — it's free.</p>
+  </section>
+  </div>
+
+  <!-- FRENCH -->
+  <div class="lang-section-content" data-lang="fr">
+  <section class="action-section">
+    <div class="action-eyebrow">Restez informés</div>
+    <h2>Rejoignez notre communauté WhatsApp</h2>
+    <p>Vous n'avez pas encore rejoint notre communauté WhatsApp ? <strong>C'est maintenant qu'il faut la rejoindre.</strong> Désormais, toutes les informations sur le mariage — changements de programme, détails de transport, notes de dernière minute — y seront partagées, et nulle part ailleurs.</p>
+    <p>C'est aussi le meilleur endroit pour organiser les covoiturages et les Uber partagés avec les autres invités pendant le week-end.</p>
+    <a class="action-cta" href="https://chat.whatsapp.com/GgbQjaDND9yK7xScs3xpnb" target="_blank" rel="noopener">Rejoindre la communauté <span class="arr">&rarr;</span></a>
+    <div class="qr-card">
+      <img src="images/qr-whatsapp.svg" alt="QR code vers l'invitation à la communauté WhatsApp de J&amp;J">
+      <div class="qr-card-text"><strong>Vous préférez votre téléphone ?</strong>Visez ce code avec votre appareil photo pour ouvrir l'invitation directement dans WhatsApp.</div>
+    </div>
+    <p class="action-note">Le lien ouvre WhatsApp (application ou web). Si vous n'avez pas encore WhatsApp, il vous sera proposé de l'installer — c'est gratuit.</p>
+  </section>
+  </div>
+
+  <!-- KOREAN -->
+  <div class="lang-section-content" data-lang="ko">
+  <section class="action-section">
+    <div class="action-eyebrow">최신 소식 받기</div>
+    <h2>WhatsApp 커뮤니티에 참여하세요</h2>
+    <p>아직 저희 WhatsApp 커뮤니티에 참여하지 않으셨나요? <strong>지금 참여해 주세요.</strong> 앞으로 결혼식 관련 모든 안내 — 일정 변경, 이동 정보, 막바지 공지 — 는 오직 이 커뮤니티를 통해서만 공유됩니다.</p>
+    <p>주말 동안 다른 하객들과 카풀이나 Uber 동승을 정할 때도 이곳이 가장 좋습니다.</p>
+    <a class="action-cta" href="https://chat.whatsapp.com/GgbQjaDND9yK7xScs3xpnb" target="_blank" rel="noopener">커뮤니티 참여하기 <span class="arr">&rarr;</span></a>
+    <div class="qr-card">
+      <img src="images/qr-whatsapp.svg" alt="J&amp;J WhatsApp 커뮤니티 초대 링크 QR 코드">
+      <div class="qr-card-text"><strong>휴대폰으로 참여하시겠어요?</strong>카메라로 이 코드를 비추면 WhatsApp에서 초대장이 바로 열립니다.</div>
+    </div>
+    <p class="action-note">링크를 누르면 WhatsApp(앱 또는 웹)이 열립니다. WhatsApp이 없으시면 설치 안내가 표시됩니다 — 무료입니다.</p>
+  </section>
+  </div>
+
+  </div>
+
+</div>
+
+<script>
+  const buttons = document.querySelectorAll(".lang-btn");
+  const sections = document.querySelectorAll(".lang-section-content");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const lang = button.dataset.lang;
+      buttons.forEach(btn => btn.classList.toggle("active", btn === button));
+      sections.forEach(section => {
+        section.classList.toggle("visible", section.dataset.lang === lang);
+      });
+    });
+  });
+</script>
+</body>
+</html>
