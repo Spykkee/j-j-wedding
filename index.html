@@ -16,22 +16,115 @@
       <a href="checklist.html">Guest checklist</a>
     </nav>
 
-    <div class="home-hero">
-      <div class="heart">💍</div>
+    <header class="home-hero">
+      <div class="home-frame">
+        <img class="home-frame__photo" src="images/couple.jpg" alt="J &amp; J on the steps after their ceremony">
+        <img class="home-frame__art" src="images/floral-frame.svg" alt="" aria-hidden="true">
+      </div>
       <h1>J &amp; J are getting married</h1>
       <div class="sub">10 · 10 · 2026 &nbsp;·&nbsp; Provence Autumn Wedding</div>
-    </div>
+    </header>
+
+    <section class="home-countdown" aria-label="Countdown to the celebration">
+      <div class="countdown-ornament" aria-hidden="true">
+        <span class="cd-rule"></span>
+        <svg class="cd-star" viewBox="0 0 24 24" fill="none"><path d="M12 1 L13.7 9.4 L22 12 L13.7 14.6 L12 23 L10.3 14.6 L2 12 L10.3 9.4 Z" fill="#683240"/></svg>
+        <span class="cd-rule right"></span>
+      </div>
+      <div class="home-section-title countdown-title">Counting down to the celebration</div>
+      <div class="countdown-row" id="countdown">
+        <div class="countdown-unit"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Seconds</span></div>
+      </div>
+      <div class="countdown-foot">until we celebrate in Provence</div>
+    </section>
+
+    <section class="home-location">
+      <div class="home-section-title"><span class="home-title-mark">&#10022;</span>Location</div>
+      <div class="home-venue">Domaine Grand Belly</div>
+      <div class="home-venue-town">Rochefort-du-Gard, Provence</div>
+      <div class="home-map">
+        <iframe
+          src="https://www.google.com/maps?q=43.99205,4.66018&amp;z=13&amp;hl=en&amp;output=embed"
+          title="Map showing Domaine Grand Belly near Rochefort-du-Gard, Provence"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <a class="home-link" href="https://maps.app.goo.gl/YRnJwH1h8C44rEY98" target="_blank" rel="noopener">
+        Open in Google Maps <span class="arr">&rarr;</span>
+      </a>
+    </section>
 
     <a class="home-card" href="checklist.html">
-      <div class="home-card-title">Guest checklist</div>
+      <div class="home-card-title"><span class="home-title-mark">&#10022;</span>Guest checklist</div>
       <div class="home-card-desc">Everything to know for the wedding weekend — travel, schedule, and what to bring for Friday's welcome dinner, Saturday's ceremony, and Sunday's brunch.</div>
+      <span class="home-card-cta">Explore the guest checklist <span class="arr">&rarr;</span></span>
     </a>
 
     <a class="home-card" href="color-coding.html">
-      <div class="home-card-title">Color coding</div>
+      <div class="home-card-title"><span class="home-title-mark">&#10022;</span>Color coding</div>
       <div class="home-card-desc">Outfit inspiration for the day. Browse the four palettes and see how they work for both gentlemen and ladies.</div>
+      <span class="home-card-cta">Explore the color coding <span class="arr">&rarr;</span></span>
     </a>
 
+    <section class="home-before">
+      <div class="home-section-title"><span class="home-title-mark">&#10022;</span>Before the wedding</div>
+
+      <div class="before-item">
+        <div class="before-title">WhatsApp Community</div>
+        <div class="before-desc">Not in our WhatsApp Community yet? <strong>Now is the time to join.</strong> All future communications will be shared there.</div>
+        <a class="home-link" href="https://chat.whatsapp.com/GgbQjaDND9yK7xScs3xpnb" target="_blank" rel="noopener">Join the WhatsApp Community <span class="arr">&rarr;</span></a>
+      </div>
+
+      <div class="before-item">
+        <div class="before-title">Honeymoon Fund</div>
+        <div class="before-desc">We don't have a wedding registry. If you'd like to contribute to our honeymoon, you can do so here. There will also be a little box on the day if you'd rather drop off a card or envelope in person.</div>
+        <a class="home-link" href="https://www.onparticipe.fr/c/jandjgettingmarried" target="_blank" rel="noopener">Contribute to our honeymoon <span class="arr">&rarr;</span></a>
+      </div>
+
+      <div class="before-item">
+        <div class="before-title">Other questions?</div>
+        <div class="before-desc">Check our wedding website for anything else you might be looking for.</div>
+        <a class="home-link" href="https://jandjgettingmarried.my.canva.site/" target="_blank" rel="noopener">Visit our wedding website <span class="arr">&rarr;</span></a>
+      </div>
+    </section>
+
+    <div class="home-foot">See you in Provence &middot; J &amp; J</div>
+
   </div>
+
+  <script>
+    // Countdown to the welcome weekend — Friday 9 October 2026, 18:00 (Europe/Paris, CEST = UTC+2)
+    (function () {
+      var target = new Date('2026-10-09T18:00:00+02:00').getTime();
+      var row = document.getElementById('countdown');
+      var els = {
+        days: document.getElementById('cd-days'),
+        hours: document.getElementById('cd-hours'),
+        mins: document.getElementById('cd-mins'),
+        secs: document.getElementById('cd-secs')
+      };
+      var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+
+      function tick() {
+        var diff = target - Date.now();
+        if (diff <= 0) {
+          row.innerHTML = '<div class="countdown-done">The weekend is here &#10022;</div>';
+          clearInterval(timer);
+          return;
+        }
+        var s = Math.floor(diff / 1000);
+        els.days.textContent = Math.floor(s / 86400);
+        els.hours.textContent = pad(Math.floor(s % 86400 / 3600));
+        els.mins.textContent = pad(Math.floor(s % 3600 / 60));
+        els.secs.textContent = pad(s % 60);
+      }
+
+      tick();
+      var timer = setInterval(tick, 1000);
+    })();
+  </script>
 </body>
 </html>

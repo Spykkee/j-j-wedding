@@ -1,8 +1,8 @@
 :root {
-  --burg: #924361;
-  --burg-pale: #F5E0EA;
-  --blue: #8CB3C5;
-  --blue-pale: #E4EFF4;
+  --burg: #683240;
+  --burg-pale: #EADADE;
+  --blue: #96B1C0;
+  --blue-pale: #E7EEF2;
   --gold: #C6A882;
   --ivory: #FAF4EF;
   --stone: #D3D1C7;
@@ -105,7 +105,7 @@ h1 {
 }
 .badge-classic { background: #EAE6E0; color: #5A4E44; }
 .badge-bold { background: var(--burg-pale); color: var(--burg); }
-.badge-azure { background: var(--blue-pale); color: #4E7B8E; }
+.badge-azure { background: var(--blue-pale); color: #47606D; }
 
 .outfit-wrap { display: block; }
 
@@ -210,29 +210,301 @@ h1 {
 }
 .page-nav a.active, .page-nav a:hover { border-color: var(--text); color: var(--text); }
 
-/* HOMEPAGE LINK CARDS */
+/* ===================================================================
+   HOMEPAGE
+   =================================================================== */
+
+/* HERO */
+.home-hero { text-align: center; margin: .5rem 0 3.4rem; }
+.home-hero .heart { font-size: 29px; margin-bottom: .6rem; }
+.home-frame {
+  position: relative;
+  width: min(248px, 64vw);
+  aspect-ratio: 357 / 501;
+  margin: 0 auto 1.6rem;
+}
+.home-frame__photo {
+  position: absolute;
+  left: 50%;
+  top: 13.5%;
+  width: 62%;
+  height: 72%;
+  transform: translateX(-50%);
+  object-fit: cover;
+  object-position: center;
+  border-radius: 999px;
+  display: block;
+}
+.home-frame__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.home-hero h1 {
+  font-size: clamp(34px, 8vw, 48px);
+  letter-spacing: .03em;
+  margin-bottom: .9rem;
+}
+.home-hero .sub {
+  margin-bottom: 0;
+  font-size: 13px;
+  letter-spacing: .2em;
+}
+
+/* SHARED SECTION HEADING */
+.home-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--burg);
+  margin-bottom: .9rem;
+  letter-spacing: .01em;
+}
+/* Recurring grace note before every section title — the amplified version is the countdown ornament */
+.home-title-mark {
+  display: inline-block;
+  color: var(--gold);
+  font-style: normal;
+  font-size: .68em;
+  margin-right: .6ch;
+  vertical-align: .14em;
+}
+
+/* COUNTDOWN */
+.home-countdown {
+  position: relative;
+  text-align: center;
+  margin: 0 0 3.4rem;
+  padding: 2.4rem 1.2rem 2.2rem;
+  border-radius: 18px;
+  border: 0.5px solid var(--stone);
+  /* Wash blended from our two colours: dusty blue -> warm white -> deep burgundy */
+  background:
+    radial-gradient(78% 52% at 50% 54%, rgba(255, 255, 255, .92), rgba(255, 255, 255, 0) 72%),
+    linear-gradient(142deg, #D8E4EA 0%, #F6EFEE 48%, #E3CDD3 100%);
+  overflow: hidden;
+}
+/* Inner hairline frame — a formal invitation border */
+.home-countdown::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(104, 50, 64, .26);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.countdown-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: .7rem;
+}
+.countdown-ornament .cd-rule {
+  display: block;
+  width: clamp(28px, 12vw, 64px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue));
+}
+.countdown-ornament .cd-rule.right { transform: scaleX(-1); }
+.countdown-ornament .cd-star { width: 15px; height: 15px; flex-shrink: 0; }
+
+.countdown-title { margin-bottom: 1.5rem; font-size: 27px; }
+
+.countdown-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: clamp(7px, 2.4vw, 15px);
+}
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  min-width: clamp(56px, 18vw, 92px);
+  padding: .95rem .5rem .7rem;
+  background: #fff;
+  border: 0.5px solid var(--stone);
+  border-radius: 14px;
+  box-shadow: 0 8px 22px -14px rgba(104, 50, 64, .32);
+}
+.countdown-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(34px, 11vw, 56px);
+  line-height: 1;
+  color: var(--burg);
+  font-variant-numeric: tabular-nums;
+}
+.countdown-label {
+  font-size: 9.5px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--burg);
+  opacity: .72;
+}
+.countdown-foot {
+  margin-top: 1.4rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--muted);
+}
+.countdown-done {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(24px, 6vw, 32px);
+  color: var(--burg);
+}
+
+/* LOCATION + MAP */
+.home-location {
+  background: var(--surface);
+  border: 0.5px solid var(--stone);
+  border-radius: 18px;
+  padding: 1.4rem 1.4rem 1.5rem;
+  margin-bottom: 3.4rem;
+}
+.home-venue {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--text);
+  line-height: 1.3;
+}
+.home-venue-town { font-size: 15px; color: var(--muted); margin-top: 2px; }
+.home-map {
+  position: relative;
+  margin-top: 1.1rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 0.5px solid var(--stone);
+  aspect-ratio: 16 / 10;
+  background: var(--surface);
+}
+.home-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: sepia(.14) saturate(.9) contrast(1.02);
+}
+@media (max-width: 499px) { .home-map { aspect-ratio: 4 / 3; } }
+
+/* INLINE ARROW LINK */
+.home-link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .5ch;
+  margin-top: 1.1rem;
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--burg);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .15s;
+}
+.home-link .arr { transition: transform .18s ease-out; }
+.home-link:hover { border-color: var(--burg); }
+.home-link:hover .arr { transform: translateX(3px); }
+
+/* FEATURE CARDS (checklist / color coding) */
 .home-card {
   display: block;
   background: var(--surface);
   border: 0.5px solid var(--stone);
-  border-radius: 16px;
-  padding: 1.3rem 1.4rem;
-  margin-bottom: 1rem;
+  border-radius: 18px;
+  padding: 1.5rem 1.5rem 1.4rem;
+  margin-bottom: 1.1rem;
   text-decoration: none;
   color: var(--text);
-  transition: border-color .15s;
+  transition: border-color .18s, transform .18s ease-out, box-shadow .18s;
 }
-.home-card:hover { border-color: var(--burg); }
+.home-card:hover {
+  border-color: var(--burg);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px -14px rgba(146, 67, 97, .35);
+}
 .home-card-title {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 27px;
   color: var(--burg);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 .home-card-desc { font-size: 16px; color: var(--muted); line-height: 1.65; }
-.home-hero { text-align: center; margin-bottom: 2rem; }
-.home-hero .heart { font-size: 29px; margin-bottom: .6rem; }
+.home-card-cta {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .5ch;
+  margin-top: .9rem;
+  font-size: 12px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--burg);
+}
+.home-card .arr { transition: transform .18s ease-out; }
+.home-card:hover .arr { transform: translateX(3px); }
+
+/* BEFORE THE WEDDING */
+.home-before {
+  margin-top: 3.4rem;
+  background: #fff;
+  border: 0.5px solid var(--stone);
+  border-radius: 18px;
+  padding: 1.6rem 1.5rem .6rem;
+}
+.home-before .home-section-title { margin-bottom: .3rem; }
+.before-item {
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--stone);
+}
+.home-before .home-section-title + .before-item { border-top: 0; }
+.before-item:first-of-type { border-top: 0; }
+.before-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.before-desc { font-size: 15px; line-height: 1.65; color: var(--muted); }
+.before-desc strong { color: var(--text); font-weight: 500; }
+.before-item .home-link { margin-top: .7rem; }
+
+/* HOME FOOTER */
+.home-foot {
+  text-align: center;
+  margin-top: 3.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--muted);
+}
+
+/* ENTRANCE — one authored moment: the top of the page settles in */
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero, .home-countdown { animation: home-rise .8s cubic-bezier(.16,1,.3,1) both; }
+  .home-countdown { animation-delay: .12s; }
+  .countdown-unit { animation: digit-settle .7s cubic-bezier(.16,1,.3,1) both; }
+  .countdown-unit:nth-child(1) { animation-delay: .22s; }
+  .countdown-unit:nth-child(2) { animation-delay: .30s; }
+  .countdown-unit:nth-child(3) { animation-delay: .38s; }
+  .countdown-unit:nth-child(4) { animation-delay: .46s; }
+}
+@keyframes home-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes digit-settle {
+  from { opacity: 0; transform: translateY(10px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
 
 /* CHECKLIST PAGE */
 .checklist-section {
