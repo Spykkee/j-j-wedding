@@ -1,7 +1,7 @@
 import { suits } from './data.js';
 import { T } from './translations.js';
 
-let currentLang = 'en';
+let currentLang = (window.JJI18N && window.JJI18N.get()) || 'en';
 let selectedHim = 0;
 let selectedHer = 0;
 let selectedPieceTab = 'him';
@@ -183,11 +183,10 @@ function updateStaticText() {
   });
 }
 
+// Language state + the switch buttons live in the shared nav (js/site.js).
+// We just re-render the card whenever the shared language changes.
 function setLanguage(lang) {
   currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(btn =>
-    btn.classList.toggle('active', btn.dataset.lang === lang)
-  );
   updateStaticText();
   renderCard();
 }
@@ -218,11 +217,7 @@ document.querySelectorAll('.tab.active').forEach(activateTabBtn);
 updateStaticText();
 renderCard();
 
-document.getElementById('lang-switch').addEventListener('click', e => {
-  const btn = e.target.closest('.lang-btn');
-  if (!btn) return;
-  setLanguage(btn.dataset.lang);
-});
+document.addEventListener('jj:langchange', e => setLanguage(e.detail.lang));
 
 document.getElementById('him-tabs').addEventListener('click', e => {
   const btn = e.target.closest('.tab');

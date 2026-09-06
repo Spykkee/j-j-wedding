@@ -3,29 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>J&J Wedding — WhatsApp Community</title>
+<title data-i18n="doc.whatsapp">J&J Wedding — WhatsApp Community</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&family=Noto+Sans+KR:wght@300;400&family=Poor+Story&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <div class="wrap">
 
-  <nav class="page-nav">
-    <a href="index.html">Home</a>
-    <a href="color-coding.html">Color coding</a>
-    <a href="checklist.html">Guest checklist</a>
-    <a href="honeymoon.html">Honeymoon</a>
-    <a href="whatsapp.html" class="active">WhatsApp</a>
+  <nav class="site-nav">
+    <a href="index.html" class="site-nav__home" aria-label="Home" data-i18n-aria="nav.home">
+      <svg class="site-nav__home-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3.2 11.8 12 4l8.8 7.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.6 10.2V20h12.8v-9.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="site-nav__home-text" data-i18n="nav.home">Home</span>
+    </a>
+    <div class="site-nav__links">
+      <a href="color-coding.html" class="site-nav__link" data-i18n="nav.colors">Color coding</a>
+      <a href="checklist.html" class="site-nav__link" data-i18n="nav.checklist">Guest checklist</a>
+      <a href="train.html" class="site-nav__link" data-i18n="nav.train">Group train</a>
+      <a href="honeymoon.html" class="site-nav__link" data-i18n="nav.honeymoon">Honeymoon</a>
+      <a href="whatsapp.html" class="site-nav__link is-active" aria-current="page" data-i18n="nav.whatsapp">WhatsApp</a>
+    </div>
+    <div class="site-nav__lang" id="lang-switch" role="group" aria-label="Language">
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="fr">FR</button>
+      <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+    </div>
   </nav>
 
-  <h1 id="page-title">WhatsApp Community</h1>
-  <div class="sub">10 · 10 · 2026 &nbsp;·&nbsp; Provence Autumn Wedding</div>
-
-  <div class="lang-switch" id="lang-switch">
-    <button class="lang-btn active" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="fr">FR</button>
-    <button class="lang-btn" data-lang="ko">한국어</button>
-  </div>
+  <h1 id="page-title" data-i18n="page.wa.h1">WhatsApp Community</h1>
+  <div class="sub" data-i18n="sub.date">10 · 10 · 2026 &nbsp;·&nbsp; Provence Autumn Wedding</div>
 
   <div id="content">
 
@@ -81,19 +89,6 @@
 
 </div>
 
-<script>
-  const buttons = document.querySelectorAll(".lang-btn");
-  const sections = document.querySelectorAll(".lang-section-content");
-
-  buttons.forEach(button => {
-    button.addEventListener("click", () => {
-      const lang = button.dataset.lang;
-      buttons.forEach(btn => btn.classList.toggle("active", btn === button));
-      sections.forEach(section => {
-        section.classList.toggle("visible", section.dataset.lang === lang);
-      });
-    });
-  });
-</script>
+<script src="js/site.js"></script>
 </body>
 </html>

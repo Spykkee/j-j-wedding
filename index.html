@@ -3,19 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>J&J Wedding — 10·10·2026</title>
+  <title data-i18n="doc.home">J&J Wedding — 10·10·2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="wrap">
 
-    <nav class="page-nav">
-      <a href="index.html" class="active">Home</a>
-      <a href="color-coding.html">Color coding</a>
-      <a href="checklist.html">Guest checklist</a>
-      <a href="honeymoon.html">Honeymoon</a>
-      <a href="whatsapp.html">WhatsApp</a>
+    <nav class="site-nav">
+      <a href="index.html" class="site-nav__home is-active" aria-current="page" data-i18n-aria="nav.home">
+        <svg class="site-nav__home-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.2 11.8 12 4l8.8 7.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5.6 10.2V20h12.8v-9.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="site-nav__home-text" data-i18n="nav.home">Home</span>
+      </a>
+      <div class="site-nav__links">
+        <a href="color-coding.html" class="site-nav__link" data-i18n="nav.colors">Color coding</a>
+        <a href="checklist.html" class="site-nav__link" data-i18n="nav.checklist">Guest checklist</a>
+        <a href="train.html" class="site-nav__link" data-i18n="nav.train">Group train</a>
+        <a href="honeymoon.html" class="site-nav__link" data-i18n="nav.honeymoon">Honeymoon</a>
+        <a href="whatsapp.html" class="site-nav__link" data-i18n="nav.whatsapp">WhatsApp</a>
+      </div>
+      <div class="site-nav__lang" id="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+      </div>
     </nav>
 
     <header class="home-hero">
@@ -23,8 +37,8 @@
         <img class="home-frame__photo" src="images/couple.jpg" alt="J &amp; J on the steps after their ceremony">
         <img class="home-frame__art" src="images/floral-frame.svg" alt="" aria-hidden="true">
       </div>
-      <h1>J &amp; J are getting married</h1>
-      <div class="sub">10 · 10 · 2026 &nbsp;·&nbsp; Provence Autumn Wedding</div>
+      <h1 data-i18n="home.h1">J &amp; J are getting married</h1>
+      <div class="sub" data-i18n="sub.date">10 · 10 · 2026 &nbsp;·&nbsp; Provence Autumn Wedding</div>
     </header>
 
     <section class="home-countdown" aria-label="Countdown to the celebration">
@@ -33,55 +47,61 @@
         <svg class="cd-star" viewBox="0 0 24 24" fill="none"><path d="M12 1 L13.7 9.4 L22 12 L13.7 14.6 L12 23 L10.3 14.6 L2 12 L10.3 9.4 Z" fill="#683240"/></svg>
         <span class="cd-rule right"></span>
       </div>
-      <div class="home-section-title countdown-title">Counting down to the celebration</div>
+      <div class="home-section-title countdown-title" data-i18n="cd.title">Counting down to the celebration</div>
       <div class="countdown-row" id="countdown">
-        <div class="countdown-unit"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">Days</span></div>
-        <div class="countdown-unit"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">Hours</span></div>
-        <div class="countdown-unit"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">Minutes</span></div>
-        <div class="countdown-unit"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Seconds</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label" data-i18n="cd.days">Days</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label" data-i18n="cd.hours">Hours</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label" data-i18n="cd.mins">Minutes</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label" data-i18n="cd.secs">Seconds</span></div>
       </div>
-      <div class="countdown-foot">until we celebrate in Provence</div>
+      <div class="countdown-foot" data-i18n="cd.foot">until we celebrate in Provence</div>
     </section>
 
     <section class="home-before">
-      <div class="home-section-title"><span class="home-title-mark">&#10022;</span>Before the wedding</div>
+      <div class="home-section-title"><span class="home-title-mark">&#10022;</span><span data-i18n="home.before">Before the wedding</span></div>
 
       <a class="before-item" href="whatsapp.html">
-        <div class="before-title">WhatsApp Community</div>
-        <div class="before-desc">Not in our WhatsApp Community yet? <strong>Now is the time to join.</strong> All future communications will be shared there.</div>
-        <span class="home-link">Join the WhatsApp Community <span class="arr">&rarr;</span></span>
+        <div class="before-title" data-i18n="home.wa.title">WhatsApp Community</div>
+        <div class="before-desc" data-i18n-html="home.wa.desc">Not in our WhatsApp Community yet? <strong>Now is the time to join.</strong> All future communications will be shared there.</div>
+        <span class="home-link"><span data-i18n="home.wa.link">Join the WhatsApp Community</span> <span class="arr">&rarr;</span></span>
       </a>
 
       <a class="before-item" href="checklist.html">
-        <div class="before-title">Guest checklist</div>
-        <div class="before-desc">Everything to know for the wedding weekend — travel, schedule, and what to bring for Friday's welcome dinner, Saturday's ceremony, and Sunday's brunch.</div>
-        <span class="home-link">Explore the guest checklist <span class="arr">&rarr;</span></span>
+        <div class="before-title" data-i18n="home.cl.title">Guest checklist</div>
+        <div class="before-desc" data-i18n="home.cl.desc">Everything to know for the wedding weekend — travel, schedule, and what to bring for Friday's welcome dinner, Saturday's ceremony, and Sunday's brunch.</div>
+        <span class="home-link"><span data-i18n="home.cl.link">Explore the guest checklist</span> <span class="arr">&rarr;</span></span>
+      </a>
+
+      <a class="before-item" href="train.html">
+        <div class="before-title" data-i18n="home.tr.title">Group train</div>
+        <div class="before-desc" data-i18n="home.tr.desc">Booked a seat on our group TGV between Paris Gare de Lyon and Avignon? Look up your coach and seat for both the Friday and Sunday journeys.</div>
+        <span class="home-link"><span data-i18n="home.tr.link">Find your seat</span> <span class="arr">&rarr;</span></span>
       </a>
 
       <a class="before-item" href="color-coding.html">
-        <div class="before-title">Color coding</div>
-        <div class="before-desc">Outfit inspiration for the day. Browse the four palettes and see how they work for both gentlemen and ladies.</div>
-        <span class="home-link">Explore the color coding <span class="arr">&rarr;</span></span>
+        <div class="before-title" data-i18n="home.cc.title">Color coding</div>
+        <div class="before-desc" data-i18n="home.cc.desc">Outfit inspiration for the day. Browse the four palettes and see how they work for both gentlemen and ladies.</div>
+        <span class="home-link"><span data-i18n="home.cc.link">Explore the color coding</span> <span class="arr">&rarr;</span></span>
       </a>
 
       <a class="before-item" href="honeymoon.html">
-        <div class="before-title">Honeymoon Fund</div>
-        <div class="before-desc">We don't have a wedding registry. If you'd like to contribute to our honeymoon, you can do so here. There will also be a little box on the day if you'd rather drop off a card or envelope in person.</div>
-        <span class="home-link">Contribute to our honeymoon <span class="arr">&rarr;</span></span>
+        <div class="before-title" data-i18n="home.hm.title">Honeymoon Fund</div>
+        <div class="before-desc" data-i18n="home.hm.desc">We don't have a wedding registry. If you'd like to contribute to our honeymoon, you can do so here. There will also be a little box on the day if you'd rather drop off a card or envelope in person.</div>
+        <span class="home-link"><span data-i18n="home.hm.link">Contribute to our honeymoon</span> <span class="arr">&rarr;</span></span>
       </a>
 
       <a class="before-item" href="https://jandjgettingmarried.my.canva.site/" target="_blank" rel="noopener">
-        <div class="before-title">Other questions?</div>
-        <div class="before-desc">Check our wedding website for anything else you might be looking for.</div>
-        <span class="home-link">Visit our wedding website <span class="arr">&rarr;</span></span>
+        <div class="before-title" data-i18n="home.other.title">Other questions?</div>
+        <div class="before-desc" data-i18n="home.other.desc">Check our wedding website for anything else you might be looking for.</div>
+        <span class="home-link"><span data-i18n="home.other.link">Visit our wedding website</span> <span class="arr">&rarr;</span></span>
       </a>
     </section>
 
     <section class="home-location">
       <div class="home-location-head">
-        <div class="home-section-title"><span class="home-title-mark">&#10022;</span>Location</div>
+        <div class="home-section-title"><span class="home-title-mark">&#10022;</span><span data-i18n="home.loc.title">Location</span></div>
         <div class="home-venue">Domaine Grand Belly</div>
-        <div class="home-venue-town">Rochefort-du-Gard, Provence</div>
+        <div class="home-venue-town" data-i18n="home.loc.town">Rochefort-du-Gard, Provence</div>
       </div>
       <div class="home-map">
         <iframe
@@ -91,14 +111,15 @@
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <a class="home-link" href="https://maps.app.goo.gl/YRnJwH1h8C44rEY98" target="_blank" rel="noopener">
-        Open in Google Maps <span class="arr">&rarr;</span>
+        <span data-i18n="home.map.link">Open in Google Maps</span> <span class="arr">&rarr;</span>
       </a>
     </section>
 
-    <div class="home-foot">See you in Provence &middot; J &amp; J</div>
+    <div class="home-foot" data-i18n="home.foot">See you in Provence &middot; J &amp; J</div>
 
   </div>
 
+  <script src="js/site.js"></script>
   <script>
     // Countdown to the welcome weekend — Friday 9 October 2026, 18:00 (Europe/Paris, CEST = UTC+2)
     (function () {
@@ -115,7 +136,7 @@
       function tick() {
         var diff = target - Date.now();
         if (diff <= 0) {
-          row.innerHTML = '<div class="countdown-done">The weekend is here &#10022;</div>';
+          row.innerHTML = '<div class="countdown-done">' + (window.t ? window.t('cd.done') : 'The weekend is here ✦') + '</div>';
           clearInterval(timer);
           return;
         }

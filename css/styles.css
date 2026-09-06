@@ -193,22 +193,103 @@ h1 {
   .fig-wrap { align-self: center; }
 }
 
-/* PAGE NAV */
-.page-nav { display: flex; gap: 6px; justify-content: center; margin-bottom: 1.8rem; flex-wrap: wrap; }
-.page-nav a {
-  padding: 7px 16px;
-  border-radius: 20px;
-  font-size: 14px;
-  letter-spacing: .08em;
+/* SITE NAV — a single cohesive bar: home glyph, section links, language controls */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 7px;
+  margin-bottom: 2rem;
+  background: var(--surface);
+  border: 0.5px solid var(--stone);
+  border-radius: 16px;
+}
+.site-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.site-nav__home,
+.site-nav__link {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-size: 11.5px;
+  font-weight: 400;
+  letter-spacing: .045em;
   text-transform: uppercase;
-  border: 0.5px solid #ccc;
   color: var(--muted);
   text-decoration: none;
-  font-family: 'Jost', sans-serif;
-  transition: border-color .15s, color .15s;
+  white-space: nowrap;
+  transition: background-color .18s ease, color .18s ease;
   -webkit-tap-highlight-color: transparent;
 }
-.page-nav a.active, .page-nav a:hover { border-color: var(--text); color: var(--text); }
+.site-nav__home:hover,
+.site-nav__link:hover {
+  color: var(--text);
+  background: var(--burg-pale);
+}
+.site-nav__link.is-active {
+  color: var(--ivory);
+  background: var(--burg);
+}
+
+/* Home: icon only, text unfurls to the right on hover / focus / current page */
+.site-nav__home { padding: 7px 10px; }
+.site-nav__home.is-active { color: var(--burg); background: var(--burg-pale); }
+.site-nav__home-icon { width: 17px; height: 17px; display: block; flex-shrink: 0; }
+.site-nav__home-text {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transition: max-width .3s cubic-bezier(.16,1,.3,1), opacity .22s ease, margin-left .3s cubic-bezier(.16,1,.3,1);
+}
+.site-nav__home:hover .site-nav__home-text,
+.site-nav__home:focus-visible .site-nav__home-text,
+.site-nav__home.is-active .site-nav__home-text {
+  max-width: 8em;
+  opacity: 1;
+  margin-left: 7px;
+}
+@media (hover: none) {
+  .site-nav__home-text { max-width: 8em; opacity: 1; margin-left: 7px; }
+}
+
+/* Language controls, pinned to the end of the bar */
+.site-nav__lang {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+  padding-left: 6px;
+  flex-shrink: 0;
+}
+.site-nav__lang .lang-btn {
+  padding: 4px 8px;
+  font-size: 11px;
+  letter-spacing: .05em;
+}
+
+.site-nav a:focus-visible,
+.site-nav button:focus-visible {
+  outline: 2px solid var(--burg);
+  outline-offset: 2px;
+}
+
+@media (max-width: 620px) {
+  .site-nav { justify-content: space-between; }
+  .site-nav__links { order: 2; flex-basis: 100%; justify-content: center; }
+  .site-nav__lang { order: 1; padding-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__home-text { transition: none; }
+}
 
 /* ===================================================================
    HOMEPAGE
@@ -632,6 +713,261 @@ h1 {
 
 .lang-section-content[data-lang="ko"] .action-section h2 { font-family: 'Poor Story', 'Noto Sans KR', sans-serif; font-style: normal; font-size: 28px; }
 .lang-section-content[data-lang="ko"] .action-section p { font-size: 18px; }
+
+/* ===================================================================
+   GROUP TRAIN PAGE
+   =================================================================== */
+.train-intro { margin-bottom: 1.4rem; }
+body.lang-ko .action-section h2,
+body.lang-ko .train-roster__label { font-family: 'Poor Story', 'Noto Sans KR', sans-serif; font-style: normal; }
+body.lang-ko .action-section p,
+body.lang-ko .seat__name,
+body.lang-ko .roster__name { font-size: 18px; }
+
+/* SEARCH FIELD */
+.train-search {
+  display: flex;
+  align-items: center;
+  gap: .6ch;
+  margin-top: 1.1rem;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 0.5px solid var(--stone);
+  border-radius: 26px;
+  transition: border-color .15s;
+}
+.train-search:focus-within { border-color: var(--burg); }
+.train-search__icon { color: var(--gold); font-size: 18px; line-height: 1; transform: rotate(45deg); }
+.train-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-size: 17px;
+  color: var(--text);
+  outline: none;
+}
+.train-search__clear {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* SEARCH RESULT */
+.train-result { margin-top: 1rem; display: flex; flex-direction: column; gap: 10px; }
+.train-result__card {
+  background: var(--blue-pale);
+  border: 0.5px solid var(--stone);
+  border-left: 3px solid var(--blue);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+.train-result__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 21px;
+  color: var(--burg);
+  margin-bottom: 8px;
+}
+.train-result__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 6px 0;
+  cursor: pointer;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+.train-result__line + .train-result__line { border-top: 1px solid rgba(150,177,192,.4); }
+.train-result__where { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #5A6E78; }
+
+/* DIRECTION SWITCH */
+.train-dir {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.1rem;
+}
+.train-dir__btn {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 0.5px solid #ccc;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  color: var(--muted);
+  transition: border-color .15s, color .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.train-dir__btn.active { border-color: var(--burg); color: var(--text); }
+.train-dir__day { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.train-dir__route { font-size: 16px; }
+.train-dir__route .arr { margin: 0 3px; }
+.train-dir__flag {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: var(--burg);
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* JOURNEY + COACH */
+.train-journey { margin-bottom: 1.4rem; }
+.train-journey__head { margin-bottom: .9rem; }
+.train-journey__times {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: var(--text);
+}
+.train-journey__times strong { font-weight: 400; color: var(--burg); }
+.train-journey__meta { font-size: 14px; color: var(--muted); letter-spacing: .04em; margin-top: 2px; }
+
+.coach {
+  background: #fff;
+  border: 0.5px solid var(--stone);
+  border-radius: 16px;
+  padding: 1.1rem;
+}
+.coach__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.coach__badge {
+  font-size: 13px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--burg);
+  background: var(--burg-pale);
+  padding: 4px 11px;
+  border-radius: 20px;
+}
+.coach__dir { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+.coach__track {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* SEAT BAYS */
+.bay {
+  border: 0.5px solid var(--stone);
+  border-radius: 12px;
+  padding: 10px;
+  background: var(--surface);
+}
+.bay__row { display: flex; gap: 8px; }
+.bay__row + .bay__row { margin-top: 8px; }
+.bay--quad .bay__table {
+  height: 10px;
+  margin: 8px 10px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(90deg, var(--stone) 0 6px, transparent 6px 12px);
+  opacity: .7;
+}
+
+.seat {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px 6px;
+  border-radius: 9px;
+  border: 0.5px solid var(--stone);
+  background: #fff;
+  text-align: center;
+  transition: box-shadow .18s, border-color .18s, background .18s;
+}
+.seat__num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--burg);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.seat__name {
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+.seat.is-empty { background: var(--bg); }
+.seat.is-empty .seat__name { color: var(--muted); }
+.seat.is-match {
+  border-color: var(--burg);
+  background: var(--burg-pale);
+  box-shadow: 0 0 0 2px var(--burg), 0 10px 24px -12px rgba(104,50,64,.5);
+}
+.seat.is-match .seat__name { font-weight: 500; }
+
+/* ROSTER */
+.train-roster__cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  margin-top: .4rem;
+}
+@media (min-width: 560px) { .train-roster__cols { grid-template-columns: 1fr 1fr; gap: 1.6rem; } }
+.train-roster__label {
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .6rem;
+}
+.train-roster ul { list-style: none; padding: 0; }
+.train-roster li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--stone);
+  font-size: 16px;
+}
+.train-roster li:first-child { border-top: 0; }
+.train-roster li.is-empty .roster__name { color: var(--muted); }
+.train-roster li.is-match {
+  background: var(--burg-pale);
+  border-radius: 8px;
+  border-top-color: transparent;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin: 0 -8px;
+}
+.roster__name { color: var(--text); }
+.roster__seat { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+
+@media (max-width: 380px) {
+  .seat__num { font-size: 18px; }
+  .seat__name { font-size: 13px; }
+  .train-dir__btn { padding: 10px; }
+  .train-dir__route { font-size: 14px; }
+}
 
 /* VERDICT */
 .verdict {

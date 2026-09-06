@@ -11,6 +11,15 @@
         ],
         "createdAt": "2026-09-06T17:52:45.205Z",
         "reason": "user confirmed: intentional accent on the .verdict 'our take' panel in color-coding.html; stop alerting"
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "css/styles.css"
+        ],
+        "createdAt": "2026-09-06T19:07:00.001Z",
+        "reason": "user confirmed: requested the home nav button to expand on hover to reveal the 'Home' label; single small element, hover-triggered, collapsed-to-revealed text has no fixed width so transform can't achieve it"
       }
     ]
   }

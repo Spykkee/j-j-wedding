@@ -3,29 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>J&J Wedding — Guest Checklist</title>
+<title data-i18n="doc.checklist">J&J Wedding — Guest Checklist</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&family=Noto+Sans+KR:wght@300;400&family=Poor+Story&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <div class="wrap">
 
-  <nav class="page-nav">
-    <a href="index.html">Home</a>
-    <a href="color-coding.html">Color coding</a>
-    <a href="checklist.html" class="active">Guest checklist</a>
-    <a href="honeymoon.html">Honeymoon</a>
-    <a href="whatsapp.html">WhatsApp</a>
+  <nav class="site-nav">
+    <a href="index.html" class="site-nav__home" aria-label="Home" data-i18n-aria="nav.home">
+      <svg class="site-nav__home-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M3.2 11.8 12 4l8.8 7.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.6 10.2V20h12.8v-9.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="site-nav__home-text" data-i18n="nav.home">Home</span>
+    </a>
+    <div class="site-nav__links">
+      <a href="color-coding.html" class="site-nav__link" data-i18n="nav.colors">Color coding</a>
+      <a href="checklist.html" class="site-nav__link is-active" aria-current="page" data-i18n="nav.checklist">Guest checklist</a>
+      <a href="train.html" class="site-nav__link" data-i18n="nav.train">Group train</a>
+      <a href="honeymoon.html" class="site-nav__link" data-i18n="nav.honeymoon">Honeymoon</a>
+      <a href="whatsapp.html" class="site-nav__link" data-i18n="nav.whatsapp">WhatsApp</a>
+    </div>
+    <div class="site-nav__lang" id="lang-switch" role="group" aria-label="Language">
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="fr">FR</button>
+      <button type="button" class="lang-btn" data-lang="ko">한국어</button>
+    </div>
   </nav>
 
-  <h1 id="page-title">Guest Checklist</h1>
-  <div class="sub">A few important things to remember for the wedding weekend</div>
-
-  <div class="lang-switch" id="lang-switch">
-    <button class="lang-btn active" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="fr">FR</button>
-    <button class="lang-btn" data-lang="ko">한국어</button>
-  </div>
+  <h1 id="page-title" data-i18n="page.cl.h1">Guest Checklist</h1>
+  <div class="sub" data-i18n="page.cl.sub">A few important things to remember for the wedding weekend</div>
 
   <div id="content">
 
@@ -45,7 +53,10 @@
     <h2>Friday, October 9 — Welcome Dinner</h2>
     <ul>
       <li><strong>Group train:</strong> Paris Gare de Lyon @ <strong>11:38</strong>
-        <ul><li>We may have a little wait at the gare before heading to the domain.</li></ul>
+        <ul>
+          <li>We may have a little wait at the gare before heading to the domain.</li>
+          <li><a href="train.html">See the seat map</a> to find your coach and seat.</li>
+        </ul>
       </li>
       <li><strong>Staying on-site:</strong> Check-in from <strong>16h</strong>.</li>
       <li><strong>Welcome dinner:</strong> Starts at <strong>19h</strong>, but feel free to arrive earlier or later. Want to help us set up? Come early — we'd love the help!</li>
@@ -90,7 +101,10 @@
     <h2>Vendredi 9 octobre — Dîner de bienvenue</h2>
     <ul>
       <li><strong>Train de groupe :</strong> Paris Gare de Lyon à <strong>11h38</strong>
-        <ul><li>Nous devrons peut-être attendre un peu à la gare avant de partir pour le domaine.</li></ul>
+        <ul>
+          <li>Nous devrons peut-être attendre un peu à la gare avant de partir pour le domaine.</li>
+          <li><a href="train.html">Voir le plan des places</a> pour trouver votre voiture et votre place.</li>
+        </ul>
       </li>
       <li><strong>Vous séjournez sur place :</strong> Check-in à partir de <strong>16h</strong>.</li>
       <li><strong>Dîner de bienvenue :</strong> Commence à <strong>19h</strong>, mais vous pouvez bien sûr arriver plus tôt ou plus tard. Vous souhaitez nous aider à installer ? Venez plus tôt — votre aide sera la bienvenue !</li>
@@ -135,7 +149,10 @@
     <h2>10월 9일 금요일 — 웰컴 디너</h2>
     <ul>
       <li><strong>단체 기차:</strong> Paris Gare de Lyon에서 <strong>11:38</strong>
-        <ul><li>역에서 도메인으로 출발하기 전에 잠시 기다릴 수 있습니다.</li></ul>
+        <ul>
+          <li>역에서 도메인으로 출발하기 전에 잠시 기다릴 수 있습니다.</li>
+          <li><a href="train.html">좌석 배치도 보기</a> — 객차와 좌석을 확인하세요.</li>
+        </ul>
       </li>
       <li><strong>도메인 숙박:</strong> 체크인은 <strong>16시</strong>부터 가능합니다.</li>
       <li><strong>웰컴 디너:</strong> <strong>19시</strong>에 시작하지만, 더 일찍 또는 늦게 도착하셔도 괜찮습니다. 준비를 도와주고 싶으신 분은 일찍 와주시면 정말 감사하겠습니다!</li>
@@ -168,19 +185,6 @@
 
 </div>
 
-<script>
-  const buttons = document.querySelectorAll(".lang-btn");
-  const sections = document.querySelectorAll(".lang-section-content");
-
-  buttons.forEach(button => {
-    button.addEventListener("click", () => {
-      const lang = button.dataset.lang;
-      buttons.forEach(btn => btn.classList.toggle("active", btn === button));
-      sections.forEach(section => {
-        section.classList.toggle("visible", section.dataset.lang === lang);
-      });
-    });
-  });
-</script>
+<script src="js/site.js"></script>
 </body>
 </html>
