@@ -126,56 +126,57 @@
    =================================================================== */
 const PEOPLE = {
   // ---- Outbound · Friday 9 October · Voiture 7 (lower deck, 2nd class) ----
-  // Carré 720·721·724·725 — Byung Soo · Sohee · Dong Hyun · Tarek (720·721 face 724·725)
-  "7-720": "Byung Soo (김병수)",
-  "7-721": "Sohee (김소희)",
-  "7-724": "Dong Hyun (김동현)",
-  "7-725": "Tarek",
-  // Carré 722·723·726·727 — the sisters + Youjeong & Eun Young
+  // Carré 716·717·720·721 — 720·721 ours (716·717 other travellers)
+  "7-720": "Juri (임주리)",
+  "7-721": "Hyeong Seok (김형석)",
+  // Carré 718·719·722·723 — 722·723 ours (718·719 other travellers)
   "7-722": "Youjeong (신유정)",
   "7-723": "Eun Young (채은영)",
+  // Seats 724·725 — Juju & Jimmy
+  "7-724": "Juju (김주현)",
+  "7-725": "Jimmy",
+  // Seats 726·727 — Soojin & Jill
   "7-726": "Soojin (이수진)",
-  "7-727": "Bokyung (이보경)",
-  // Carré 730·731·734·735 — Juri & Hyeong Seok  /  Juju & Jimmy
-  "7-730": "Juri (임주리)",
-  "7-731": "Hyeong Seok (김형석)",
-  "7-734": "Juju (김주현)",
-  "7-735": "Jimmy",
-  // Seats 732·733 — 732 ours, 733 other traveller
-  "7-732": "Jill",
-  // Seats 736·737 — Daniela & Ali
-  "7-736": "Daniela",
-  "7-737": "Ali",
-  // Seats 738·739 — Abhinandan & Ashmita
-  "7-738": "Abhinandan",
-  "7-739": "Ashmita",
+  "7-727": "Jill",
+  // Seats 730·731 — Daniela & Ali
+  "7-730": "Daniela",
+  "7-731": "Ali",
+  // Carré 732·733·736·737 — 732 + 736·737 ours (733 other traveller)
+  "7-732": "Bokyung (이보경)",
+  "7-736": "Abhinandan",
+  "7-737": "Ashmita",
+  // Carré 734·735·738·739 — Byung Soo · Sohee · Dong Hyun · Tarek
+  "7-734": "Byung Soo (김병수)",
+  "7-735": "Sohee (김소희)",
+  "7-738": "Dong Hyun (김동현)",
+  "7-739": "Tarek",
 
   // ---- Return · Sunday 11 October · Voiture 18 (lower deck, 2nd class) ----
-  // Carré 814·815·818·819 — 818·819 ours (814·815 other travellers)
-  "18-818": "Daniela",
-  "18-819": "Thomas",
-  // Carré 820·821·824·825 — 824·825 ours (820·821 other travellers)
-  "18-824": "Bokwang (전보광)",
-  "18-825": "Kwanyoung (박관영)",
-  // Carré 822·823·826·827 — Minjung / Hyunmi / Suyeon / Sunghyeon
-  "18-822": "Minjung",
-  "18-823": "Hyunmi",
-  "18-826": "Suyeon",
-  "18-827": "Sunghyeon",
-  // Carré 830·831·834·835 — Byung Soo · Sohee · Dong Hyun · Tarek
-  "18-830": "Byung Soo (김병수)",
-  "18-831": "Sohee (김소희)",
-  "18-834": "Dong Hyun (김동현)",
-  "18-835": "Tarek",
-  // Seats 832·833 — Youjeong & Eun Young
+  // Carré 816·817·820·821 — all other travellers
+  // Carré 818·819·822·823 — Minjung / Hyunmi / Suyeon / Sunghyeon
+  "18-818": "Minjung",
+  "18-819": "Hyunmi",
+  "18-822": "Suyeon",
+  "18-823": "Sunghyeon",
+  // Seats 824·825 — Daniela & Thomas
+  "18-824": "Daniela",
+  "18-825": "Thomas",
+  // Seats 826·827 — Bokwang & Kwanyoung
+  "18-826": "Bokwang (전보광)",
+  "18-827": "Kwanyoung (박관영)",
+  // Seats 830·831 — Ali & Jill
+  "18-830": "Ali",
+  "18-831": "Jill",
+  // Carré 832·833·836·837 — Youjeong & Eun Young / Juju & Jimmy
   "18-832": "Youjeong (신유정)",
   "18-833": "Eun Young (채은영)",
-  // Seats 836·837 — Juju & Jimmy
   "18-836": "Juju (김주현)",
   "18-837": "Jimmy",
-  // Seats 838·839 — Jill & Ali
-  "18-838": "Jill",
-  "18-839": "Ali",
+  // Carré 834·835·838·839 — Byung Soo · Sohee · Dong Hyun · Tarek
+  "18-834": "Byung Soo (김병수)",
+  "18-835": "Sohee (김소희)",
+  "18-838": "Dong Hyun (김동현)",
+  "18-839": "Tarek",
 };
 
 /* ===================================================================
@@ -199,20 +200,19 @@ const JOURNEYS = {
   outbound: {
     coach: 7,
     rows: [
-      [carre(720, 721, 724, 725), carre(722, 723, 726, 727)],
-      [LUGGAGE,                   carre(730, 731, 734, 735)],
-      [pair(732, 733),            GAP],
-      [pair(736, 737),            pair(738, 739)],
+      [carre(716, 717, 720, 721), carre(718, 719, 722, 723)],
+      [pair(724, 725),            pair(726, 727)],
+      [LUGGAGE,                   pair(730, 731)],
+      [carre(732, 733, 736, 737), carre(734, 735, 738, 739)],
     ],
   },
   return: {
     coach: 18,
     rows: [
-      [carre(812, 813, 816, 817), carre(814, 815, 818, 819)],
-      [carre(820, 821, 824, 825), carre(822, 823, 826, 827)],
-      [LUGGAGE,                   carre(830, 831, 834, 835)],
-      [pair(832, 833),            GAP],
-      [pair(836, 837),            pair(838, 839)],
+      [carre(816, 817, 820, 821), carre(818, 819, 822, 823)],
+      [pair(824, 825),            pair(826, 827)],
+      [LUGGAGE,                   pair(830, 831)],
+      [carre(832, 833, 836, 837), carre(834, 835, 838, 839)],
       [GAP,                       LUGGAGE],
     ],
   },
