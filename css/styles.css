@@ -762,8 +762,8 @@ h1 {
 body.lang-ko .action-section h2,
 body.lang-ko .train-roster__label { font-family: 'Poor Story', 'Noto Sans KR', sans-serif; font-style: normal; }
 body.lang-ko .action-section p,
-body.lang-ko .seat__name,
 body.lang-ko .roster__name { font-size: 18px; }
+body.lang-ko .seat__name { font-size: 13px; }
 
 /* SEARCH FIELD */
 .train-search {
@@ -924,77 +924,122 @@ body.lang-ko .roster__name { font-size: 18px; }
 }
 .coach__legend i.lg-you { background: var(--burg-pale); border-color: var(--burg); }
 .coach__legend i.lg-other { background: var(--bg); }
-.coach__legend i.lg-win { border-radius: 50%; background: var(--blue-pale); border-color: var(--blue); }
+.coach__legend i.lg-lug { background: var(--bg); border-style: dashed; }
 .coach__legend i.lg-carre {
   background: repeating-linear-gradient(90deg, var(--gold) 0 4px, transparent 4px 8px);
   border: 0;
 }
 
-/* Deck: the coach silhouette, carrés stacked along it */
+/* Deck: the coach interior — two aisle-sides running down it */
 .coach__deck {
   position: relative;
   border: 1px solid var(--stone);
-  border-radius: 30px / 20px;
-  padding: 16px 12px;
-  background:
-    linear-gradient(var(--surface), var(--surface)) padding-box;
+  border-radius: 26px / 16px;
+  padding: 12px 12px 14px;
+  background: var(--surface);
 }
-.coach__nose {
+.coach__end {
   text-align: center;
   font-size: 11px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  letter-spacing: .06em;
   color: var(--muted);
-  margin-bottom: 12px;
+  padding: 6px 6px 4px;
+  line-height: 1.4;
 }
-.coach__nose::before { content: "▲"; display: block; color: var(--gold); font-size: 10px; margin-bottom: 2px; }
+.coach__end--top { border-bottom: 1px dashed var(--stone); margin-bottom: 14px; padding-bottom: 12px; }
+.coach__end--bot { border-top: 1px dashed var(--stone); margin-top: 14px; text-transform: uppercase; letter-spacing: .14em; }
 
-.coach__track {
+.coach__amen {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
 }
-
-/* CARRÉ — 4 seats around a table */
-.carre {
-  border: 0.5px solid var(--stone);
-  border-radius: 12px;
-  padding: 9px 9px 11px;
-  background: #fff;
-}
-.carre__cap {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-bottom: 7px;
-  font-size: 11px;
+.amen {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 10px;
   letter-spacing: .1em;
   text-transform: uppercase;
+}
+.amen svg { width: 13px; height: 13px; flex-shrink: 0; }
+.amen--wc { background: var(--blue-pale); color: #47606D; }
+.amen--lug { background: var(--bg); border: 1px dashed var(--stone); color: var(--muted); }
+.coach__endnote { display: block; }
+
+.deck-rows { display: flex; flex-direction: column; gap: 14px; }
+.deck-row {
+  display: grid;
+  grid-template-columns: 1fr 20px 1fr;
+  align-items: start;
+}
+.deck-row__aisle { position: relative; align-self: stretch; }
+.deck-row__aisle::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -7px;
+  bottom: -7px;
+  border-left: 1px dashed var(--stone);
+}
+
+/* BAY — a carré of 4, a pair of 2, or a luggage rack */
+.bay {
+  border: 0.5px solid var(--stone);
+  border-radius: 12px;
+  padding: 8px 8px 10px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bay--empty { border: 0; background: transparent; padding: 0; }
+.bay--allother { opacity: .5; }
+.bay--luggage {
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 78px;
+  border-style: dashed;
+  background: var(--bg);
   color: var(--muted);
 }
-.carre__cap b { color: var(--gold); font-weight: 500; }
-.carre__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.carre__table {
+.bay--luggage svg { width: 22px; height: 22px; }
+.bay--luggage span { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+.bay__cap {
+  font-size: 9.5px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.bay__cap b { color: var(--gold); font-weight: 500; letter-spacing: .06em; }
+.bay__seats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.bay__table {
   grid-column: 1 / -1;
-  height: 8px;
-  margin: 2px 14px;
+  height: 6px;
+  margin: 1px 12px;
   border-radius: 3px;
   background: repeating-linear-gradient(90deg, var(--stone) 0 6px, transparent 6px 12px);
   opacity: .7;
 }
 
 .seat {
-  flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 3px;
-  padding: 10px 6px;
+  padding: 9px 3px;
   border-radius: 9px;
   border: 0.5px solid var(--stone);
   background: #fff;
+  overflow: hidden;
   text-align: center;
   transition: box-shadow .18s, border-color .18s, background .18s;
 }
@@ -1006,13 +1051,17 @@ body.lang-ko .roster__name { font-size: 18px; }
   line-height: 1;
 }
 .seat__name {
-  font-size: 14px;
-  line-height: 1.35;
+  font-size: 12.5px;
+  line-height: 1.25;
   color: var(--text);
   overflow-wrap: anywhere;
 }
-.seat__meta { font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-.seat.is-win { border-left: 2px solid var(--blue); }
+.seat__ko {
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--muted);
+  font-family: 'Noto Sans KR', sans-serif;
+}
 .seat.is-empty { background: var(--bg); }
 .seat.is-empty .seat__name { color: var(--muted); }
 .seat.is-other {
@@ -1021,6 +1070,7 @@ body.lang-ko .roster__name { font-size: 18px; }
   opacity: .6;
 }
 .seat.is-other .seat__num { color: var(--muted); }
+.seat.is-other .seat__name { overflow-wrap: normal; hyphens: none; }
 .seat.is-match {
   border-color: var(--burg);
   background: var(--burg-pale);
@@ -1067,10 +1117,12 @@ body.lang-ko .roster__name { font-size: 18px; }
 .roster__seat { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
 
 @media (max-width: 380px) {
-  .seat { padding: 8px 4px; }
-  .seat__num { font-size: 18px; }
-  .seat__name { font-size: 13px; }
-  .carre__grid { gap: 6px; }
+  .seat { padding: 7px 3px; }
+  .seat__num { font-size: 17px; }
+  .seat__name { font-size: 12px; }
+  .bay { padding: 6px 6px 8px; }
+  .bay__seats { gap: 5px; }
+  .deck-row { grid-template-columns: 1fr 14px 1fr; }
   .train-dir__btn { padding: 10px; }
   .train-dir__route { font-size: 14px; }
 }

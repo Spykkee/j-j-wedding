@@ -125,90 +125,106 @@
    Keys are "coach-seat" exactly as printed on the ticket.
    =================================================================== */
 const PEOPLE = {
-  // ---- Outbound · Friday 9 October · Voiture 7 ----
-  // Carré 720–723 · Shin / Chae / Lee + Ashmita
-  "7-720": "Youjeong Shin (신유정)",
-  "7-721": "Eunyoung Chae (채은영)",
-  "7-722": "Soojin Lee (이수진)",
-  "7-723": "Ashmita",
-  // Carré 724–727 · Kim family + Tarek
-  "7-724": "Byung Soo Kim (김병수)",
-  "7-725": "Sohee Kim (김소희)",
-  "7-726": "Dong Hyun Kim (김동현)",
-  "7-727": "Tarek",
-  // Carré 728–731 · Lim & Kim  /  Juju & Jimmy
-  "7-728": "Juri Lim (임주리)",
-  "7-729": "HyeongSeok Kim (김형석)",
-  "7-730": "Juju (김주현)",
-  "7-731": "Jimmy",
-  // Carré 732–735 · Bokyung (Soojin's sister) + Abhinandan & Ali · 733 other traveller
-  "7-732": "Bokyung Lee",
-  "7-734": "Abhinandan Aggarwal",
-  "7-735": "Ali Asad",
-  // Carré 736–739 · half ours · Daniela & Jill
-  "7-738": "Daniela Carfora",
-  "7-739": "Jill Mouboungoulou",
+  // ---- Outbound · Friday 9 October · Voiture 7 (lower deck, 2nd class) ----
+  // Carré 720·721·724·725 — Byung Soo · Sohee · Dong Hyun · Tarek (720·721 face 724·725)
+  "7-720": "Byung Soo (김병수)",
+  "7-721": "Sohee (김소희)",
+  "7-724": "Dong Hyun (김동현)",
+  "7-725": "Tarek",
+  // Carré 722·723·726·727 — the sisters + Youjeong & Eun Young
+  "7-722": "Youjeong (신유정)",
+  "7-723": "Eun Young (채은영)",
+  "7-726": "Soojin (이수진)",
+  "7-727": "Bokyung",
+  // Carré 730·731·734·735 — Juri & Hyeong Seok  /  Juju & Jimmy
+  "7-730": "Juri (임주리)",
+  "7-731": "Hyeong Seok (김형석)",
+  "7-734": "Juju (김주현)",
+  "7-735": "Jimmy",
+  // Seats 732·733 — 732 ours, 733 other traveller
+  "7-732": "Jill",
+  // Seats 736·737 — Daniela & Ali
+  "7-736": "Daniela",
+  "7-737": "Ali",
+  // Seats 738·739 — Abhinandan & Ashmita
+  "7-738": "Abhinandan",
+  "7-739": "Ashmita",
 
-  // ---- Return · Sunday 11 October · Voiture 18 ----
-  // Carré 818–821 · half ours · Daniela & Thomas
-  "18-818": "Daniela Carfora",
+  // ---- Return · Sunday 11 October · Voiture 18 (lower deck, 2nd class) ----
+  // Carré 814·815·818·819 — 818·819 ours (814·815 other travellers)
+  "18-818": "Daniela",
   "18-819": "Thomas",
-  // Carré 822–825 · Minjung / Hyunmi / Suyeon / Sunghyeon
+  // Carré 820·821·824·825 — 824·825 ours (820·821 other travellers)
+  "18-824": "Bokwang (전보광)",
+  "18-825": "Kwanyoung (박관영)",
+  // Carré 822·823·826·827 — Minjung / Hyunmi / Suyeon / Sunghyeon
   "18-822": "Minjung",
   "18-823": "Hyunmi",
-  "18-824": "Suyeon",
-  "18-825": "Sunghyeon",
-  // Carré 826–829 · Kim family + Ali
-  "18-826": "Byung Soo Kim (김병수)",
-  "18-827": "Sohee Kim (김소희)",
-  "18-828": "Dong Hyun Kim (김동현)",
-  "18-829": "Ali Asad",
-  // Carré 830–833 · Jeon & Park  /  Shin & Chae
-  "18-830": "Bokwang Jeon (전보광)",
-  "18-831": "Kwanyoung Park (박관영)",
-  "18-832": "Youjeong Shin (신유정)",
-  "18-833": "Eunyoung Chae (채은영)",
-  // Carré 834–837 · Juju & Jimmy  +  Jill & Tarek
-  "18-834": "Juju (김주현)",
-  "18-835": "Jimmy",
-  "18-836": "Jill Mouboungoulou",
-  "18-837": "Tarek",
+  "18-826": "Suyeon",
+  "18-827": "Sunghyeon",
+  // Carré 830·831·834·835 — Byung Soo · Sohee · Dong Hyun · Tarek
+  "18-830": "Byung Soo (김병수)",
+  "18-831": "Sohee (김소희)",
+  "18-834": "Dong Hyun (김동현)",
+  "18-835": "Tarek",
+  // Seats 832·833 — Youjeong & Eun Young
+  "18-832": "Youjeong (신유정)",
+  "18-833": "Eun Young (채은영)",
+  // Seats 836·837 — Juju & Jimmy
+  "18-836": "Juju (김주현)",
+  "18-837": "Jimmy",
+  // Seats 838·839 — Jill & Ali
+  "18-838": "Jill",
+  "18-839": "Ali",
 };
 
 /* ===================================================================
-   2. Coach layout.
-   The route Paris Gare de Lyon <-> Avignon TGV runs on a TGV Duplex
-   (double-deck) set. In 2nd class the deck is 2+2 seating, and seats
-   are sold in "carrés" — 4 places facing each other around a table,
-   numbered in fours (e.g. 720-721 facing 722-723).
+   2. Coach layout — from SNCF's own TGV Duplex / Euroduplex seat map
+   (2nd class, lower deck; the deck our group is booked on).
 
-   Each carré below is [window, aisle, window, aisle]: the first two
-   seats face the last two across the table. A few seats inside our
-   block belong to other travellers — they show greyed out with no
-   name, which is why some numbers are missing from the list above.
+   Down each side of the central aisle the seats run in bays:
+     carré(a, b, c, d) — 4 seats around a table; a·b face c·d
+     pair(a, b)        — 2 seats side by side
+     LUGGAGE           — a luggage rack (no seats: this is where
+                         728·729 / 828·829 would otherwise be)
+   `rows` pairs up the two sides of the aisle so they line up on the
+   page. A seat with no name in PEOPLE shows greyed = other traveller.
    =================================================================== */
+const LUGGAGE = { type: "luggage" };
+const GAP = { type: "empty" };
+const carre = (a, b, c, d) => ({ type: "carre", seats: [a, b, c, d] });
+const pair = (a, b) => ({ type: "pair", seats: [a, b] });
+
 const JOURNEYS = {
   outbound: {
     coach: 7,
-    carres: [
-      [720, 721, 722, 723],
-      [724, 725, 726, 727],
-      [728, 729, 730, 731],
-      [732, 733, 734, 735],   // 733 — other traveller
-      [736, 737, 738, 739],   // 736, 737 — other travellers
+    rows: [
+      [carre(720, 721, 724, 725), carre(722, 723, 726, 727)],
+      [LUGGAGE,                   carre(730, 731, 734, 735)],
+      [pair(732, 733),            GAP],
+      [pair(736, 737),            pair(738, 739)],
     ],
   },
   return: {
     coach: 18,
-    carres: [
-      [818, 819, 820, 821],   // 820, 821 — other travellers
-      [822, 823, 824, 825],
-      [826, 827, 828, 829],
-      [830, 831, 832, 833],
-      [834, 835, 836, 837],
+    rows: [
+      [carre(812, 813, 816, 817), carre(814, 815, 818, 819)],
+      [carre(820, 821, 824, 825), carre(822, 823, 826, 827)],
+      [LUGGAGE,                   carre(830, 831, 834, 835)],
+      [pair(832, 833),            GAP],
+      [pair(836, 837),            pair(838, 839)],
+      [GAP,                       LUGGAGE],
     ],
   },
 };
+
+function seatNums(journey) {
+  const out = [];
+  journey.rows.forEach(row => row.forEach(bay => {
+    if (bay.seats) out.push.apply(out, bay.seats);
+  }));
+  return out;
+}
 
 /* ===================================================================
    3. Translations for the surrounding text.
@@ -228,17 +244,20 @@ const I18N = {
     rosterTitle: "Everyone on the group train",
     rosterOutbound: "Outbound — Voiture 7",
     rosterReturn: "Return — Voiture 18",
-    mapNote: "TGV INOUI Duplex, 2nd class. This diagram shows how our group's seats are booked together — in carrés of 4 around a table. The exact orientation (which seats are window vs aisle, and which way each faces) isn't confirmed, so go by the coach and seat number printed on your ticket. Greyed seats inside our carrés belong to other travellers.",
+    mapNote: "This plan follows SNCF's own seat map for the TGV Duplex — 2nd class, lower deck, the deck our group is booked on. Seats go in carrés of four around a table (720·721 face 724·725) with a few pairs; greyed seats are other travellers and the striped block is a luggage rack. If the coach and seat on your ticket don't match what you see here, go by the ticket and let us know.",
     coachLabel: "Voiture",
-    coachClass: "2nd class · Duplex",
+    coachClass: "2nd class · lower deck",
     seatLabel: "Seat",
+    seatsCap: "Seats",
     carre: "Carré",
-    window: "Window",
-    aisle: "Aisle",
     lgYou: "Our group",
     lgOther: "Other traveller",
+    lgLug: "Luggage",
+    lgTable: "Table",
     otherShort: "Occupied",
-    dirOfTravel: "Direction of travel",
+    wc: "WC",
+    entryNote: "The coach entrance is at this end. The seats before your group belong to other travellers.",
+    endNote: "Far end of the coach",
     resultLead: name => `${name} —`,
     resultLine: (dayShort, coach, seat) => `${dayShort}: Voiture ${coach} · Seat ${seat}`,
     resultOnDir: "shown on the map above",
@@ -259,17 +278,20 @@ const I18N = {
     rosterTitle: "Tout le monde dans le train de groupe",
     rosterOutbound: "Aller — Voiture 7",
     rosterReturn: "Retour — Voiture 18",
-    mapNote: "TGV INOUI Duplex, 2ⁿᵈᵉ classe. Ce plan montre comment les places de notre groupe sont réservées ensemble — en carrés de 4 autour d'une table. L'orientation exacte (fenêtre ou couloir, sens de chaque place) n'est pas confirmée : fiez-vous à la voiture et au numéro de place inscrits sur votre billet. Les places grisées dans nos carrés sont occupées par d'autres voyageurs.",
+    mapNote: "Ce plan reprend le plan de la rame SNCF du TGV Duplex — 2ⁿᵈᵉ classe, niveau inférieur, celui où notre groupe est réservé. Les places vont par carrés de quatre autour d'une table (720·721 font face à 724·725), avec quelques duos ; les places grisées sont occupées par d'autres voyageurs et le bloc hachuré est un espace bagages. Si la voiture et la place de votre billet ne correspondent pas à ce plan, fiez-vous au billet et prévenez-nous.",
     coachLabel: "Voiture",
-    coachClass: "2ⁿᵈᵉ classe · Duplex",
+    coachClass: "2ⁿᵈᵉ classe · niveau inférieur",
     seatLabel: "Place",
+    seatsCap: "Places",
     carre: "Carré",
-    window: "Fenêtre",
-    aisle: "Couloir",
     lgYou: "Notre groupe",
     lgOther: "Autre voyageur",
+    lgLug: "Bagages",
+    lgTable: "Table",
     otherShort: "Occupée",
-    dirOfTravel: "Sens de la marche",
+    wc: "WC",
+    entryNote: "L'entrée de la voiture est à cette extrémité. Les places avant votre groupe sont occupées par d'autres voyageurs.",
+    endNote: "Extrémité de la voiture",
     resultLead: name => `${name} —`,
     resultLine: (dayShort, coach, seat) => `${dayShort} : Voiture ${coach} · Place ${seat}`,
     resultOnDir: "visible sur le plan ci-dessus",
@@ -290,17 +312,20 @@ const I18N = {
     rosterTitle: "단체 기차 탑승자 전체",
     rosterOutbound: "출발 — 7호차",
     rosterReturn: "귀환 — 18호차",
-    mapNote: "TGV INOUI Duplex, 2등석. 이 배치도는 저희 단체 좌석이 어떻게 함께 예약되었는지 — 테이블을 둔 4인 카레 단위로 — 보여줍니다. 정확한 방향(창측·통로측, 각 좌석이 향하는 방향)은 확인되지 않았으니, 실제로는 티켓에 적힌 객차·좌석 번호를 따라 주세요. 카레 안의 회색 좌석은 다른 승객이 이용합니다.",
+    mapNote: "이 배치도는 SNCF의 실제 TGV Duplex 좌석도를 따른 것입니다 — 우리 단체가 예약된 2등석 아래층입니다. 좌석은 테이블을 둔 4인석(720·721이 724·725와 마주 봄)과 일부 2인석으로 구성되며, 회색 좌석은 다른 승객, 빗금 블록은 짐칸입니다. 티켓의 객차·좌석 번호가 배치도와 다르면 티켓을 기준으로 하시고 저희에게 알려 주세요.",
     coachLabel: "객차",
-    coachClass: "2등석 · Duplex",
+    coachClass: "2등석 · 아래층",
     seatLabel: "좌석",
-    carre: "카레",
-    window: "창측",
-    aisle: "통로측",
+    seatsCap: "좌석",
+    carre: "4인석",
     lgYou: "우리 단체",
     lgOther: "다른 승객",
+    lgLug: "짐칸",
+    lgTable: "테이블",
     otherShort: "사용 중",
-    dirOfTravel: "진행 방향",
+    wc: "WC",
+    entryNote: "이 끝쪽에 객차 출입구가 있습니다. 우리 그룹 앞쪽 좌석에는 다른 승객이 앉습니다.",
+    endNote: "객차 끝",
     resultLead: name => `${name} —`,
     resultLine: (dayShort, coach, seat) => `${dayShort}: ${coach}호차 · ${seat}번`,
     resultOnDir: "위 배치도에 표시됨",
@@ -333,6 +358,70 @@ const I18N = {
   const isOurs = id => Object.prototype.hasOwnProperty.call(PEOPLE, id);
 
   // ---- Build the coach maps ----
+  function makeSeat(coach, num) {
+    const id = seatId(coach, num);
+    const ours = isOurs(id);
+    const name = PEOPLE[id] || "";
+    const seat = document.createElement("div");
+    seat.className = "seat" +
+      (!ours ? " is-other" : name ? " is-assigned" : " is-empty");
+    if (ours) seat.dataset.seatId = id;
+    let label;
+    if (!ours) {
+      label = `<span class="seat__name">${t().otherShort}</span>`;
+    } else if (!name) {
+      label = `<span class="seat__name">${t().empty}</span>`;
+    } else {
+      const m = name.match(/^(.+?)\s*\(([^)]+)\)\s*$/);
+      label = m
+        ? `<span class="seat__name">${m[1]}</span><span class="seat__ko">${m[2]}</span>`
+        : `<span class="seat__name">${name}</span>`;
+    }
+    seat.innerHTML = `<span class="seat__num">${num}</span>` + label;
+    return seat;
+  }
+
+  function makeBay(bay, coach) {
+    const el = document.createElement("div");
+
+    if (bay.type === "empty") { el.className = "bay bay--empty"; return el; }
+
+    if (bay.type === "luggage") {
+      el.className = "bay bay--luggage";
+      el.innerHTML =
+        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">` +
+        `<rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"/><path d="M9 12v4M15 12v4"/></svg>` +
+        `<span>${t().lgLug}</span>`;
+      return el;
+    }
+
+    const nums = bay.seats;
+    const mine = nums.some(n => isOurs(seatId(coach, n)));
+    el.className = "bay bay--" + bay.type + (mine ? "" : " bay--allother");
+
+    if (mine) {
+      const cap = document.createElement("div");
+      cap.className = "bay__cap";
+      const label = bay.type === "carre" ? t().carre : t().seatsCap;
+      cap.innerHTML = `<b>${label}</b> ${nums.join("·")}`;
+      el.appendChild(cap);
+    }
+
+    const grid = document.createElement("div");
+    grid.className = "bay__seats";
+    grid.appendChild(makeSeat(coach, nums[0]));
+    grid.appendChild(makeSeat(coach, nums[1]));
+    if (bay.type === "carre") {
+      const table = document.createElement("div");
+      table.className = "bay__table";
+      grid.appendChild(table);
+      grid.appendChild(makeSeat(coach, nums[2]));
+      grid.appendChild(makeSeat(coach, nums[3]));
+    }
+    el.appendChild(grid);
+    return el;
+  }
+
   function buildCoach(key) {
     const journey = JOURNEYS[key];
     const wrap = document.getElementById("coach-" + key);
@@ -350,52 +439,46 @@ const I18N = {
     legend.innerHTML =
       `<span><i class="lg-you"></i>${t().lgYou}</span>` +
       `<span><i class="lg-other"></i>${t().lgOther}</span>` +
-      `<span><i class="lg-carre"></i>${t().carre}</span>`;
+      `<span><i class="lg-lug"></i>${t().lgLug}</span>` +
+      `<span><i class="lg-carre"></i>${t().lgTable}</span>`;
     wrap.appendChild(legend);
 
     const deck = document.createElement("div");
     deck.className = "coach__deck";
-    const nose = document.createElement("div");
-    nose.className = "coach__nose";
-    nose.textContent = t().dirOfTravel;
-    deck.appendChild(nose);
 
-    const track = document.createElement("div");
-    track.className = "coach__track";
+    const top = document.createElement("div");
+    top.className = "coach__end coach__end--top";
+    top.innerHTML =
+      `<div class="coach__amen">` +
+      `<span class="amen amen--wc">` +
+      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="15" cy="12" r="1.15" fill="currentColor" stroke="none"/></svg>` +
+      `${t().wc}</span>` +
+      `<span class="amen amen--lug">` +
+      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8"/><path d="M9 12v4M15 12v4"/></svg>` +
+      `${t().lgLug}</span>` +
+      `</div>` +
+      `<span class="coach__endnote">${t().entryNote}</span>`;
+    deck.appendChild(top);
 
-    const makeSeat = num => {
-      const id = seatId(journey.coach, num);
-      const ours = isOurs(id);
-      const name = PEOPLE[id] || "";
-      const seat = document.createElement("div");
-      seat.className = "seat" +
-        (!ours ? " is-other" : name ? " is-assigned" : " is-empty");
-      if (ours) seat.dataset.seatId = id;
-      seat.innerHTML =
-        `<span class="seat__num">${num}</span>` +
-        `<span class="seat__name">${ours ? (name || t().empty) : t().otherShort}</span>`;
-      return seat;
-    };
-
-    journey.carres.forEach(seats => {
-      const carre = document.createElement("div");
-      carre.className = "carre";
-      carre.innerHTML =
-        `<div class="carre__cap"><b>${t().carre}</b> ${seats[0]}–${seats[3]}</div>`;
-      const grid = document.createElement("div");
-      grid.className = "carre__grid";
-      grid.appendChild(makeSeat(seats[0]));
-      grid.appendChild(makeSeat(seats[1]));
-      const table = document.createElement("div");
-      table.className = "carre__table";
-      grid.appendChild(table);
-      grid.appendChild(makeSeat(seats[2]));
-      grid.appendChild(makeSeat(seats[3]));
-      carre.appendChild(grid);
-      track.appendChild(carre);
+    const rows = document.createElement("div");
+    rows.className = "deck-rows";
+    journey.rows.forEach(row => {
+      const r = document.createElement("div");
+      r.className = "deck-row";
+      r.appendChild(makeBay(row[0], journey.coach));
+      const aisle = document.createElement("div");
+      aisle.className = "deck-row__aisle";
+      r.appendChild(aisle);
+      r.appendChild(makeBay(row[1], journey.coach));
+      rows.appendChild(r);
     });
+    deck.appendChild(rows);
 
-    deck.appendChild(track);
+    const bot = document.createElement("div");
+    bot.className = "coach__end coach__end--bot";
+    bot.textContent = t().endNote;
+    deck.appendChild(bot);
+
     wrap.appendChild(deck);
   }
 
@@ -405,7 +488,7 @@ const I18N = {
     const ul = document.getElementById("roster-" + key);
     ul.innerHTML = "";
     const rows = [];
-    journey.carres.flat().forEach(num => {
+    seatNums(journey).forEach(num => {
       const id = seatId(journey.coach, num);
       if (!isOurs(id)) return;
       rows.push({ num, name: PEOPLE[id] || "" });
@@ -459,7 +542,7 @@ const I18N = {
     const byName = new Map();
     ["outbound", "return"].forEach(key => {
       const journey = JOURNEYS[key];
-      journey.carres.flat().forEach(num => {
+      seatNums(journey).forEach(num => {
         const id = journey.coach + "-" + num;
         const name = PEOPLE[id];
         if (name && norm(name).includes(q)) {
