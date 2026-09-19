@@ -20,6 +20,7 @@
   var STORAGE_KEY = 'jj-lang';
   var DEFAULT_LANG = 'en';
   var LANGS = ['en', 'fr', 'ko'];
+  var LANG_CODE = { en: 'EN', fr: 'FR', ko: 'KR' };
 
   var STR = {
     en: {
@@ -237,7 +238,7 @@
       btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
     });
     document.querySelectorAll('[data-lang-code]').forEach(function (el) {
-      el.textContent = currentLang.toUpperCase();
+      el.textContent = LANG_CODE[currentLang] || currentLang.toUpperCase();
     });
 
     document.dispatchEvent(new CustomEvent('jj:langchange', { detail: { lang: currentLang } }));
