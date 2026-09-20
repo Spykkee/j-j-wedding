@@ -324,9 +324,14 @@ h1 {
 @media (hover: none) {
   .site-nav__item:not(.is-active) .site-nav__label { max-width: 0; opacity: 0; margin-left: 0; }
 }
-/* Very narrow: drop even the active label, keep the highlight */
+/* Very narrow: drop even the active label, keep the highlight, and tighten the
+   row so all seven icons plus the language menu still fit on one line at 320px */
 @media (max-width: 400px) {
   .site-nav__item.is-active .site-nav__label { max-width: 0; opacity: 0; margin-left: 0; }
+  .site-nav { gap: 2px; padding: 5px; }
+  .site-nav__item { padding: 5px; }
+  .site-nav__item svg { width: 16px; height: 16px; }
+  .lang-menu__toggle { gap: 4px; padding: 5px 7px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .site-nav__label { transition: none; }
@@ -754,6 +759,384 @@ h1 {
 
 .lang-section-content[data-lang="ko"] .action-section h2 { font-family: 'Poor Story', 'Noto Sans KR', sans-serif; font-style: normal; font-size: 28px; }
 .lang-section-content[data-lang="ko"] .action-section p { font-size: 18px; }
+
+/* ===================================================================
+   HOUSE & ROOM LOOKUP — search field + result card
+   =================================================================== */
+.lookup-search {
+  display: flex;
+  align-items: center;
+  gap: .6ch;
+  margin-top: 1.1rem;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 0.5px solid var(--stone);
+  border-radius: 26px;
+  transition: border-color .15s;
+}
+.lookup-search:focus-within { border-color: var(--burg); }
+.lookup-search__icon { color: var(--gold); font-size: 18px; line-height: 1; transform: rotate(45deg); }
+.lookup-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-size: 17px;
+  color: var(--text);
+  outline: none;
+}
+.lookup-search__clear {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lookup-result { margin-top: 1rem; display: flex; flex-direction: column; gap: 10px; }
+.lookup-result__card {
+  background: var(--blue-pale);
+  border: 0.5px solid var(--stone);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+.lookup-result__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 21px;
+  color: var(--burg);
+  margin-bottom: 8px;
+}
+.lookup-result__line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  width: 100%;
+  padding: 6px 0;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  color: var(--text);
+}
+.lookup-result__line + .lookup-result__line { border-top: 1px solid rgba(150,177,192,.4); }
+.lookup-result__label { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #5A6E78; }
+
+body.lang-ko .lookup-result__name { font-size: 19px; }
+
+.lookup-result__house-dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  margin-right: 7px;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.lookup-result__desc { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(150,177,192,.4); }
+.lookup-result__desc p { font-size: 15px; line-height: 1.65; color: var(--text); }
+.lookup-result__desc p + p { margin-top: .5rem; }
+
+/* ===================================================================
+   ROOM & HOUSE DETAIL — the domaine's own photos and features, shown
+   under a guest's search result
+   =================================================================== */
+.room-shot {
+  margin: 12px 0 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(150,177,192,.18);
+}
+.room-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.room-detail {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 0;
+}
+.room-detail li {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--text);
+  background: rgba(255,255,255,.75);
+  border: 0.5px solid var(--stone);
+  border-radius: 999px;
+  padding: 4px 11px;
+}
+
+.mini-title {
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 7px;
+}
+.house-facts {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(150,177,192,.4);
+}
+.house-facts ul { list-style: none; margin: 0; padding: 0; }
+.house-facts li {
+  position: relative;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text);
+  padding-left: 15px;
+}
+.house-facts li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: .62em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--stone);
+}
+
+/* Horizontal film strip of the shared spaces. No scrollbar: swipe or drag it, or use
+   the arrows that appear at either end while there is more to see that way. */
+.house-gallery-wrap { position: relative; }
+.house-gallery {
+  display: flex;
+  gap: 8px;
+  margin: 12px -1.1rem 0;
+  padding: 0 1.1rem 4px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* without this the strip snaps past its own padding and rests 1.1rem in */
+  scroll-padding: 0 1.1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+.house-gallery::-webkit-scrollbar { display: none; }
+.house-gallery.is-dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.house-gallery.is-dragging img { pointer-events: none; }
+
+.gallery-arrow {
+  position: absolute;
+  top: calc(50% - 9px);
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid var(--stone);
+  border-radius: 50%;
+  background: rgba(250,248,245,.92);
+  color: var(--text);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
+  z-index: 2;
+}
+.gallery-arrow svg { width: 15px; height: 15px; }
+.gallery-arrow--prev { left: -6px; }
+.gallery-arrow--next { right: -6px; }
+.gallery-arrow.is-shown { opacity: 1; visibility: visible; }
+.gallery-arrow:hover { background: var(--ivory); border-color: var(--gold); }
+@media (hover: none) { .gallery-arrow { display: none; } }
+.house-gallery figure {
+  flex: 0 0 auto;
+  width: 148px;
+  margin: 0;
+  scroll-snap-align: start;
+}
+.house-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  background: rgba(150,177,192,.18);
+}
+.house-gallery figcaption {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 4px;
+  text-align: center;
+}
+@media (max-width: 499px) {
+  .house-gallery { margin-left: -.9rem; margin-right: -.9rem; padding-left: .9rem; padding-right: .9rem; scroll-padding: 0 .9rem; }
+  .house-gallery figure { width: 132px; }
+}
+
+.room-shot img, .house-gallery img { cursor: zoom-in; }
+
+/* ===================================================================
+   LIGHTBOX — any photo on a result card opens full size here
+   =================================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(16px, env(safe-area-inset-top, 0px)) 16px max(16px, env(safe-area-inset-bottom, 0px));
+  background: rgba(28,26,24,.88);
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+/* the attribute alone would lose to display:flex above, and an invisible overlay would
+   still be sitting over the page swallowing every click */
+.lightbox[hidden] { display: none; }
+.lightbox.is-open { opacity: 1; }
+.lightbox__figure {
+  margin: 0;
+  max-width: min(1000px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 116px);
+  object-fit: contain;
+  border-radius: 6px;
+  background: rgba(255,255,255,.06);
+}
+.lightbox__cap {
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-size: 13px;
+  letter-spacing: .06em;
+  color: rgba(250,248,245,.82);
+  text-align: center;
+}
+.lightbox__btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(250,248,245,.12);
+  color: var(--ivory);
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.lightbox__btn:hover { background: rgba(250,248,245,.24); }
+.lightbox__btn[hidden] { display: none; }
+.lightbox__btn svg { width: 20px; height: 20px; }
+.lightbox__close { top: max(12px, env(safe-area-inset-top, 0px)); right: 12px; }
+.lightbox__nav--prev { left: 10px; top: 50%; transform: translateY(-50%); }
+.lightbox__nav--next { right: 10px; top: 50%; transform: translateY(-50%); }
+@media (max-width: 499px) {
+  .lightbox__nav--prev { left: 6px; }
+  .lightbox__nav--next { right: 6px; }
+  .lightbox__img { max-height: calc(100vh - 150px); }
+}
+
+/* ===================================================================
+   DOMAINE MAP — vector floor plan with house highlighting
+   =================================================================== */
+.domaine-map-wrap {
+  margin-top: 1.1rem;
+  border-radius: 14px;
+  border: 0.5px solid var(--stone);
+  background: #fff;
+  padding: 1rem .6rem;
+}
+#domaine-map { display: block; width: 100%; height: auto; }
+
+.map-house .zone {
+  fill: var(--house-color);
+  fill-opacity: .2;
+  stroke: var(--house-color);
+  stroke-opacity: .6;
+  stroke-width: 1.5px;
+  stroke-linejoin: round;
+  transition: fill-opacity .3s ease, stroke-opacity .3s ease, stroke-width .3s ease;
+}
+.map-house .zone--garden { fill-opacity: .1; stroke-opacity: .4; stroke-dasharray: 4 3; }
+.map-house.active .zone { fill-opacity: .58; stroke-opacity: 1; stroke-width: 2.5px; }
+.map-house.active .zone--garden { fill-opacity: .3; }
+.domaine-map.has-active .map-house:not(.active) .zone { fill-opacity: .08; stroke-opacity: .22; }
+.domaine-map.has-active .map-house:not(.active) .zone--garden { fill-opacity: .04; }
+.map-house use { transition: opacity .3s ease; }
+.domaine-map.has-active .map-house:not(.active) use { opacity: .25; }
+
+.map-courtyard { fill: var(--surface); stroke: var(--stone); stroke-width: 1.5px; stroke-linejoin: round; }
+.map-area.active .map-courtyard { fill: rgba(196,164,106,.35); stroke-width: 2.5px; }
+.map-road { fill: none; stroke: var(--stone); stroke-width: 1.4px; stroke-linecap: round; opacity: .7; }
+.map-details path { fill: none; stroke: var(--text); stroke-opacity: .3; stroke-width: 1.1px; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.map-details .map-detail--dashed { stroke-dasharray: 4 3; }
+.map-trees path, .map-trees circle { fill: rgba(140,150,130,.12); stroke: var(--stone); stroke-width: 1px; opacity: .55; pointer-events: none; }
+
+.map-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 15px;
+  fill: var(--text);
+  pointer-events: none;
+}
+.map-lead { fill: none; stroke: var(--stone); stroke-width: 1px; opacity: .8; transition: stroke .3s ease, stroke-width .3s ease, opacity .3s ease; }
+.map-lead-arrowhead { fill: var(--stone); }
+
+/* Searched house: its own label lights up in the house colour (pill behind the name,
+   coloured lead-line); every other label recedes. --label-ink is set per house in JS. */
+.map-label { transition: opacity .3s ease; }
+.map-label__bg { fill: var(--house-color); opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.map-label.active .map-label__bg { opacity: 1; }
+.map-label.active .map-caption { fill: var(--label-ink, var(--text)); font-weight: 600; font-style: normal; }
+.map-label.active .map-lead { stroke: var(--house-color); stroke-width: 2.2px; opacity: 1; }
+.domaine-map.has-active .map-label:not(.active) { opacity: .35; }
+
+.map-courtyard-label, .map-pool-label {
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+  fill: var(--muted);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+.map-path { stroke: var(--stone); stroke-width: 1.5; stroke-dasharray: 4 4; fill: none; opacity: .8; }
+.map-lavender-stem { stroke: #8C7BA0; stroke-width: 1.3; opacity: .55; }
+.map-lavender-bud { fill: #A68FC9; opacity: .6; }
+
+.map-hint { font-size: 13px; color: var(--muted); text-align: center; margin-top: .6rem; }
+
+/* ===================================================================
+   HOUSE DIRECTORY — full list of houses, rooms and guests
+   =================================================================== */
+.house-directory { display: flex; flex-direction: column; gap: 10px; }
+.house-card {
+  background: #fff;
+  border: 0.5px solid var(--stone);
+  border-radius: 10px;
+  padding: .85rem 1.05rem;
+}
+.house-card__head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; margin-bottom: 6px; }
+.house-card__name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 19px; color: var(--text); }
+.house-card__cap { font-size: 13px; color: var(--muted); }
+.house-card__rooms { font-size: 14.5px; line-height: 1.75; color: var(--text); }
+.house-card__rooms b { font-weight: 500; }
+body.lang-ko .house-card__name { font-size: 20px; }
+body.lang-ko .house-card__rooms { font-size: 16px; }
 
 /* ===================================================================
    GROUP TRAIN PAGE
