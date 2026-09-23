@@ -144,12 +144,13 @@
           <use href="#lavender-sprig" x="470" y="458" />
         </g>
 
-        <!-- Chêne: the wing east of the pink block (upper block, pale block, yellow-green
-             block) plus its annex below -->
+        <!-- Chêne: the main house is the pale and yellow-green blocks east of the pink one;
+             the annex is the top block (data-part="annexe"). A guest staying in the annex
+             lights up only that block, everyone else only the main house. -->
         <g class="map-house" data-house="chene" style="--house-color:#C6A882">
-          <path class="zone" d="M553,274 H600 V331 H553 Z" />
-          <path class="zone" d="M500,348 H553 V419 H500 Z" />
-          <path class="zone" d="M500,419 H553 V474 Q551,479 540,480 H500 Z" />
+          <path class="zone" data-part="annexe" d="M553,274 H600 V331 H553 Z" />
+          <path class="zone" data-part="main" d="M500,348 H553 V419 H500 Z" />
+          <path class="zone" data-part="main" d="M500,419 H553 V474 Q551,479 540,480 H500 Z" />
         </g>
 
         <!-- Grenadier: the small red block on the courtyard's west side, its little room below,
@@ -223,7 +224,8 @@
         </g>
         <g class="map-label" data-label="chene" style="--house-color:#C6A882">
           <rect class="map-label__bg" rx="4" />
-          <path class="map-lead" d="M557,172 C557,250 556,300 545,340 S512,410 507,428" marker-end="url(#lead-arrow)" />
+          <path class="map-lead" data-part="main" d="M557,172 C557,250 556,300 545,340 S512,410 507,428" marker-end="url(#lead-arrow)" />
+          <path class="map-lead" data-part="annexe" d="M583,172 C583,205 581,240 578,268" marker-end="url(#lead-arrow)" />
           <text class="map-caption" x="548" y="140" text-anchor="middle">
             <tspan x="548" dy="0">Mas Le Chêne Rêve de Nuit</tspan>
             <tspan x="548" dy="18">&amp; son Annexe</tspan>
@@ -368,6 +370,9 @@ const HOUSES = [
   {
     id: "chene",
     name: "Mas Le Chêne Rêve de Nuit & son Annexe",
+    // The plan shows the main house and the annex as separate blocks, so each can be picked
+    // alone. A room's `part` is "annexe"; rooms without one are the main house.
+    partNames: { main: "Mas Le Chêne Rêve de Nuit", annexe: "L'Annexe · Mas Le Chêne Rêve de Nuit" },
     color: "#C6A882",
     desc: {
       en: [
@@ -388,9 +393,9 @@ const HOUSES = [
       { key: "anti", room: { en: "Antechamber", fr: "Antichambre", ko: "전실" }, guests: ["Janine"], stay: "full" },
       { key: "ch2", room: { en: "Room 2", fr: "Chambre 2", ko: "2번 방" }, guests: ["Olivier", "Florence"], stay: "full" },
       { key: "ch3", room: { en: "Room 3", fr: "Chambre 3", ko: "3번 방" }, guests: ["Alexandra", "Yoann", "Aliya"], stay: "sat" },
-      { key: "annexe-ch1", room: { en: "Annex – Room 1, ground floor (courtyard access)", fr: "Annexe – Chambre 1, RC (accès cour intérieure)", ko: "별관 – 1번 방, 1층 (안뜰 출입)" }, guests: ["Muriel", "Thierry"], stay: "sat" },
-      { key: "annexe-ch2", room: { en: "Annex – Room 2, upper floor (courtyard access)", fr: "Annexe – Chambre 2, 1er étage (accès cour intérieure)", ko: "별관 – 2번 방, 2층 (안뜰 출입)" }, guests: ["Lydie", "Philippe"], stay: "sat" },
-      { key: "annexe-ch3", room: { en: "Annex – Room 3 (independent), upper floor, outside access", fr: "Annexe – Chambre 3 indépendante, 1er étage (accès extérieur)", ko: "별관 – 3번 방 (독립형), 2층 (외부 출입)" }, guests: ["Valentin", "Coralie"], stay: "sat" }
+      { key: "annexe-ch1", part: "annexe", room: { en: "Annex – Room 1, ground floor (courtyard access)", fr: "Annexe – Chambre 1, RC (accès cour intérieure)", ko: "별관 – 1번 방, 1층 (안뜰 출입)" }, guests: ["Muriel", "Thierry"], stay: "sat" },
+      { key: "annexe-ch2", part: "annexe", room: { en: "Annex – Room 2, upper floor (courtyard access)", fr: "Annexe – Chambre 2, 1er étage (accès cour intérieure)", ko: "별관 – 2번 방, 2층 (안뜰 출입)" }, guests: ["Lydie", "Philippe"], stay: "sat" },
+      { key: "annexe-ch3", part: "annexe", room: { en: "Annex – Room 3 (independent), upper floor, outside access", fr: "Annexe – Chambre 3 indépendante, 1er étage (accès extérieur)", ko: "별관 – 3번 방 (독립형), 2층 (외부 출입)" }, guests: ["Valentin", "Coralie"], stay: "sat" }
     ]
   },
   {
@@ -559,15 +564,18 @@ const DOMAINE = {
   },
 
   chene: {
+    // Which of `facts` (by position) and which `gallery` photos belong to each part.
+    // A gallery photo with no `part` is shared by both.
+    factParts: { main: [0, 1, 2, 4, 5], annexe: [0, 1, 3] },
     facts: {
       en: ["140 m² house (two wings) plus its annex", "Inner courtyard with an old well", "House: 2 bathrooms · 2 separate WC", "Annex: 1 bathroom · 1 separate WC", "Breakfast kitchen & living room with fireplace", "Terrace with patio and garden furniture"],
       fr: ["Maison de 140 m² (2 ailes A et B) et son Annexe", "Cour intérieure dotée d’un puits ancien", "Maison : 2 salles de bain · 2 WC indépendants", "Annexe : 1 salle de bain · 1 WC indépendant", "Cuisine américaine petit-déjeuner et salon avec cheminée", "Terrasse avec patio, mobilier de jardin"],
       ko: ["140 m² 본관(두 개 동)과 별관", "오래된 우물이 있는 안뜰", "본관: 욕실 2개 · 독립 화장실 2개", "별관: 욕실 1개 · 독립 화장실 1개", "조식 주방과 벽난로가 있는 거실", "정원 가구를 갖춘 테라스와 파티오"]
     },
     gallery: [
-      { src: "g-house.jpg", cap: { en: "The annex", fr: "L’Annexe", ko: "별관" } },
-      { src: "g-salon.jpg", cap: { en: "Living room", fr: "Salon", ko: "거실" } },
-      { src: "g-kitchen.jpg", cap: { en: "Kitchen", fr: "Cuisine", ko: "주방" } },
+      { src: "g-house.jpg", part: "annexe", cap: { en: "The annex", fr: "L’Annexe", ko: "별관" } },
+      { src: "g-salon.jpg", part: "main", cap: { en: "Living room", fr: "Salon", ko: "거실" } },
+      { src: "g-kitchen.jpg", part: "main", cap: { en: "Kitchen", fr: "Cuisine", ko: "주방" } },
       { src: "g-pergola.jpg", cap: { en: "Pergola", fr: "Pergola", ko: "퍼걸러" } },
       { src: "g-garden.jpg", cap: { en: "The garden", fr: "Le jardin", ko: "정원" } },
       { src: "g-bathroom.jpg", cap: { en: "A bathroom", fr: "Une salle de bain", ko: "욕실" } }
@@ -662,10 +670,13 @@ const I18N = {
     photoNext: "Next photo",
     photoClose: "Close photo",
     mapTitle: "The domaine",
-    mapHint: "Search your name above and your house will light up on the map.",
+    mapHint: "Search your name above, or tap a house, and it lights up on the map.",
     mapCourtyard: "Courtyard",
     mapPool: "Pool",
     directoryTitle: "Every house",
+    viewHouse: "Photos & details",
+    whoTitle: "Who's staying here",
+    closeHouse: "Close",
     guestCount: n => n + " guest" + (n === 1 ? "" : "s") + " staying",
   },
   fr: {
@@ -688,10 +699,13 @@ const I18N = {
     photoNext: "Photo suivante",
     photoClose: "Fermer la photo",
     mapTitle: "Le domaine",
-    mapHint: "Cherchez votre nom ci-dessus et votre maison s'illuminera sur le plan.",
+    mapHint: "Cherchez votre nom ci-dessus, ou touchez une maison, et elle s'illuminera sur le plan.",
     mapCourtyard: "La Cour d'Honneur",
     mapPool: "Piscine",
     directoryTitle: "Toutes les maisons",
+    viewHouse: "Photos et détails",
+    whoTitle: "Qui séjourne ici",
+    closeHouse: "Fermer",
     guestCount: n => n + " invité" + (n > 1 ? "s" : "") + " sur place",
   },
   ko: {
@@ -714,10 +728,13 @@ const I18N = {
     photoNext: "다음 사진",
     photoClose: "사진 닫기",
     mapTitle: "도멘 지도",
-    mapHint: "위에서 이름을 검색하면 지도에서 하우스가 표시됩니다.",
+    mapHint: "위에서 이름을 검색하거나 하우스를 누르면 지도에서 표시됩니다.",
     mapCourtyard: "안뜰",
     mapPool: "수영장",
     directoryTitle: "모든 하우스",
+    viewHouse: "사진·상세 보기",
+    whoTitle: "함께 묵는 사람들",
+    closeHouse: "닫기",
     guestCount: n => n + "명 숙박",
   },
 };
@@ -769,7 +786,10 @@ const I18N = {
 
   const houseEls = {};
   HOUSES.forEach(house => {
-    houseEls[house.id] = mapSvg.querySelector('.map-house[data-house="' + house.id + '"]');
+    const el = mapSvg.querySelector('.map-house[data-house="' + house.id + '"]');
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    houseEls[house.id] = el;
   });
 
   // The label already on the map (house name + lead-line) lights up in the house's colour:
@@ -808,12 +828,45 @@ const I18N = {
     bg.setAttribute("height", box.height + 6);
   }
 
-  function setActiveHouse(house) {
+  // A house can have parts on the plan (Chêne's annex is its own block, with its own arrow).
+  // `part` is the searched room's part; blocks and arrows of the other parts are dimmed.
+  // Rooms without a `part` belong to the house's "main" part. "all" lights every part, for
+  // when no particular room is known (a hover, or a house picked on the map or the list).
+  function paint(house, part) {
     mapSvg.classList.toggle("has-active", !!house);
     HOUSES.forEach(h => {
-      houseEls[h.id].classList.toggle("active", !!house && h.id === house.id);
-      setLabelActive(h.id, !!house && h.id === house.id);
+      const on = !!house && h.id === house.id;
+      houseEls[h.id].classList.toggle("active", on);
+      setLabelActive(h.id, on);
+      const want = on ? (part || "main") : null;
+      const off = z => on && want !== "all" && z.dataset.part !== want;
+      houseEls[h.id].querySelectorAll("[data-part]").forEach(z =>
+        z.classList.toggle("part-off", off(z)));
+      labelEls[h.id].querySelectorAll("[data-part]").forEach(l =>
+        l.classList.toggle("part-off", off(l)));
     });
+  }
+
+  // The house that is actually selected (searched, or picked). A hover only borrows the
+  // highlight and hands it back.
+  let current = { house: null, part: null }, hoverKey = null;
+  function setActiveHouse(house, part) {
+    current = { house, part };
+    hoverKey = null;
+    paint(house, part);
+  }
+
+  // After a pick the page scrolls to the card while the mouse stays put, so whatever ends
+  // up under it would "hover" without the mouse having moved. Ignore hovers until it settles.
+  let hoverMuteUntil = 0;
+  function setHover(id, part) {
+    if (id && performance.now() < hoverMuteUntil) return;
+    const key = id ? id + ":" + part : null;
+    if (key === hoverKey) return;
+    hoverKey = key;
+    const house = id && HOUSES.find(h => h.id === id);
+    if (house) paint(house, part);
+    else paint(current.house, current.part);
   }
 
   /* ---- Photos: full-size view, and the film strip's own controls ---- */
@@ -948,7 +1001,7 @@ const I18N = {
     resultBox.hidden = false;
     const d = t();
 
-    setActiveHouse(matches[0].house);
+    setActiveHouse(matches[0].house, matches[0].room.part);
 
     resultBox.innerHTML = matches.map(m => {
       const roommates = m.room.guests.filter(g => g !== m.name);
@@ -962,8 +1015,6 @@ const I18N = {
              <span>${roommates.map(nameWithSuffix).join(", ")}</span>
            </div>`
         : "";
-      const desc = (m.house.desc[lang] || m.house.desc.en)
-        .map(p => `<p>${p}</p>`).join("");
 
       // What the domaine itself says about this room and house (see DOMAINE above)
       const dom = DOMAINE[m.house.id] || {};
@@ -978,29 +1029,7 @@ const I18N = {
       const roomDetail = domRoom
         ? `<ul class="room-detail">${pick(domRoom.detail).map(x => `<li>${x}</li>`).join("")}</ul>`
         : "";
-      const houseFacts = dom.facts
-        ? `<div class="house-facts">
-             <h4 class="mini-title">${d.houseFactsTitle}</h4>
-             <ul>${pick(dom.facts).map(x => `<li>${x}</li>`).join("")}</ul>
-           </div>`
-        : "";
-      const gallery = dom.gallery
-        ? `<div class="house-gallery-wrap">
-             <div class="house-gallery" role="group" aria-label="${esc(d.galleryTitle)}">
-               ${dom.gallery.map(g => `
-                 <figure>
-                   <img src="${base}${g.src}" alt="${esc(pick(g.cap))}" loading="lazy">
-                   <figcaption>${pick(g.cap)}</figcaption>
-                 </figure>`).join("")}
-             </div>
-             <button type="button" class="gallery-arrow gallery-arrow--prev" aria-label="${esc(d.photoPrev)}">
-               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
-             </button>
-             <button type="button" class="gallery-arrow gallery-arrow--next" aria-label="${esc(d.photoNext)}">
-               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
-             </button>
-           </div>`
-        : "";
+      const { desc, houseFacts, gallery } = houseParts(m.house, "all");
 
       return `<div class="lookup-result__card">
         <div class="lookup-result__name">
@@ -1021,7 +1050,7 @@ const I18N = {
         </div>
         ${roomShot}
         ${roomDetail}
-        <div class="lookup-result__desc">${desc}</div>
+        ${desc}
         ${houseFacts}
         ${gallery}
       </div>`;
@@ -1030,8 +1059,154 @@ const I18N = {
     resultBox.querySelectorAll(".house-gallery").forEach(enhanceGallery);
   }
 
+  // Everything a result card says about the house itself, none of it specific to a guest
+  function houseParts(house, part) {
+    const d = t();
+    const dom = DOMAINE[house.id] || {};
+    const base = "images/rooms/" + house.id + "/";
+    const desc = `<div class="lookup-result__desc">${(house.desc[lang] || house.desc.en)
+      .map(p => `<p>${p}</p>`).join("")}</div>`;
+    const factList = pick(dom.facts).filter((x, i) =>
+      part === "all" || !dom.factParts || dom.factParts[part].includes(i));
+    const photoList = (dom.gallery || []).filter(g => part === "all" || !g.part || g.part === part);
+    const houseFacts = dom.facts
+      ? `<div class="house-facts">
+           <h4 class="mini-title">${d.houseFactsTitle}</h4>
+           <ul>${factList.map(x => `<li>${x}</li>`).join("")}</ul>
+         </div>`
+      : "";
+    const gallery = photoList.length
+      ? `<div class="house-gallery-wrap">
+           <div class="house-gallery" role="group" aria-label="${esc(d.galleryTitle)}">
+             ${photoList.map(g => `
+               <figure>
+                 <img src="${base}${g.src}" alt="${esc(pick(g.cap))}" loading="lazy">
+                 <figcaption>${pick(g.cap)}</figcaption>
+               </figure>`).join("")}
+           </div>
+           <button type="button" class="gallery-arrow gallery-arrow--prev" aria-label="${esc(d.photoPrev)}">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
+           </button>
+           <button type="button" class="gallery-arrow gallery-arrow--next" aria-label="${esc(d.photoNext)}">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
+           </button>
+         </div>`
+      : "";
+    return { desc, houseFacts, gallery };
+  }
+
+  // A house picked on the map or from the list: the house's own card, with nothing that
+  // depends on who is looking (no name, room, room-mates or dates)
+  let viewing = null;
+  // `part` is "all", or for a house drawn in several blocks, the one that was picked
+  function renderHouse(house, part) {
+    if (!house.partNames) part = "all";
+    viewing = { house, part };
+    const d = t();
+    const { desc, houseFacts, gallery } = houseParts(house, part);
+    // Who is in each room. Dates are only spelled out for people arriving on Saturday.
+    const inPart = room => part === "all" || (room.part || "main") === part;
+    const rooms = house.rooms.filter(inPart).map(room => {
+      const names = room.guests.map(n => {
+        const stay = (room.stayBy || {})[n] || room.stay;
+        return n + ((room.babies || []).includes(n) ? d.babySuffix : "")
+          + (stay !== room.stay ? ` <span class="house-guests__stay">(${d.staySat})</span>` : "");
+      }).join(", ");
+      const roomStay = room.stay === "sat" ? ` <span class="house-guests__stay">(${d.staySat})</span>` : "";
+      return `<div><b>${room.room[lang]}</b>${roomStay} — ${names}</div>`;
+    }).join("");
+    const guests = `<div class="house-facts house-guests">
+        <h4 class="mini-title">${d.whoTitle}</h4>
+        ${rooms}
+      </div>`;
+    notFound.hidden = true;
+    resultBox.hidden = false;
+    setActiveHouse(house, part);
+    resultBox.innerHTML = `<div class="lookup-result__card lookup-result__card--house">
+      <button type="button" class="lookup-result__close" aria-label="${esc(d.closeHouse)}">&times;</button>
+      <div class="lookup-result__name">
+        <span class="lookup-result__house-dot" style="background:${house.color}"></span>${part === "all" ? house.name : house.partNames[part]}
+      </div>
+      ${desc}
+      ${guests}
+      ${houseFacts}
+      ${gallery}
+    </div>`;
+    resultBox.querySelectorAll(".house-gallery").forEach(enhanceGallery);
+  }
+
+  function showHouse(id, part) {
+    const house = HOUSES.find(h => h.id === id);
+    if (!house) return;
+    searchInput.value = "";
+    clearBtn.hidden = true;
+    renderHouse(house, part || "all");
+    hoverMuteUntil = performance.now() + 1000;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    resultBox.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "start" });
+  }
+
+  function closeHouse() {
+    viewing = null;
+    resultBox.hidden = true;
+    resultBox.innerHTML = "";
+    setActiveHouse(null);
+  }
+
+  resultBox.addEventListener("click", e => {
+    if (e.target.closest(".lookup-result__close")) closeHouse();
+  });
+
+  /* ---- Picking a house on the map, or from the list below it ---- */
+  const houseIdAt = el => {
+    const g = el.closest(".map-house, .map-label");
+    return g ? (g.dataset.house || g.dataset.label) : null;
+  };
+
+  // A block or arrow of one part of a house (Chêne's annex) picks just that part; the
+  // house's name, or any block without a part, picks the whole house.
+  const partAt = el => {
+    const p = el.closest("[data-part]");
+    return p ? p.dataset.part : "all";
+  };
+
+  mapSvg.addEventListener("click", e => {
+    const id = houseIdAt(e.target);
+    if (id) showHouse(id, partAt(e.target));
+  });
+  // Hover lights a house up exactly as a search does. Mouse and pen only: on a touch screen
+  // the tap that would "hover" is the click itself.
+  mapSvg.addEventListener("pointerover", e => {
+    if (e.pointerType !== "touch") setHover(houseIdAt(e.target), partAt(e.target));
+  });
+  mapSvg.addEventListener("pointerleave", () => setHover(null));
+  mapSvg.addEventListener("focusin", e => {
+    if (e.target.matches(":focus-visible")) setHover(houseIdAt(e.target), "all");
+  });
+  mapSvg.addEventListener("focusout", () => setHover(null));
+  mapSvg.addEventListener("keydown", e => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const id = houseIdAt(e.target);
+    if (!id) return;
+    e.preventDefault();
+    showHouse(id);
+  });
+
+  directoryBox.addEventListener("click", e => {
+    const card = e.target.closest(".house-card");
+    if (card) showHouse(card.dataset.house);
+  });
+  directoryBox.addEventListener("keydown", e => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    const card = e.target.closest(".house-card");
+    if (!card) return;
+    e.preventDefault();
+    showHouse(card.dataset.house);
+  });
+
   function search(query) {
     const q = norm(query);
+    viewing = null;
     clearBtn.hidden = !query;
     if (!q) {
       resultBox.hidden = true;
@@ -1061,11 +1236,12 @@ const I18N = {
         ).join(", ");
         return `<div><b>${room.room[lang]}</b> — ${names}</div>`;
       }).join("");
-      return `<div class="house-card">
+      return `<div class="house-card" role="button" tabindex="0" data-house="${house.id}">
         <div class="house-card__head">
           <span class="lookup-result__house-dot" style="background:${house.color}"></span>
           <span class="house-card__name">${house.name}</span>
           <span class="house-card__cap">(${d.guestCount(peopleCount)})</span>
+          <span class="house-card__more">${d.viewHouse} &rsaquo;</span>
         </div>
         <div class="house-card__rooms">${rooms}</div>
       </div>`;
@@ -1074,6 +1250,7 @@ const I18N = {
 
   function applyLang(newLang) {
     lang = newLang;
+    document.body.classList.toggle("lang-ko", lang === "ko");
     const d = t();
     document.getElementById("page-title").textContent = d.pageTitle;
     document.getElementById("eyebrow").textContent = d.eyebrow;
@@ -1090,7 +1267,9 @@ const I18N = {
     lightboxPrev.setAttribute("aria-label", d.photoPrev);
     lightboxNext.setAttribute("aria-label", d.photoNext);
     renderDirectory();
-    if (!resultBox.hidden) search(searchInput.value);
+    HOUSES.forEach(h => houseEls[h.id].setAttribute("aria-label", h.name));
+    if (viewing) renderHouse(viewing.house, viewing.part);
+    else if (!resultBox.hidden) search(searchInput.value);
   }
 
   applyLang(lang);

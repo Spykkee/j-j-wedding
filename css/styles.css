@@ -806,7 +806,7 @@ h1 {
   -webkit-tap-highlight-color: transparent;
 }
 
-.lookup-result { margin-top: 1rem; display: flex; flex-direction: column; gap: 10px; }
+.lookup-result { scroll-margin-top: 16px; margin-top: 1rem; display: flex; flex-direction: column; gap: 10px; }
 .lookup-result__card {
   background: var(--blue-pale);
   border: 0.5px solid var(--stone);
@@ -834,7 +834,41 @@ h1 {
 .lookup-result__line + .lookup-result__line { border-top: 1px solid rgba(150,177,192,.4); }
 .lookup-result__label { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: #5A6E78; }
 
-body.lang-ko .lookup-result__name { font-size: 19px; }
+/* Korean uses Poor Story here, as on the checklist and other pages. Poor Story runs
+   small, so sizes are nudged up; italics are dropped (Hangul has no italic). */
+body.lang-ko .action-eyebrow,
+body.lang-ko .lookup-search input,
+body.lang-ko .lookup-result__name,
+body.lang-ko .lookup-result__line,
+body.lang-ko .lookup-result__label,
+body.lang-ko .lookup-result__desc,
+body.lang-ko .room-detail li,
+body.lang-ko .mini-title,
+body.lang-ko .house-facts,
+body.lang-ko .house-gallery figcaption,
+body.lang-ko .lightbox__cap,
+body.lang-ko .house-card,
+body.lang-ko .house-card__name,
+body.lang-ko .map-hint,
+body.lang-ko .action-note,
+body.lang-ko .map-caption,
+body.lang-ko .map-courtyard-label,
+body.lang-ko .map-pool-label { font-family: 'Poor Story', 'Noto Sans KR', sans-serif; font-style: normal; }
+body.lang-ko .action-eyebrow { font-size: 17px; letter-spacing: .04em; text-transform: none; }
+body.lang-ko .lookup-search input { font-size: 19px; }
+body.lang-ko .lookup-result__name { font-size: 23px; }
+body.lang-ko .lookup-result__line { font-size: 18px; }
+body.lang-ko .lookup-result__label { font-size: 15px; letter-spacing: .02em; text-transform: none; }
+body.lang-ko .lookup-result__desc p { font-size: 17px; }
+body.lang-ko .room-detail li { font-size: 15px; }
+body.lang-ko .mini-title { font-size: 14px; letter-spacing: .04em; text-transform: none; }
+body.lang-ko .house-facts li { font-size: 16px; }
+body.lang-ko .house-gallery figcaption { font-size: 13px; }
+body.lang-ko .map-hint,
+body.lang-ko .action-note { font-size: 15px; }
+body.lang-ko .map-caption { font-size: 16px; }
+body.lang-ko .map-courtyard-label,
+body.lang-ko .map-pool-label { font-size: 13px; }
 
 .lookup-result__house-dot {
   display: inline-block;
@@ -845,6 +879,25 @@ body.lang-ko .lookup-result__name { font-size: 19px; }
   flex-shrink: 0;
   vertical-align: middle;
 }
+.lookup-result__card--house { position: relative; }
+.lookup-result__card--house .lookup-result__name { padding-right: 2rem; }
+.lookup-result__card--house .lookup-result__desc { margin-top: 0; padding-top: 0; border-top: 0; }
+.lookup-result__close {
+  position: absolute;
+  top: .55rem;
+  right: .65rem;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+}
+.lookup-result__close:hover { color: var(--burg); background: rgba(150,177,192,.25); }
 .lookup-result__desc { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(150,177,192,.4); }
 .lookup-result__desc p { font-size: 15px; line-height: 1.65; color: var(--text); }
 .lookup-result__desc p + p { margin-top: .5rem; }
@@ -898,6 +951,10 @@ body.lang-ko .lookup-result__name { font-size: 19px; }
   padding-top: 10px;
   border-top: 1px solid rgba(150,177,192,.4);
 }
+.house-guests div { font-size: 14px; line-height: 1.7; color: var(--text); }
+.house-guests b { font-weight: 500; }
+.house-guests__stay { color: var(--muted); font-size: 12.5px; }
+body.lang-ko .house-guests div { font-size: 16px; }
 .house-facts ul { list-style: none; margin: 0; padding: 0; }
 .house-facts li {
   position: relative;
@@ -1086,6 +1143,11 @@ body.lang-ko .lookup-result__name { font-size: 19px; }
 .domaine-map.has-active .map-house:not(.active) .zone { fill-opacity: .08; stroke-opacity: .22; }
 .domaine-map.has-active .map-house:not(.active) .zone--garden { fill-opacity: .04; }
 .map-house use { transition: opacity .3s ease; }
+
+/* Houses and their captions are clickable (hover lights them up like a search does) */
+.map-house, .map-label .map-caption { cursor: pointer; }
+.map-label .map-caption { pointer-events: auto; }
+.map-house:focus { outline: none; }
 .domaine-map.has-active .map-house:not(.active) use { opacity: .25; }
 
 .map-courtyard { fill: var(--surface); stroke: var(--stone); stroke-width: 1.5px; stroke-linejoin: round; }
@@ -1141,6 +1203,10 @@ body.lang-ko .lookup-result__name { font-size: 19px; }
   border-radius: 10px;
   padding: .85rem 1.05rem;
 }
+.house-card { cursor: pointer; transition: border-color .2s ease, box-shadow .2s ease; -webkit-tap-highlight-color: transparent; }
+.house-card:hover { border-color: var(--blue); box-shadow: 0 1px 8px rgba(150,177,192,.35); }
+.house-card__more { margin-left: auto; font-size: 12.5px; letter-spacing: .03em; color: var(--burg); white-space: nowrap; }
+body.lang-ko .house-card__more { font-size: 14px; }
 .house-card__head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; margin-bottom: 6px; }
 .house-card__name { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 19px; color: var(--text); }
 .house-card__cap { font-size: 13px; color: var(--muted); }
