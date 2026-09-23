@@ -165,7 +165,7 @@
       'doc.whatsapp': 'J&J 결혼식 — WhatsApp 커뮤니티',
       'sub.date': '2026 · 10 · 10  ·  프로방스 가을 결혼식',
       'home.h1': 'J & J, 결혼합니다',
-      'home.weekend': '축하의 시간은 <strong>10월 9일부터 11일까지</strong>, 결혼식은 <strong>10일 토요일</strong>에 열립니다.',
+      'home.weekend': '축하의 시간은 <strong>10월 9일부터 11일까지</strong>,<br>결혼식은 <strong>10일 토요일</strong>에 열립니다.',
       'cd.title': '축하의 날을 향한 카운트다운',
       'cd.days': '일',
       'cd.hours': '시간',
