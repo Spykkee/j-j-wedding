@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-09-06T19:07:00.001Z",
         "reason": "user confirmed: requested the home nav button to expand on hover to reveal the 'Home' label; single small element, hover-triggered, collapsed-to-revealed text has no fixed width so transform can't achieve it"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "onsite.html"
+        ],
+        "createdAt": "2026-09-23T21:06:41.847Z",
+        "reason": "false positive: L271 lightbox img src is set by JS on open; L495 is inside a code comment (assistant triage, pre-existing)"
       }
     ]
   }
