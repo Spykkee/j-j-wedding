@@ -681,6 +681,15 @@ h1 {
 .checklist-section li ul { margin-top: 6px; }
 .checklist-section li strong { font-weight: 500; }
 .checklist-section a { color: var(--burg); font-weight: 500; overflow-wrap: anywhere; }
+/* On-site / off-site groups inside a day */
+.stay { margin-top: 1rem; padding: .8rem 1rem .9rem; border-radius: 10px; border-left: 3px solid var(--stay-accent); background: var(--stay-bg); }
+.stay--on  { --stay-accent: var(--blue); --stay-bg: var(--blue-pale); --stay-ink: #4A6878; }
+.stay--off { --stay-accent: var(--burg); --stay-bg: var(--burg-pale); --stay-ink: var(--burg); }
+.stay__label { margin: 0 0 2px; font-family: 'Jost', sans-serif; font-weight: 400; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--stay-ink); }
+.stay ul { margin: 0; }
+.stay li:first-child { margin-top: 6px; }
+.stay li:last-child { margin-bottom: 0; }
+.lang-section-content[data-lang="ko"] .stay__label { font-family: inherit; font-size: 16px; letter-spacing: .04em; text-transform: none; }
 .lang-section-content { display: none; }
 .lang-section-content.visible { display: block; }
 .lang-section-content[data-lang="ko"] { font-family: 'Poor Story', 'Noto Sans KR', sans-serif; }
@@ -1073,6 +1082,7 @@ body.lang-ko .lookup-result__name { font-size: 19px; }
 .map-house .zone--garden { fill-opacity: .1; stroke-opacity: .4; stroke-dasharray: 4 3; }
 .map-house.active .zone { fill-opacity: .58; stroke-opacity: 1; stroke-width: 2.5px; }
 .map-house.active .zone--garden { fill-opacity: .3; }
+.map-house.active .zone.part-off { fill-opacity: .08; stroke-opacity: .22; stroke-width: 1px; }
 .domaine-map.has-active .map-house:not(.active) .zone { fill-opacity: .08; stroke-opacity: .22; }
 .domaine-map.has-active .map-house:not(.active) .zone--garden { fill-opacity: .04; }
 .map-house use { transition: opacity .3s ease; }
@@ -1102,6 +1112,7 @@ body.lang-ko .lookup-result__name { font-size: 19px; }
 .map-label.active .map-label__bg { opacity: 1; }
 .map-label.active .map-caption { fill: var(--label-ink, var(--text)); font-weight: 600; font-style: normal; }
 .map-label.active .map-lead { stroke: var(--house-color); stroke-width: 2.2px; opacity: 1; }
+.map-label.active .map-lead.part-off { opacity: 0; }
 .domaine-map.has-active .map-label:not(.active) { opacity: .35; }
 
 .map-courtyard-label, .map-pool-label {
