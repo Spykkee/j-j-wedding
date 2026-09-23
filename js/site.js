@@ -45,6 +45,7 @@
       'sub.date': '10 · 10 · 2026  ·  Provence Autumn Wedding',
       /* homepage hero + countdown */
       'home.h1': 'J & J are getting married',
+      'home.weekend': 'The celebrations run from <strong>9 to 11 October</strong>, with the ceremony on <strong>Saturday the 10th</strong>.',
       'cd.title': 'Counting down to the celebration',
       'cd.days': 'Days',
       'cd.hours': 'Hours',
@@ -106,6 +107,7 @@
       'doc.whatsapp': 'Mariage J&J — Communauté WhatsApp',
       'sub.date': '10 · 10 · 2026  ·  Mariage d’automne en Provence',
       'home.h1': 'J & J vont se marier',
+      'home.weekend': 'Les festivités se déroulent <strong>du 9 au 11 octobre</strong>, avec la cérémonie le <strong>samedi 10</strong>.',
       'cd.title': 'Le compte à rebours a commencé',
       'cd.days': 'Jours',
       'cd.hours': 'Heures',
@@ -163,6 +165,7 @@
       'doc.whatsapp': 'J&J 결혼식 — WhatsApp 커뮤니티',
       'sub.date': '2026 · 10 · 10  ·  프로방스 가을 결혼식',
       'home.h1': 'J & J, 결혼합니다',
+      'home.weekend': '축하의 시간은 <strong>10월 9일부터 11일까지</strong>, 결혼식은 <strong>10일 토요일</strong>에 열립니다.',
       'cd.title': '축하의 날을 향한 카운트다운',
       'cd.days': '일',
       'cd.hours': '시간',

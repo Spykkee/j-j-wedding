@@ -379,6 +379,16 @@ h1 {
   font-size: 13px;
   letter-spacing: .2em;
 }
+.home-hero .home-weekend {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.4;
+  color: var(--burg);
+  max-width: 30ch;
+  margin: 1rem auto 0;
+}
+.home-hero .home-weekend strong { font-weight: 600; }
 
 /* SHARED SECTION HEADING */
 .home-section-title {
