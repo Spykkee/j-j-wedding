@@ -385,10 +385,13 @@ h1 {
   font-size: 19px;
   line-height: 1.4;
   color: var(--burg);
-  max-width: 30ch;
+  max-width: 24em;
   margin: 1rem auto 0;
+  text-wrap: balance;
+  word-break: keep-all; /* Korean: break between words, never inside one */
 }
-.home-hero .home-weekend strong { font-weight: 600; }
+/* the date and day phrases stay whole on one line */
+.home-hero .home-weekend strong { font-weight: 600; white-space: nowrap; }
 
 /* SHARED SECTION HEADING */
 .home-section-title {
