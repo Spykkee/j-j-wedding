@@ -29,6 +29,7 @@
       'nav.colors': 'Color coding',
       'nav.checklist': 'Guest checklist',
       'nav.train': 'Group train',
+      'nav.shuttle': 'Shuttle',
       'nav.onsite': 'Accommodation',
       'nav.honeymoon': 'Honeymoon',
       'nav.whatsapp': 'WhatsApp',
@@ -38,6 +39,7 @@
       'doc.colors': 'J&J Wedding Outfit Cards — 10·10·2026',
       'doc.checklist': 'J&J Wedding — Guest Checklist',
       'doc.train': 'J&J Wedding — Group Train',
+      'doc.shuttle': 'J&J Wedding — Shuttle',
       'doc.onsite': 'J&J Wedding — Accommodation',
       'doc.honeymoon': 'J&J Wedding — Honeymoon Fund',
       'doc.whatsapp': 'J&J Wedding — WhatsApp Community',
@@ -64,6 +66,9 @@
       'home.tr.title': 'Group train',
       'home.tr.desc': 'Booked a seat on our group TGV between Paris Gare de Lyon and Avignon? Look up your coach and seat for both the Friday and Sunday journeys.',
       'home.tr.link': 'Find your seat',
+      'home.sh.title': 'Shuttle',
+      'home.sh.desc': 'Told us you’d ride our shuttle between Avignon TGV and the domaine? Check your name is on the list — if it is, there’s nothing to book.',
+      'home.sh.link': 'Check the shuttle list',
       'home.os.title': 'Your house & room',
       'home.os.desc': 'Staying at the domaine? Look up which house and room you’re in, who you’re sharing with, and find your house on the plan of Domaine Grand Belly.',
       'home.os.link': 'Find your house & room',
@@ -89,7 +94,8 @@
       'page.cl.sub': 'A few important things to remember for the wedding weekend',
       /* action pages */
       'page.hm.h1': 'Honeymoon Fund',
-      'page.wa.h1': 'WhatsApp Community'
+      'page.wa.h1': 'WhatsApp Community',
+      'page.sh.h1': 'Shuttle'
     },
 
     fr: {
@@ -97,6 +103,7 @@
       'nav.colors': 'Code couleur',
       'nav.checklist': 'Check-list invités',
       'nav.train': 'Train de groupe',
+      'nav.shuttle': 'Navette',
       'nav.onsite': 'Hébergement',
       'nav.honeymoon': 'Lune de miel',
       'nav.whatsapp': 'WhatsApp',
@@ -105,6 +112,7 @@
       'doc.colors': 'Tenues de mariage J&J — 10·10·2026',
       'doc.checklist': 'Mariage J&J — Check-list invités',
       'doc.train': 'Mariage J&J — Train de groupe',
+      'doc.shuttle': 'Mariage J&J — Navette',
       'doc.onsite': 'Mariage J&J — Hébergement',
       'doc.honeymoon': 'Mariage J&J — Cagnotte lune de miel',
       'doc.whatsapp': 'Mariage J&J — Communauté WhatsApp',
@@ -128,6 +136,9 @@
       'home.tr.title': 'Train de groupe',
       'home.tr.desc': 'Vous avez une place dans notre TGV de groupe entre Paris Gare de Lyon et Avignon ? Retrouvez votre voiture et votre place pour les trajets du vendredi et du dimanche.',
       'home.tr.link': 'Trouver votre place',
+      'home.sh.title': 'Navette',
+      'home.sh.desc': 'Vous nous avez dit prendre notre navette entre Avignon TGV et le domaine ? Vérifiez que votre nom est sur la liste — si c’est le cas, vous n’avez rien à réserver.',
+      'home.sh.link': 'Voir la liste de la navette',
       'home.os.title': 'Votre maison et votre chambre',
       'home.os.desc': 'Vous logez au domaine ? Retrouvez votre maison et votre chambre, avec qui vous la partagez, et repérez votre maison sur le plan du Domaine Grand Belly.',
       'home.os.link': 'Trouver votre maison et votre chambre',
@@ -150,7 +161,8 @@
       'page.cl.h1': 'Check-list invités',
       'page.cl.sub': 'Quelques points importants à retenir pour le week-end du mariage',
       'page.hm.h1': 'Cagnotte lune de miel',
-      'page.wa.h1': 'Communauté WhatsApp'
+      'page.wa.h1': 'Communauté WhatsApp',
+      'page.sh.h1': 'Navette'
     },
 
     ko: {
@@ -158,6 +170,7 @@
       'nav.colors': '컬러 코드',
       'nav.checklist': '게스트 체크리스트',
       'nav.train': '단체 기차',
+      'nav.shuttle': '셔틀',
       'nav.onsite': '숙소',
       'nav.honeymoon': '신혼여행',
       'nav.whatsapp': 'WhatsApp',
@@ -166,6 +179,7 @@
       'doc.colors': 'J&J 결혼식 의상 카드 — 2026·10·10',
       'doc.checklist': 'J&J 결혼식 — 게스트 체크리스트',
       'doc.train': 'J&J 결혼식 — 단체 기차',
+      'doc.shuttle': 'J&J 결혼식 — 셔틀',
       'doc.onsite': 'J&J 결혼식 — 숙소',
       'doc.honeymoon': 'J&J 결혼식 — 신혼여행 펀드',
       'doc.whatsapp': 'J&J 결혼식 — WhatsApp 커뮤니티',
@@ -189,6 +203,9 @@
       'home.tr.title': '단체 기차',
       'home.tr.desc': '파리 리옹역과 아비뇽을 오가는 저희 단체 TGV에 좌석을 예약하셨나요? 금요일과 일요일 여정의 객차와 좌석을 확인해 보세요.',
       'home.tr.link': '좌석 확인하기',
+      'home.sh.title': '셔틀',
+      'home.sh.desc': '아비뇽 TGV역과 도멘 사이 저희 셔틀을 타겠다고 알려 주셨나요? 명단에 이름이 있는지 확인해 보세요 — 있다면 따로 예약하실 필요가 없어요.',
+      'home.sh.link': '셔틀 명단 확인하기',
       'home.os.title': '숙소 하우스와 방',
       'home.os.desc': '도멘에서 묵으시나요? 어느 하우스, 어느 방에 머무는지, 누구와 함께 묵는지 확인하고 도멘 그랑 벨리 지도에서 하우스 위치를 찾아보세요.',
       'home.os.link': '하우스와 방 찾기',
@@ -211,7 +228,8 @@
       'page.cl.h1': '게스트 체크리스트',
       'page.cl.sub': '결혼식 주말을 위해 기억해 두면 좋은 몇 가지 중요한 사항',
       'page.hm.h1': '신혼여행 펀드',
-      'page.wa.h1': 'WhatsApp 커뮤니티'
+      'page.wa.h1': 'WhatsApp 커뮤니티',
+      'page.sh.h1': '셔틀'
     }
   };
 

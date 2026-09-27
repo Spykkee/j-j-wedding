@@ -1634,3 +1634,55 @@ body.lang-ko .seat__name { font-size: 13px; }
 }
 .verdict-text { font-size: 16px; color: var(--muted); line-height: 1.7; }
 
+
+/* ===================================================================
+   SHUTTLE PAGE — who rides between Avignon TGV and the domaine.
+   Search + result reuse .lookup-*; the lists reuse .train-roster.
+   =================================================================== */
+.action-section .shuttle-leg__meta { font-size: 15px; color: var(--muted); }
+.shuttle-leg__meta strong { color: var(--text); }
+.shuttle-run__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 1.3rem;
+}
+.shuttle-run__count { color: var(--muted); letter-spacing: .06em; white-space: nowrap; }
+.shuttle-run {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 1.6rem;
+}
+@media (min-width: 560px) { .shuttle-run { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 560px) { .train-roster .shuttle-run li:nth-child(2) { border-top: 0; } }
+.shuttle-ko { color: var(--muted); font-size: .9em; }
+.shuttle-plus {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--burg);
+  background: var(--burg-pale);
+  border-radius: 999px;
+  padding: 1px 7px;
+  vertical-align: 1px;
+}
+.shuttle-tick {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--burg);
+  color: var(--ivory);
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-size: 13px;
+  vertical-align: 3px;
+}
+.shuttle-result__lead { display: block; margin: -2px 0 6px; color: var(--burg); }
+.lookup-result__line.is-off span:last-child { color: var(--muted); }
+body.lang-ko .shuttle-leg__meta,
+body.lang-ko .train-roster__label { font-family: 'Poor Story', 'Noto Sans KR', sans-serif; }
+body.lang-ko .action-section .shuttle-leg__meta { font-size: 17px; }
