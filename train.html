@@ -521,12 +521,7 @@ const I18N = {
       if (!isOurs(id)) return;
       rows.push({ num, name: PEOPLE[id] || "" });
     });
-    rows.sort((a, b) => {
-      if (!a.name && b.name) return 1;
-      if (a.name && !b.name) return -1;
-      if (a.name && b.name) return a.name.localeCompare(b.name);
-      return a.num - b.num;
-    });
+    rows.sort((a, b) => a.num - b.num);
     rows.forEach(r => {
       const li = document.createElement("li");
       li.dataset.seatId = journey.coach + "-" + r.num;
