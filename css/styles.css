@@ -1396,7 +1396,7 @@ body.lang-ko .seat__name { font-size: 13px; }
   border: 0.5px solid var(--stone); background: #fff;
 }
 .coach__legend i.lg-you { background: var(--burg-pale); border-color: var(--burg); }
-.coach__legend i.lg-own { background: var(--blue-pale); border-color: var(--blue); }
+.coach__legend i.lg-own { background: #F5ECDF; border-color: var(--gold); }
 .coach__legend i.lg-other { background: var(--bg); }
 .coach__legend i.lg-lug { background: var(--bg); border-style: dashed; }
 .coach__legend i.lg-carre {
@@ -1545,13 +1545,13 @@ body.lang-ko .seat__name { font-size: 13px; }
 }
 .seat.is-other .seat__num { color: var(--muted); }
 .seat.is-other .seat__name { overflow-wrap: normal; hyphens: none; }
-.seat.is-own { background: var(--blue-pale); border-color: var(--blue); }
+.seat.is-own { background: #F5ECDF; border-color: var(--gold); }
 .seat__own,
 .roster__own {
   font-size: 10px;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: #5A6E78;
+  color: #8A6D45;
   white-space: nowrap;
 }
 .roster__own { font-size: 11px; margin-left: 4px; }
