@@ -30,7 +30,6 @@
       'nav.checklist': 'Guest checklist',
       'nav.train': 'Group train',
       'nav.onsite': 'Accommodation',
-      'nav.photos': 'Photos',
       'nav.honeymoon': 'Honeymoon',
       'nav.whatsapp': 'WhatsApp',
       'nav.lang': 'Language',
@@ -40,7 +39,6 @@
       'doc.checklist': 'J&J Wedding — Guest Checklist',
       'doc.train': 'J&J Wedding — Group Train',
       'doc.onsite': 'J&J Wedding — Accommodation',
-      'doc.photos': 'J&J Wedding — Photos',
       'doc.honeymoon': 'J&J Wedding — Honeymoon Fund',
       'doc.whatsapp': 'J&J Wedding — WhatsApp Community',
       /* shared */
@@ -91,8 +89,7 @@
       'page.cl.sub': 'A few important things to remember for the wedding weekend',
       /* action pages */
       'page.hm.h1': 'Honeymoon Fund',
-      'page.wa.h1': 'WhatsApp Community',
-      'page.ph.h1': 'Wedding Photos'
+      'page.wa.h1': 'WhatsApp Community'
     },
 
     fr: {
@@ -101,7 +98,6 @@
       'nav.checklist': 'Check-list invités',
       'nav.train': 'Train de groupe',
       'nav.onsite': 'Hébergement',
-      'nav.photos': 'Photos',
       'nav.honeymoon': 'Lune de miel',
       'nav.whatsapp': 'WhatsApp',
       'nav.lang': 'Langue',
@@ -110,7 +106,6 @@
       'doc.checklist': 'Mariage J&J — Check-list invités',
       'doc.train': 'Mariage J&J — Train de groupe',
       'doc.onsite': 'Mariage J&J — Hébergement',
-      'doc.photos': 'Mariage J&J — Photos',
       'doc.honeymoon': 'Mariage J&J — Cagnotte lune de miel',
       'doc.whatsapp': 'Mariage J&J — Communauté WhatsApp',
       'sub.date': '10 · 10 · 2026  ·  Mariage d’automne en Provence',
@@ -155,8 +150,7 @@
       'page.cl.h1': 'Check-list invités',
       'page.cl.sub': 'Quelques points importants à retenir pour le week-end du mariage',
       'page.hm.h1': 'Cagnotte lune de miel',
-      'page.wa.h1': 'Communauté WhatsApp',
-      'page.ph.h1': 'Photos du mariage'
+      'page.wa.h1': 'Communauté WhatsApp'
     },
 
     ko: {
@@ -165,7 +159,6 @@
       'nav.checklist': '게스트 체크리스트',
       'nav.train': '단체 기차',
       'nav.onsite': '숙소',
-      'nav.photos': '사진',
       'nav.honeymoon': '신혼여행',
       'nav.whatsapp': 'WhatsApp',
       'nav.lang': '언어',
@@ -174,7 +167,6 @@
       'doc.checklist': 'J&J 결혼식 — 게스트 체크리스트',
       'doc.train': 'J&J 결혼식 — 단체 기차',
       'doc.onsite': 'J&J 결혼식 — 숙소',
-      'doc.photos': 'J&J 결혼식 — 사진',
       'doc.honeymoon': 'J&J 결혼식 — 신혼여행 펀드',
       'doc.whatsapp': 'J&J 결혼식 — WhatsApp 커뮤니티',
       'sub.date': '2026 · 10 · 10  ·  프로방스 가을 결혼식',
@@ -219,8 +211,7 @@
       'page.cl.h1': '게스트 체크리스트',
       'page.cl.sub': '결혼식 주말을 위해 기억해 두면 좋은 몇 가지 중요한 사항',
       'page.hm.h1': '신혼여행 펀드',
-      'page.wa.h1': 'WhatsApp 커뮤니티',
-      'page.ph.h1': '웨딩 사진'
+      'page.wa.h1': 'WhatsApp 커뮤니티'
     }
   };
 
