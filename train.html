@@ -148,7 +148,7 @@ const PEOPLE = {
   // Seats 730·731 — Daniela & Ali
   "7-730": "Daniela",
   "7-731": "Ali",
-  // Carré 732·733·736·737 — 732 + 736 ours (733·737 other travellers)
+  // Carré 732·733·736·737 — 732 + 736 own tickets (733·737 other travellers)
   "7-732": "Bokyung (이보경)",
   "7-736": "Yuhao",
   // Carré 734·735·738·739 — Byung Soo · Sohee · Dong Hyun · Tarek
@@ -185,6 +185,10 @@ const PEOPLE = {
   "18-834": "Dong Hyun (김동현)",
   "18-835": "Tarek",
 };
+
+/* Seats in the same coach bought on an individual ticket, not as part of
+   the group booking. Shown on the map with an "own ticket" tag. */
+const OWN_TICKET = new Set(["7-732", "7-736"]);
 
 /* ===================================================================
    2. Coach layout — from SNCF's own TGV Duplex / Euroduplex seat map
@@ -257,6 +261,9 @@ const I18N = {
     seatsCap: "Seats",
     carre: "Carré",
     lgYou: "Our group",
+    lgOwn: "Own ticket",
+    ownTag: "Own ticket",
+    ownNote: "own ticket, not the group booking: check your ticket",
     lgOther: "Other traveller",
     lgLug: "Luggage",
     lgTable: "Table",
@@ -291,6 +298,9 @@ const I18N = {
     seatsCap: "Places",
     carre: "Carré",
     lgYou: "Notre groupe",
+    lgOwn: "Billet individuel",
+    ownTag: "Billet indiv.",
+    ownNote: "billet individuel, hors réservation de groupe : vérifiez votre billet",
     lgOther: "Autre voyageur",
     lgLug: "Bagages",
     lgTable: "Table",
@@ -325,6 +335,9 @@ const I18N = {
     seatsCap: "좌석",
     carre: "4인석",
     lgYou: "우리 단체",
+    lgOwn: "개별 구매",
+    ownTag: "개별 구매",
+    ownNote: "단체 예약이 아닌 개별 구매 티켓: 본인 티켓을 확인해 주세요",
     lgOther: "다른 승객",
     lgLug: "짐칸",
     lgTable: "테이블",
@@ -369,8 +382,10 @@ const I18N = {
     const ours = isOurs(id);
     const name = PEOPLE[id] || "";
     const seat = document.createElement("div");
+    const own = OWN_TICKET.has(id);
     seat.className = "seat" +
-      (!ours ? " is-other" : name ? " is-assigned" : " is-empty");
+      (!ours ? " is-other" : name ? " is-assigned" : " is-empty") +
+      (own ? " is-own" : "");
     if (ours) seat.dataset.seatId = id;
     let label;
     if (!ours) {
@@ -383,6 +398,7 @@ const I18N = {
         ? `<span class="seat__name">${m[1]}</span><span class="seat__ko">${m[2]}</span>`
         : `<span class="seat__name">${name}</span>`;
     }
+    if (own) label += `<span class="seat__own">${t().ownTag}</span>`;
     seat.innerHTML = `<span class="seat__num">${num}</span>` + label;
     return seat;
   }
@@ -444,6 +460,8 @@ const I18N = {
     legend.className = "coach__legend";
     legend.innerHTML =
       `<span><i class="lg-you"></i>${t().lgYou}</span>` +
+      (seatNums(journey).some(n => OWN_TICKET.has(seatId(journey.coach, n)))
+        ? `<span><i class="lg-own"></i>${t().lgOwn}</span>` : "") +
       `<span><i class="lg-other"></i>${t().lgOther}</span>` +
       `<span><i class="lg-lug"></i>${t().lgLug}</span>` +
       `<span><i class="lg-carre"></i>${t().lgTable}</span>`;
@@ -509,8 +527,10 @@ const I18N = {
       const li = document.createElement("li");
       li.dataset.seatId = journey.coach + "-" + r.num;
       li.className = r.name ? "" : "is-empty";
+      const own = OWN_TICKET.has(li.dataset.seatId);
       li.innerHTML =
-        `<span class="roster__name">${r.name || t().empty}</span>` +
+        `<span class="roster__name">${r.name || t().empty}` +
+        (own ? ` <span class="roster__own">${t().ownTag}</span>` : "") + `</span>` +
         `<span class="roster__seat">${t().seatLabel} ${r.num}</span>`;
       ul.appendChild(li);
     });
@@ -576,6 +596,7 @@ const I18N = {
         html += `<button type="button" class="train-result__line" data-goto-dir="${h.key}" data-goto-seat="${h.id}">` +
           `<span>${t().resultLine(dayShort, h.coach, h.seat)}</span>` +
           `<span class="train-result__where">${here ? t().resultOnDir : t().resultSwitchHint(h.key === "outbound" ? t().outboundDay : t().returnDay)}</span>` +
+          (OWN_TICKET.has(h.id) ? `<span class="train-result__where train-result__own">${t().ownNote}</span>` : "") +
           `</button>`;
         // highlight seat + roster row
         document.querySelectorAll('[data-seat-id="' + h.id + '"]').forEach(el => el.classList.add("is-match"));
