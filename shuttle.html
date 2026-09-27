@@ -184,11 +184,13 @@ const SUNDAY = [
       { name: "Lynne", also: "Hur" },
       { name: "Charles", also: "Saurel" },
       { name: "Augustus" },
-      { name: "Paul-Sirawit", also: "Paul Sirawit Kerebel", plus: 1 },
-      { name: "Kunal", also: "Jadhav", plus: 1 },
+      { name: "Paul-Sirawit", also: "Paul Sirawit Kerebel" },
+      { name: "Kunal", also: "Jadhav" },
+      { name: "Ania" },
+      { name: "Aishwarya", also: "Kharade" },
       { name: "David", also: "Izquierdo" },
       { name: "Laura", also: "Garcia" },
-      { name: "Jill", also: "Mouboungoulou", plus: 1 },
+      { name: "Jill", also: "Mouboungoulou" },
       { name: "Kuheli", also: "Bose" },
       { name: "Léo", also: "Colmet Daage Leo" },
       { name: "Maverick" },
@@ -306,7 +308,7 @@ const I18N = {
   function nameHtml(g) {
     const m = g.name.match(/^(.+?)\s*\(([^)]+)\)\s*$/);
     let html = m
-      ? `${esc(m[1])} <span class="shuttle-ko">${esc(m[2])}</span>`
+      ? `${esc(m[1])} <span class="shuttle-ko">(${esc(m[2])})</span>`
       : esc(g.name);
     if (g.plus) html += ` <span class="shuttle-plus">${t().plus(g.plus)}</span>`;
     return html;
