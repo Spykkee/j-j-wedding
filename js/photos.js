@@ -264,7 +264,7 @@ function buildCard(id) {
     del);
 
   const likeBtn = h('button', { type: 'button', class: 'ph-icon-btn ph-like', html: ICON.heart });
-  const cmtBtn = h('button', { type: 'button', class: 'ph-icon-btn ph-cmt', 'aria-label': tr('comment'), html: ICON.bubble });
+  const cmtBtn = h('button', { type: 'button', class: 'ph-icon-btn ph-cmt-btn', 'aria-label': tr('comment'), html: ICON.bubble });
   const actions = h('div', { class: 'ph-card__actions' }, likeBtn, cmtBtn);
   const likes = h('div', { class: 'ph-card__likes' });
   const caption = p.caption
