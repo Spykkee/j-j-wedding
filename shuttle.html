@@ -82,8 +82,9 @@
   <section class="action-section train-roster shuttle-leg">
     <div class="action-eyebrow" id="fri-day">Friday 9 October</div>
     <h2 id="fri-title">Avignon TGV → the domaine</h2>
-    <p class="shuttle-leg__meta" id="fri-meta">We meet you off the train at Avignon TGV and drive to the domaine together. There may be a short wait at the station.</p>
+    <p class="shuttle-leg__meta" id="fri-meta">The shuttle leaves Avignon TGV from 15:30.</p>
     <div id="fri-runs"></div>
+    <p class="action-note" id="fri-offsite">Staying off-site? The Friday shuttle only goes to the domaine, so we recommend carpooling with guests staying at the same hotel. The WhatsApp Community is the best place to find someone to share a ride with!</p>
   </section>
 
   <section class="action-section train-roster shuttle-leg">
@@ -216,12 +217,14 @@ const I18N = {
     notFound: "No match — try your first name only, or scroll through the lists below. Still not there? See the note at the bottom of the page.",
     friDay: "Friday 9 October",
     friTitle: "Avignon TGV → the domaine",
-    friMeta: "We meet you off the train at Avignon TGV and drive to the domaine together. There may be a short wait at the station.",
+    friMeta: "The shuttle leaves Avignon TGV <strong>from 15:30</strong>. Coming on the 14:18 group train? There'll be a bit of a wait at the station, which has a Starbucks, a bakery and a convenience store.",
+    friOffsite: "<strong>Staying off-site?</strong> The Friday shuttle only goes to the domaine, so we recommend carpooling with guests staying at the same hotel. The <a href=\"whatsapp.html\">WhatsApp Community</a> is the best place to find someone to share a ride with!",
+    friDepart: "Leaves Avignon TGV from 15:30",
     sunDay: "Sunday 11 October",
     sunTitle: "The domaine → Avignon TGV",
     sunMeta: "The shuttle leaves the domaine at <strong>15:30</strong>, in time for the 16:41 group train. Catching a later train? You're welcome to ride with us all the same.",
-    runGroup: t => `Meets the ${t} group train`,
-    runOther: t => `Meets the ${t} train`,
+    runGroup: t => `Arriving on the ${t} group train`,
+    runOther: t => `Arriving on the ${t} train`,
     runDepart: t => `Leaves the domaine at ${t}`,
     count: n => n === 1 ? "1 guest" : `${n} guests`,
     plus: n => `+${n}`,
@@ -240,12 +243,14 @@ const I18N = {
     notFound: "Aucun résultat — essayez seulement votre prénom, ou parcourez les listes ci-dessous. Toujours rien ? Voyez la note en bas de page.",
     friDay: "Vendredi 9 octobre",
     friTitle: "Avignon TGV → le domaine",
-    friMeta: "Nous vous retrouvons à la descente du train à Avignon TGV et partons ensemble pour le domaine. Une petite attente à la gare est possible.",
+    friMeta: "La navette part d'Avignon TGV <strong>à partir de 15h30</strong>. Vous arrivez par le train de groupe de 14h18 ? Il faudra patienter un peu à la gare, qui a un Starbucks, une boulangerie et une supérette.",
+    friOffsite: "<strong>Vous logez hors du domaine ?</strong> La navette du vendredi ne dessert que le domaine : nous vous recommandons de faire du covoiturage avec les invités du même hôtel. La <a href=\"whatsapp.html\">communauté WhatsApp</a> est le meilleur endroit pour trouver quelqu'un avec qui partager le trajet !",
+    friDepart: "Départ d'Avignon TGV à partir de 15h30",
     sunDay: "Dimanche 11 octobre",
     sunTitle: "Le domaine → Avignon TGV",
     sunMeta: "La navette quitte le domaine à <strong>15h30</strong>, à temps pour le train de groupe de 16h41. Vous prenez un train plus tard ? Vous pouvez tout de même monter avec nous.",
-    runGroup: t => `Correspondance avec le train de groupe de ${t.replace(":", "h")}`,
-    runOther: t => `Correspondance avec le train de ${t.replace(":", "h")}`,
+    runGroup: t => `Arrivée par le train de groupe de ${t.replace(":", "h")}`,
+    runOther: t => `Arrivée par le train de ${t.replace(":", "h")}`,
     runDepart: t => `Départ du domaine à ${t.replace(":", "h")}`,
     count: n => n === 1 ? "1 invité" : `${n} invités`,
     plus: n => `+${n}`,
@@ -264,12 +269,14 @@ const I18N = {
     notFound: "일치하는 결과가 없어요 — 이름(퍼스트네임)만 입력하거나 아래 목록을 확인해 주세요. 그래도 없다면 페이지 맨 아래 안내를 봐 주세요.",
     friDay: "10월 9일 금요일",
     friTitle: "아비뇽 TGV → 도멘",
-    friMeta: "아비뇽 TGV역에서 기차 도착에 맞춰 만나 함께 도멘으로 이동합니다. 역에서 잠시 기다릴 수 있어요.",
+    friMeta: "셔틀은 <strong>15시 30분부터</strong> 아비뇽 TGV역에서 출발합니다. 14:18 단체 기차로 오시나요? 역에서 조금 기다리셔야 해요. 역에는 스타벅스, 빵집, 편의점이 있어요.",
+    friOffsite: "<strong>도멘 밖에서 묵으시나요?</strong> 금요일 셔틀은 도멘으로만 가요. 같은 호텔에 묵는 하객들과 카풀하시길 추천드려요 — <a href=\"whatsapp.html\">WhatsApp 커뮤니티</a>에서 함께 타실 분을 찾아보세요!",
+    friDepart: "15시 30분부터 아비뇽 TGV 출발",
     sunDay: "10월 11일 일요일",
     sunTitle: "도멘 → 아비뇽 TGV",
     sunMeta: "셔틀은 <strong>15시 30분</strong>에 도멘에서 출발해 16:41 단체 기차 시간에 맞춰 도착합니다. 더 늦은 기차를 타시나요? 그래도 함께 타셔도 괜찮아요.",
-    runGroup: t => `${t} 단체 기차 도착에 맞춰 출발`,
-    runOther: t => `${t} 기차 도착에 맞춰 출발`,
+    runGroup: t => `${t} 단체 기차로 도착`,
+    runOther: t => `${t} 기차로 도착`,
     runDepart: t => `${t} 도멘 출발`,
     count: n => `${n}명`,
     plus: n => `+${n}명`,
@@ -386,7 +393,7 @@ const I18N = {
         const h = hits[leg];
         html += `<div class="lookup-result__line${h ? "" : " is-off"}">` +
           `<span class="lookup-result__label">${label}</span>` +
-          `<span>${h ? esc(runLabel(leg, h.run)) : t().notOnLeg}</span></div>`;
+          `<span>${h ? esc(leg === "fri" ? t().friDepart + " · " + runLabel(leg, h.run) : runLabel(leg, h.run)) : t().notOnLeg}</span></div>`;
         if (h) document.querySelectorAll('[data-key="' + h.key + '"]').forEach(el => el.classList.add("is-match"));
       });
       card.innerHTML = html;
@@ -405,6 +412,7 @@ const I18N = {
     document.getElementById("fri-day").textContent = d.friDay;
     document.getElementById("fri-title").textContent = d.friTitle;
     document.getElementById("fri-meta").innerHTML = d.friMeta;
+    document.getElementById("fri-offsite").innerHTML = d.friOffsite;
     document.getElementById("sun-day").textContent = d.sunDay;
     document.getElementById("sun-title").textContent = d.sunTitle;
     document.getElementById("sun-meta").innerHTML = d.sunMeta;
