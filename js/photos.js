@@ -254,7 +254,8 @@ function buildCard(id) {
   const media = h('div', { class: 'ph-card__media', style: `aspect-ratio: 1 / ${ratio.toFixed(4)}` }, img, burst);
 
   const del = canDelete(p.uid)
-    ? h('button', { type: 'button', class: 'ph-icon-btn ph-card__del', 'aria-label': tr('del'), html: ICON.trash })
+    ? h('button', { type: 'button', class: 'ph-card__del' },
+        h('span', { html: ICON.trash }), h('span', { class: 'ph-card__del-label', text: tr('del') }))
     : null;
 
   const head = h('header', { class: 'ph-card__head' },
@@ -320,6 +321,8 @@ function updateCard(id) {
   likeBtn.setAttribute('aria-pressed', liked ? 'true' : 'false');
   likeBtn.setAttribute('aria-label', tr('like'));
   card.querySelector('.ph-card__likes').textContent = plural(n, 'likes');
+  const delLabel = card.querySelector('.ph-card__del-label');
+  if (delLabel) delLabel.textContent = tr('del');
   card.querySelector('.ph-card__likes').classList.toggle('is-zero', n === 0);
   const count = p.commentCount || 0;
   const shown = (p.recent || []).slice(-PREVIEW);
@@ -527,15 +530,14 @@ function renderComments(postId, list) {
   const wasAtBottom = els.cmts.scrollHeight - els.cmts.scrollTop - els.cmts.clientHeight < 40;
   els.cmts.replaceChildren(...list.map(c => {
     const del = canDelete(c.uid)
-      ? h('button', { type: 'button', class: 'ph-icon-btn ph-cmt__del', 'aria-label': tr('del'), html: ICON.trash })
+      ? h('button', { type: 'button', class: 'ph-cmt__del', text: tr('del') })
       : null;
     if (del) del.addEventListener('click', () => removeComment(postId, c.id));
     return h('li', { class: 'ph-cmt' },
       h('span', { class: 'ph-avatar ph-avatar--sm', 'aria-hidden': 'true', text: (c.name || '?').charAt(0).toUpperCase() }),
       h('div', { class: 'ph-cmt__body' },
         h('p', {}, h('strong', { text: c.name }), ' ', document.createTextNode(c.text)),
-        h('time', { class: 'ph-cmt__time', text: timeAgo(c.at) })),
-      del);
+        h('div', { class: 'ph-cmt__meta' }, h('time', { class: 'ph-cmt__time', text: timeAgo(c.at) }), del)));
   }));
   if (wasAtBottom) els.cmts.scrollTop = els.cmts.scrollHeight;
 }

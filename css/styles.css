@@ -1510,6 +1510,8 @@ body.lang-ko .seat__name { font-size: 13px; }
   justify-content: center;
   gap: 3px;
   padding: 9px 3px;
+  /* every seat as tall as the fullest one (number, name, Korean name, tag) */
+  min-height: 96px;
   border-radius: 9px;
   border: 0.5px solid var(--stone);
   background: #fff;
@@ -1707,8 +1709,15 @@ body.lang-ko .seat__name { font-size: 13px; }
   -webkit-tap-highlight-color: transparent;
 }
 .ph-icon-btn svg { width: 25px; height: 25px; }
-.ph-card__del, .ph-cmt__del { color: var(--muted); }
-.ph-card__del svg, .ph-cmt__del svg { width: 19px; height: 19px; }
+.ph-card__del {
+  display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0;
+  padding: 6px 10px 6px 8px; border: 0.5px solid var(--stone); border-radius: 999px;
+  background: transparent; color: var(--burg); cursor: pointer;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+  -webkit-tap-highlight-color: transparent;
+}
+.ph-card__del span:first-child, .ph-card__del svg { display: block; width: 16px; height: 16px; }
+.ph-card__del:hover { background: var(--burg-pale); }
 .ph-like.is-on { color: var(--burg); }
 .ph-like.is-on svg { fill: currentColor; }
 .ph-card__likes { padding: 0 14px; font-size: 15px; font-weight: 400; color: var(--text); }
@@ -1841,8 +1850,13 @@ body.lang-ko .seat__name { font-size: 13px; }
 .ph-cmt { display: flex; align-items: flex-start; gap: 10px; }
 .ph-cmt__body { flex: 1; min-width: 0; }
 .ph-cmt__body p { font-size: 15px; line-height: 1.55; overflow-wrap: anywhere; }
+.ph-cmt__meta { display: flex; align-items: baseline; gap: 12px; margin-top: 1px; }
 .ph-cmt__time { font-size: 12px; color: var(--muted); }
-.ph-cmt__del { width: 32px; height: 32px; }
+.ph-cmt__del {
+  padding: 2px 0; border: 0; background: none; cursor: pointer;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif; font-size: 12px; font-weight: 400; color: var(--burg);
+  -webkit-tap-highlight-color: transparent;
+}
 .ph-cmt-form { display: flex; gap: 6px; align-items: center; border-top: 0.5px solid var(--stone); padding-top: 10px; }
 .ph-cmt-send {
   flex-shrink: 0; padding: 10px 12px; border: 0; background: none; cursor: pointer;
