@@ -7,7 +7,8 @@ rules_version = '2';
 //   admins/{uid}                          exists  -> that device can moderate
 //   posts/{postId}                        { uid, name, caption, publicId, version, w, h,
 //                                           createdAt, likes: {uid: true}, commentCount,
-//                                           recent: [{id, uid, name, text}] (last 2 comments) }
+//                                           recent: [{id, uid, name, text}] (last 2 comments),
+//                                           photos: [{publicId, version, w, h}] (1–10, carousel) }
 //   posts/{postId}/comments/{commentId}   { uid, name, text, createdAt }
 //
 // Admins are added from the Firebase console or the CLI (never from a browser).
@@ -32,7 +33,12 @@ service cloud.firestore {
 
       allow create: if signedIn()
         && request.resource.data.keys().hasOnly(
-             ['uid', 'name', 'caption', 'publicId', 'version', 'w', 'h', 'createdAt', 'likes', 'commentCount'])
+             ['uid', 'name', 'caption', 'publicId', 'version', 'w', 'h', 'photos', 'createdAt', 'likes', 'commentCount'])
+        // Several photos, swiped as a carousel. The first is also stored at the top level.
+        && (!('photos' in request.resource.data)
+            || (request.resource.data.photos is list
+                && request.resource.data.photos.size() >= 1
+                && request.resource.data.photos.size() <= 10))
         && request.resource.data.keys().hasAll(
              ['uid', 'name', 'caption', 'publicId', 'version', 'w', 'h', 'createdAt', 'likes', 'commentCount'])
         && request.resource.data.uid == me()

@@ -1701,8 +1701,41 @@ body.lang-ko .seat__name { font-size: 13px; }
   position: relative; background: var(--surface); overflow: hidden;
   touch-action: manipulation; -webkit-user-select: none; user-select: none; cursor: pointer;
 }
-.ph-card__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.ph-card__actions { display: flex; gap: 2px; padding: 6px 6px 0; }
+/* carousel: native horizontal scroll with snap, so swiping feels like the phone's own */
+.ph-car {
+  display: flex; width: 100%; height: 100%;
+  overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.ph-car::-webkit-scrollbar { display: none; }
+.ph-car__img { flex: 0 0 100%; width: 100%; height: 100%; object-fit: cover; scroll-snap-align: center; scroll-snap-stop: always; display: block; }
+.ph-car__count {
+  position: absolute; top: 12px; right: 12px; padding: 3px 9px; border-radius: 999px;
+  background: rgba(28, 26, 24, .55); color: #fff; font-size: 12px; letter-spacing: .06em; pointer-events: none;
+}
+.ph-car__arrow {
+  position: absolute; top: 50%; width: 32px; height: 32px; margin-top: -16px; padding: 0;
+  display: grid; place-items: center; border: 0; border-radius: 50%;
+  background: rgba(255, 255, 255, .88); color: var(--text); cursor: pointer;
+  box-shadow: 0 2px 8px rgba(28, 26, 24, .2); opacity: 0; transition: opacity .15s;
+}
+.ph-car__arrow svg { width: 18px; height: 18px; }
+.ph-car__arrow--prev { left: 10px; }
+.ph-car__arrow--prev svg { transform: scaleX(-1); }
+.ph-car__arrow--next { right: 10px; }
+.ph-card__media:hover .ph-car__arrow, .ph-car__arrow:focus-visible { opacity: 1; }
+.ph-card__media .ph-car__arrow[hidden] { display: none; }
+@media (hover: none) { .ph-car__arrow { display: none; } }
+.ph-card__actions { position: relative; display: flex; gap: 2px; padding: 6px 6px 0; }
+.ph-car__dots {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -30%);
+  display: flex; gap: 5px; pointer-events: none;
+}
+.ph-car__dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--stone); transition: background-color .2s; }
+.ph-car__dots span.is-on { background: var(--burg); }
+.ph-tile { position: relative; }
+.ph-tile__multi { position: absolute; top: 6px; right: 6px; width: 20px; height: 20px; color: #fff; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .5)); }
+.ph-tile__multi svg { width: 100%; height: 100%; }
 .ph-icon-btn {
   display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0;
   border: 0; border-radius: 50%; background: transparent; color: var(--text); cursor: pointer;

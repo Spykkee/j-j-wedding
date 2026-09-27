@@ -21,7 +21,8 @@ import {
 const CLOUD = 'mxntbnq1';
 const PRESET = 'jj-wedding-guests';
 const PAGE = 9;
-const PREVIEW = 2;              // latest comments shown under each photo, kept on the post itself
+const PREVIEW = 2;
+const MAX_PHOTOS = 10;          // photos in one post, swiped like an Instagram carousel              // latest comments shown under each photo, kept on the post itself
 const MAX_EDGE = 2048;          // long edge after in-browser downscale
 const NAME_KEY = 'jj-photos-name';
 const VIEW_KEY = 'jj-photos-view';
@@ -42,6 +43,7 @@ const postsCol = collection(db, 'posts');
 
 const STR = {
   en: {
+    prev: 'Previous photo', next: 'Next photo',
     qrTitle: 'Prefer your phone?', qrText: 'Point your camera at this code to open the photo feed and share your own photos.',
     qrAlt: 'QR code linking to the J&J wedding photo feed',
     intro: 'Share your photos of the weekend with everyone, and like and comment on your favourites.',
@@ -63,6 +65,7 @@ const STR = {
     deviceId: 'Device ID', actionFailed: 'That didn’t work. Check your connection and try again.'
   },
   fr: {
+    prev: 'Photo précédente', next: 'Photo suivante',
     qrTitle: 'Vous préférez votre téléphone ?', qrText: 'Visez ce code avec votre appareil photo pour ouvrir le fil photo et partager vos propres photos.',
     qrAlt: 'QR code vers le fil photo du mariage de J&J',
     intro: 'Partagez vos photos du week-end avec tout le monde, et likez et commentez vos préférées.',
@@ -84,6 +87,7 @@ const STR = {
     deviceId: 'Identifiant de l’appareil', actionFailed: 'Ça n’a pas marché. Vérifiez votre connexion et réessayez.'
   },
   ko: {
+    prev: '이전 사진', next: '다음 사진',
     qrTitle: '휴대폰으로 보시겠어요?', qrText: '카메라로 이 코드를 비추면 사진 피드가 열리고, 직접 찍은 사진도 올릴 수 있어요.',
     qrAlt: 'J&J 웨딩 사진 피드 QR 코드',
     intro: '주말 동안 찍은 사진을 모두와 함께 나눠 주세요. 마음에 드는 사진에는 좋아요와 댓글도 남겨 주세요.',
@@ -151,6 +155,8 @@ function h(tag, attrs = {}, ...kids) {
 const ICON = {
   heart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3S3.5 14.6 3.5 8.9C3.5 6.2 5.6 4.3 8 4.3c1.8 0 3.2 1 4 2.4.8-1.4 2.2-2.4 4-2.4 2.4 0 4.5 1.9 4.5 4.6 0 5.7-8.5 11.4-8.5 11.4Z"/></svg>',
   bubble: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4.5 19.5l1.3-4.3A7.5 7.5 0 1 1 20 11.5Z"/></svg>',
+  chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>',
+  stack: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="7.5" y="7.5" width="12" height="12" rx="1.8"/><path d="M4.5 16.5v-10a2 2 0 0 1 2-2h10"/></svg>',
   trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 7h15M9.5 7V4.8h5V7M6.5 7l.9 12.2h9.2L17.5 7"/></svg>'
 };
 
@@ -235,23 +241,52 @@ const ensureName = async () => state.name || (await askName());
 
 /* ---------------------------------------------------------------- rendering */
 
+/** Older posts carry one photo at the top level; newer ones a `photos` list. */
+function photosOf(p) {
+  return p.photos && p.photos.length ? p.photos : [{ publicId: p.publicId, version: p.version, w: p.w, h: p.h }];
+}
 function likeCount(p) { return Object.keys(p.likes || {}).length; }
 function canDelete(uid) { return state.admin || (state.uid && uid === state.uid); }
 
 function buildCard(id) {
   const p = state.posts.get(id);
-  const ratio = Math.min(p.h / p.w, 1.34);   // tall phone shots keep their frame; anything taller is cropped
+  const photos = photosOf(p);
+  // The first photo sets the frame, like Instagram; tall phone shots keep theirs, anything taller is cropped.
+  const ratio = Math.min(photos[0].h / photos[0].w, 1.34);
   const initial = (p.name || '?').trim().charAt(0).toUpperCase();
 
-  const img = h('img', {
-    alt: p.caption || p.name,
-    loading: 'lazy', decoding: 'async',
-    src: imgUrl(p, 'c_limit,w_800'),
-    srcset: [480, 800, 1200].map(w => `${imgUrl(p, 'c_limit,w_' + w)} ${w}w`).join(', '),
+  const slides = photos.map((ph, i) => h('img', {
+    class: 'ph-car__img',
+    alt: photos.length > 1 ? `${p.caption || p.name} (${i + 1}/${photos.length})` : (p.caption || p.name),
+    loading: 'lazy', decoding: 'async', draggable: 'false',
+    src: imgUrl(ph, 'c_limit,w_800'),
+    srcset: [480, 800, 1200].map(w => `${imgUrl(ph, 'c_limit,w_' + w)} ${w}w`).join(', '),
     sizes: '(max-width: 600px) 100vw, 560px'
-  });
+  }));
+  const track = h('div', { class: 'ph-car' }, ...slides);
   const burst = h('span', { class: 'ph-burst', html: ICON.heart, 'aria-hidden': 'true' });
-  const media = h('div', { class: 'ph-card__media', style: `aspect-ratio: 1 / ${ratio.toFixed(4)}` }, img, burst);
+  const media = h('div', { class: 'ph-card__media', style: `aspect-ratio: 1 / ${ratio.toFixed(4)}` }, track, burst);
+  let dots = null;
+  if (photos.length > 1) {
+    const counter = h('span', { class: 'ph-car__count', 'aria-hidden': 'true' });
+    const prevBtn = h('button', { type: 'button', class: 'ph-car__arrow ph-car__arrow--prev', 'aria-label': tr('prev'), html: ICON.chevron });
+    const nextBtn = h('button', { type: 'button', class: 'ph-car__arrow ph-car__arrow--next', 'aria-label': tr('next'), html: ICON.chevron });
+    dots = h('div', { class: 'ph-car__dots', 'aria-hidden': 'true' }, ...photos.map(() => h('span')));
+    media.append(counter, prevBtn, nextBtn);
+    const go = dir => track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+    // Arrow clicks must not count towards a double-tap like.
+    prevBtn.addEventListener('click', e => { e.stopPropagation(); go(-1); });
+    nextBtn.addEventListener('click', e => { e.stopPropagation(); go(1); });
+    const sync = () => {
+      const i = Math.max(0, Math.min(photos.length - 1, Math.round(track.scrollLeft / (track.clientWidth || 1))));
+      counter.textContent = `${i + 1}/${photos.length}`;
+      [...dots.children].forEach((d, k) => d.classList.toggle('is-on', k === i));
+      prevBtn.hidden = i === 0;
+      nextBtn.hidden = i === photos.length - 1;
+    };
+    track.addEventListener('scroll', sync, { passive: true });
+    sync();
+  }
 
   const del = canDelete(p.uid)
     ? h('button', { type: 'button', class: 'ph-card__del' },
@@ -267,7 +302,7 @@ function buildCard(id) {
 
   const likeBtn = h('button', { type: 'button', class: 'ph-icon-btn ph-like', html: ICON.heart });
   const cmtBtn = h('button', { type: 'button', class: 'ph-icon-btn ph-cmt-btn', 'aria-label': tr('comment'), html: ICON.bubble });
-  const actions = h('div', { class: 'ph-card__actions' }, likeBtn, cmtBtn);
+  const actions = h('div', { class: 'ph-card__actions' }, likeBtn, cmtBtn, dots);
   const likes = h('div', { class: 'ph-card__likes' });
   const caption = p.caption
     ? h('p', { class: 'ph-card__caption' }, h('strong', { text: p.name }), ' ', document.createTextNode(p.caption))
@@ -298,7 +333,8 @@ function buildCard(id) {
   if (del) del.addEventListener('click', () => removePost(id));
 
   const tile = h('button', { type: 'button', class: 'ph-tile', 'aria-label': p.caption || p.name },
-    h('img', { alt: '', loading: 'lazy', decoding: 'async', src: imgUrl(p, 'c_fill,g_auto,w_400,h_400') }));
+    h('img', { alt: '', loading: 'lazy', decoding: 'async', src: imgUrl(photos[0], 'c_fill,g_auto,w_400,h_400') }),
+    photos.length > 1 ? h('span', { class: 'ph-tile__multi', html: ICON.stack, 'aria-hidden': 'true' }) : null);
   tile.addEventListener('click', () => {
     setView('feed');
     card.scrollIntoView({ block: 'start' });
@@ -666,11 +702,12 @@ function uploadToCloudinary(blob, onProgress) {
   });
 }
 
-function trayItem(file) {
+function trayItem(file, count) {
   const thumbUrl = URL.createObjectURL(file);
   const thumb = h('img', { alt: '', src: thumbUrl });
   thumb.addEventListener('error', () => thumb.replaceWith(h('span', { class: 'ph-previews__blank' })), { once: true });
-  const label = h('span', { class: 'ph-tray__label', text: tr('uploading') });
+  const uploadingText = () => count > 1 ? tr('uploading') + ' · ' + tr('photosN', { n: count }) : tr('uploading');
+  const label = h('span', { class: 'ph-tray__label', text: uploadingText() });
   const bar = h('span', { class: 'ph-tray__bar' }, h('span', { class: 'ph-tray__fill' }));
   const retry = h('button', { type: 'button', class: 'ph-btn ph-btn--ghost ph-btn--sm', text: tr('retry'), hidden: true });
   const row = h('div', { class: 'ph-tray__item' }, thumb, h('div', { class: 'ph-tray__info' }, label, bar), retry);
@@ -680,7 +717,7 @@ function trayItem(file) {
     row, retry,
     progress(f) { row.querySelector('.ph-tray__fill').style.width = Math.round(f * 100) + '%'; },
     fail() { row.classList.add('is-failed'); label.textContent = tr('failed'); retry.hidden = false; },
-    reset() { row.classList.remove('is-failed'); label.textContent = tr('uploading'); retry.hidden = true; this.progress(0); },
+    reset() { row.classList.remove('is-failed'); label.textContent = uploadingText(); retry.hidden = true; this.progress(0); },
     ok() {
       row.classList.add('is-done');
       label.textContent = tr('done');
@@ -690,20 +727,34 @@ function trayItem(file) {
   };
 }
 
-async function uploadOne(file, caption, item) {
+/** Upload every photo of one post, then create the post. `done` keeps the
+    photos that already made it, so Retry only resends the ones that failed. */
+async function uploadPost(files, caption, item, done = []) {
   state.uploads++;
+  const frac = files.map((_, i) => (done[i] ? 1 : 0));
+  const tick = () => item.progress(0.02 + 0.93 * frac.reduce((a, b) => a + b, 0) / files.length);
+  tick();
   try {
-    const blob = await prepare(file);
-    item.progress(0.04);
-    const res = await uploadToCloudinary(blob, f => item.progress(0.04 + f * 0.9));
+    // Two at a time: quick on good wifi, gentle on a weak signal.
+    let next = 0;
+    const worker = async () => {
+      while (next < files.length) {
+        const i = next++;
+        if (done[i]) continue;
+        const blob = await prepare(files[i]);
+        const res = await uploadToCloudinary(blob, f => { frac[i] = f; tick(); });
+        done[i] = { publicId: res.public_id, version: res.version, w: res.width, h: res.height };
+        frac[i] = 1; tick();
+      }
+    };
+    await Promise.all([worker(), worker()]);
+    const photos = done.slice(0, files.length);
     await addDoc(postsCol, {
       uid: state.uid,
       name: state.name,
       caption,
-      publicId: res.public_id,
-      version: res.version,
-      w: res.width,
-      h: res.height,
+      ...photos[0],               // the first photo also at the top level, for older readers
+      photos,
       createdAt: serverTimestamp(),
       likes: {},
       commentCount: 0
@@ -712,7 +763,7 @@ async function uploadOne(file, caption, item) {
   } catch (err) {
     console.error(err);
     item.fail();
-    item.retry.onclick = () => { item.reset(); uploadOne(file, caption, item); };
+    item.retry.onclick = () => { item.reset(); uploadPost(files, caption, item, done); };
   } finally {
     state.uploads--;
   }
@@ -726,11 +777,7 @@ async function share(e) {
   els.composeDlg.close();
   if (!files.length) return;
   window.scrollTo({ top: els.tray.offsetTop - 80, behavior: 'smooth' });
-  const items = files.map(f => [f, trayItem(f)]);
-  // Two at a time: quick on good wifi, gentle on a weak signal.
-  let next = 0;
-  const worker = async () => { while (next < items.length) { const [f, it] = items[next++]; await uploadOne(f, caption, it); } };
-  await Promise.all([worker(), worker()]);
+  await uploadPost(files, caption, trayItem(files[0], files.length));
 }
 
 /* ---------------------------------------------------------------- wiring */
@@ -741,7 +788,7 @@ function wire() {
   els.add.addEventListener('click', startAdd);
   els.file.addEventListener('change', () => {
     const files = [...els.file.files].filter(f => !f.type || f.type.startsWith('image/') || /\.(heic|heif)$/i.test(f.name));
-    if (files.length) openCompose(files.slice(0, 20));
+    if (files.length) openCompose(files.slice(0, MAX_PHOTOS));
   });
   els.composeForm.addEventListener('submit', share);
   els.composeCancel.addEventListener('click', () => { picked = []; els.composeDlg.close(); });
