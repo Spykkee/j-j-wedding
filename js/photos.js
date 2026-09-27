@@ -274,17 +274,21 @@ function buildCard(id) {
 
   const card = h('article', { class: 'ph-card', 'data-id': id }, head, media, actions, likes, caption, cmtLink);
 
-  // Double-tap (or double-click) the photo to like it.
+  // Heart button and double-tap (or double-click) on the photo both toggle the like.
+  const toggleLike = () => {
+    const liked = !!(state.posts.get(id).likes || {})[state.uid];
+    like(id, !liked);
+    return !liked;
+  };
   let lastTap = 0;
   media.addEventListener('click', () => {
     const now = Date.now();
-    if (now - lastTap < 320) { lastTap = 0; like(id, true); pop(burst); } else lastTap = now;
+    if (now - lastTap < 320) {
+      lastTap = 0;
+      if (toggleLike()) { pop(burst); pop(likeBtn); }
+    } else lastTap = now;
   });
-  likeBtn.addEventListener('click', () => {
-    const liked = !!(state.posts.get(id).likes || {})[state.uid];
-    like(id, !liked);
-    if (!liked) pop(likeBtn);
-  });
+  likeBtn.addEventListener('click', () => { if (toggleLike()) pop(likeBtn); });
   cmtBtn.addEventListener('click', () => openComments(id, true));
   cmtLink.addEventListener('click', () => openComments(id, state.posts.get(id).commentCount === 0));
   if (del) del.addEventListener('click', () => removePost(id));
