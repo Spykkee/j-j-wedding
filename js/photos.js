@@ -14,13 +14,14 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.5/fireba
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js';
 import {
   getFirestore, collection, doc, query, orderBy, limit, startAfter, where,
-  getDocs, getDoc, onSnapshot, addDoc, updateDoc, deleteDoc, writeBatch,
-  serverTimestamp, deleteField, increment, Timestamp
+  getDocs, getDoc, onSnapshot, addDoc, updateDoc, deleteDoc, runTransaction,
+  serverTimestamp, deleteField, Timestamp
 } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
 
 const CLOUD = 'mxntbnq1';
 const PRESET = 'jj-wedding-guests';
 const PAGE = 9;
+const PREVIEW = 2;              // latest comments shown under each photo, kept on the post itself
 const MAX_EDGE = 2048;          // long edge after in-browser downscale
 const NAME_KEY = 'jj-photos-name';
 const VIEW_KEY = 'jj-photos-view';
@@ -271,8 +272,9 @@ function buildCard(id) {
     ? h('p', { class: 'ph-card__caption' }, h('strong', { text: p.name }), ' ', document.createTextNode(p.caption))
     : null;
   const cmtLink = h('button', { type: 'button', class: 'ph-card__cmts' });
+  const recent = h('button', { type: 'button', class: 'ph-card__recent' });
 
-  const card = h('article', { class: 'ph-card', 'data-id': id }, head, media, actions, likes, caption, cmtLink);
+  const card = h('article', { class: 'ph-card', 'data-id': id }, head, media, actions, likes, caption, cmtLink, recent);
 
   // Heart button and double-tap (or double-click) on the photo both toggle the like.
   const toggleLike = () => {
@@ -291,6 +293,7 @@ function buildCard(id) {
   likeBtn.addEventListener('click', () => { if (toggleLike()) pop(likeBtn); });
   cmtBtn.addEventListener('click', () => openComments(id, true));
   cmtLink.addEventListener('click', () => openComments(id, state.posts.get(id).commentCount === 0));
+  recent.addEventListener('click', () => openComments(id, false));
   if (del) del.addEventListener('click', () => removePost(id));
 
   const tile = h('button', { type: 'button', class: 'ph-tile', 'aria-label': p.caption || p.name },
@@ -318,7 +321,16 @@ function updateCard(id) {
   likeBtn.setAttribute('aria-label', tr('like'));
   card.querySelector('.ph-card__likes').textContent = plural(n, 'likes');
   card.querySelector('.ph-card__likes').classList.toggle('is-zero', n === 0);
-  card.querySelector('.ph-card__cmts').textContent = plural(p.commentCount || 0, 'cmts');
+  const count = p.commentCount || 0;
+  const shown = (p.recent || []).slice(-PREVIEW);
+  const link = card.querySelector('.ph-card__cmts');
+  link.textContent = plural(count, 'cmts');
+  // Hide "View all" when every comment is already previewed below it.
+  link.hidden = count > 0 && count <= shown.length;
+  const recent = card.querySelector('.ph-card__recent');
+  recent.hidden = !shown.length;
+  recent.replaceChildren(...shown.map(c =>
+    h('span', { class: 'ph-card__recent-line' }, h('strong', { text: c.name }), ' ', document.createTextNode(c.text))));
   const time = card.querySelector('.ph-card__time');
   if (p.at) { time.textContent = timeAgo(p.at); time.dateTime = p.at.toISOString(); }
 }
@@ -493,8 +505,9 @@ function openComments(id, focus) {
     renderComments(id, list);
     // Keep the card's counter honest while the sheet is open.
     const p = state.posts.get(id);
-    if (p && !snap.metadata.hasPendingWrites && p.commentCount !== list.length) {
+    if (p && !snap.metadata.hasPendingWrites) {
       p.commentCount = list.length;
+      p.recent = toRecent(list);
       updateCard(id);
     }
   }, err => {
@@ -503,7 +516,10 @@ function openComments(id, focus) {
   });
 }
 
+const toRecent = list => list.slice(-PREVIEW).map(c => ({ id: c.id, uid: c.uid, name: c.name, text: c.text }));
+
 function renderComments(postId, list) {
+  state.cmtList = list;
   if (!list.length) {
     els.cmts.replaceChildren(h('li', { class: 'ph-cmts__empty', text: tr('noComments') }));
     return;
@@ -528,6 +544,7 @@ function closeComments() {
   if (state.unsubCmts) state.unsubCmts();
   state.unsubCmts = null;
   state.openPost = null;
+  state.cmtList = null;
   if (els.cmtDlg.open) els.cmtDlg.close();
 }
 
@@ -538,14 +555,19 @@ async function sendComment(e) {
   if (!id || !text || !state.uid) return;
   if (!(await ensureName())) return;
   const postRef = doc(db, 'posts', id);
-  const b = writeBatch(db);
-  b.set(doc(collection(postRef, 'comments')), { uid: state.uid, name: state.name, text, createdAt: serverTimestamp() });
-  b.update(postRef, { commentCount: increment(1) });
+  const cmtRef = doc(collection(postRef, 'comments'));
+  const entry = { id: cmtRef.id, uid: state.uid, name: state.name, text };
   els.cmtInput.value = '';
   try {
-    await b.commit();
+    const after = await runTransaction(db, async tx => {
+      const cur = (await tx.get(postRef)).data();
+      const next = { commentCount: (cur.commentCount || 0) + 1, recent: [...(cur.recent || []), entry].slice(-PREVIEW) };
+      tx.set(cmtRef, { uid: state.uid, name: state.name, text, createdAt: serverTimestamp() });
+      tx.update(postRef, next);
+      return next;
+    });
     const p = state.posts.get(id);
-    if (p) { p.commentCount = (p.commentCount || 0) + 1; updateCard(id); }
+    if (p) { Object.assign(p, after); updateCard(id); }
     els.cmts.scrollTop = els.cmts.scrollHeight;
   } catch (err) {
     console.error(err);
@@ -557,13 +579,17 @@ async function sendComment(e) {
 async function removeComment(postId, commentId) {
   if (!confirm(tr('delComment'))) return;
   const postRef = doc(db, 'posts', postId);
-  const b = writeBatch(db);
-  b.delete(doc(postRef, 'comments', commentId));
-  b.update(postRef, { commentCount: increment(-1) });
+  const recent = toRecent((state.cmtList || []).filter(c => c.id !== commentId));
   try {
-    await b.commit();
+    const after = await runTransaction(db, async tx => {
+      const cur = (await tx.get(postRef)).data();
+      const next = { commentCount: Math.max(0, (cur.commentCount || 1) - 1), recent };
+      tx.delete(doc(postRef, 'comments', commentId));
+      tx.update(postRef, next);
+      return next;
+    });
     const p = state.posts.get(postId);
-    if (p) { p.commentCount = Math.max(0, (p.commentCount || 1) - 1); updateCard(postId); }
+    if (p) { Object.assign(p, after); updateCard(postId); }
   } catch (err) {
     console.error(err);
     toast(tr('actionFailed'));

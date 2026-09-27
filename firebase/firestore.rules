@@ -6,7 +6,8 @@ rules_version = '2';
 //
 //   admins/{uid}                          exists  -> that device can moderate
 //   posts/{postId}                        { uid, name, caption, publicId, version, w, h,
-//                                           createdAt, likes: {uid: true}, commentCount }
+//                                           createdAt, likes: {uid: true}, commentCount,
+//                                           recent: [{id, uid, name, text}] (last 2 comments) }
 //   posts/{postId}/comments/{commentId}   { uid, name, text, createdAt }
 //
 // Admins are added from the Firebase console or the CLI (never from a browser).
@@ -51,8 +52,11 @@ service cloud.firestore {
         (changed().hasOnly(['likes'])
           && request.resource.data.likes.diff(resource.data.likes).affectedKeys().hasOnly([me()])
           && (!(me() in request.resource.data.likes) || request.resource.data.likes[me()] == true))
-        // Comment counter moves by exactly one, alongside adding / removing a comment.
-        || (changed().hasOnly(['commentCount'])
+        // Comment counter moves by exactly one, alongside adding / removing a comment,
+        // and `recent` (the last two comments, previewed under the photo) is refreshed.
+        || (changed().hasOnly(['commentCount', 'recent'])
+          && (!('recent' in request.resource.data)
+              || (request.resource.data.recent is list && request.resource.data.recent.size() <= 2))
           && request.resource.data.commentCount is int
           && request.resource.data.commentCount >= 0
           && (request.resource.data.commentCount == resource.data.commentCount + 1
