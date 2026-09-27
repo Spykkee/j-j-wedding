@@ -203,7 +203,7 @@ const SUNDAY = [
       { name: "Alina" },
       { name: "Pavel" },
       { name: "Maria" },
-      { name: "Artem" },
+      { name: "Artem", baby: true, also: "baby bebe" },
       { name: "Rilwanu" },
       { name: "Mootez" },
       { name: "Valentin" },
@@ -235,6 +235,7 @@ const I18N = {
     runDepart: t => `Leaves the domaine at ${t}`,
     count: n => n === 1 ? "1 guest" : `${n} guests`,
     plus: n => `+${n}`,
+    baby: "Baby",
     registered: "You're on the shuttle",
     friShort: "Fri 9 Oct · to the domaine",
     sunShort: "Sun 11 Oct · to the station",
@@ -261,6 +262,7 @@ const I18N = {
     runDepart: t => `Départ du domaine à ${t.replace(":", "h")}`,
     count: n => n === 1 ? "1 invité" : `${n} invités`,
     plus: n => `+${n}`,
+    baby: "Bébé",
     registered: "Vous êtes inscrit à la navette",
     friShort: "Ven. 9 oct. · vers le domaine",
     sunShort: "Dim. 11 oct. · vers la gare",
@@ -287,6 +289,7 @@ const I18N = {
     runDepart: t => `${t} 도멘 출발`,
     count: n => `${n}명`,
     plus: n => `+${n}명`,
+    baby: "아기",
     registered: "셔틀 명단에 있어요",
     friShort: "10/9 (금) · 도멘행",
     sunShort: "10/11 (일) · 역행",
@@ -324,6 +327,7 @@ const I18N = {
     let html = m
       ? `${esc(m[1])} <span class="shuttle-ko">(${esc(m[2])})</span>`
       : esc(g.name);
+    if (g.baby) html += ` <span class="shuttle-plus">${t().baby}</span>`;
     if (g.plus) html += ` <span class="shuttle-plus">${t().plus(g.plus)}</span>`;
     return html;
   }

@@ -1659,6 +1659,8 @@ body.lang-ko .seat__name { font-size: 13px; }
 .shuttle-ko { color: var(--muted); font-size: .9em; }
 .shuttle-plus {
   display: inline-block;
+  font-family: 'Jost', 'Noto Sans KR', sans-serif;
+  font-style: normal;
   font-size: 12px;
   letter-spacing: .04em;
   color: var(--burg);
